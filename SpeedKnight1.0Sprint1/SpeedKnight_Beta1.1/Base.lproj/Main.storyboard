@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LVB-YS-i5n">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game View Controller-->
+        <scene sceneID="CtS-rA-C9T">
+            <objects>
+                <viewController id="LVB-YS-i5n" customClass="GameViewController" customModule="SpeedKnight_Beta1_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PCf-gQ-wO7"/>
+                        <viewControllerLayoutGuide type="bottom" id="b3d-qh-BLL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bdc-N1-crn" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HP_Enemy_100.png" translatesAutoresizingMaskIntoConstraints="NO" id="7TB-Tf-Oet">
+                                <rect key="frame" x="26" y="30" width="548" height="153"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7TB-Tf-Oet" secondAttribute="height" multiplier="315:88" id="KGZ-98-NDF"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3g-Aa-a5y" userLabel="Timer">
+                                <rect key="frame" x="282" y="183" width="36" height="73"/>
+                                <fontDescription key="fontDescription" name="Papyrus" family="Papyrus" pointSize="47"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="7TB-Tf-Oet" secondAttribute="trailing" constant="10" id="4kT-0z-3fE"/>
+                            <constraint firstItem="7TB-Tf-Oet" firstAttribute="top" secondItem="PCf-gQ-wO7" secondAttribute="bottom" constant="10" id="aue-v2-rbo"/>
+                            <constraint firstItem="7TB-Tf-Oet" firstAttribute="leading" secondItem="bdc-N1-crn" secondAttribute="leadingMargin" constant="10" id="d5u-1M-53x"/>
+                            <constraint firstAttribute="centerX" secondItem="J3g-Aa-a5y" secondAttribute="centerX" id="j1A-Ks-4WI"/>
+                            <constraint firstItem="J3g-Aa-a5y" firstAttribute="top" secondItem="7TB-Tf-Oet" secondAttribute="bottom" id="lfm-fC-Fhy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="battleTimerLabel" destination="J3g-Aa-a5y" id="rJh-uR-1Q3"/>
+                        <outlet property="enemyHpBar" destination="7TB-Tf-Oet" id="FP3-yg-UyK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="HP_Enemy_100.png" width="653" height="102"/>
+    </resources>
+</document>
