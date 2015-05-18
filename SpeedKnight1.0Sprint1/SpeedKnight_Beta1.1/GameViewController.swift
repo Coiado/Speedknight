@@ -9,6 +9,8 @@
 import UIKit
 import SpriteKit
 
+// teste fucking bitches in da house
+
 // Check the logic after the first round, since it is now allowing the moves to be instantly destryed afterwards [X] -> Problem solved! Now just add a check to see if the enemy died (or you)! And, if so, end the level! Than focus on the battle system
 class GameViewController: UIViewController {
     var scene: GameScene!
