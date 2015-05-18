@@ -10,33 +10,24 @@ import Foundation
 
 class Enemy_AI{
 
-    // Maybe keep the general as it is, which means: intead of making a tuple containing both the attack and defense, we could keep it this way, since it could generate more variety to the enemy's strategys (can have a level 1 attack and level 2 defense, for an instance).
-    
-    /* What I plan on doing: 
-    
-    - Create priority array to choose which characters will be attacked.
-    - Define how the priority shall be generated
-    - [Make a possibility of landing critical hits]
-    
-    */
-
-    func easyAIAttack(turns : Int!) -> Float! /*First for attack caused. Second for defense points. See the problems with the tuple*/  {
+    func easyAIAttack(turns : Int!) -> Array<Float>! 
+    {
     
         if turns%2 == 0 {
         
-        return 125.0
+        return [1.0, 1.0, 1.0, 1.0] // Completly arbitrary
         
         }
     
         else{
         
-        return 0.0
+        return [0.0, 0.0, 0.0, 0.0] // Completly arbitrary
         }
     }
 
 
     func easyAIDefense(turns : Int!) -> Int!  {
-        
+         // Should probably pass it's Defense stat so it can be used in the AI Formula
         if turns%2 == 0 {
             
             return 0

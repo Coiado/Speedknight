@@ -1,0 +1,8 @@
+{
+    "allyHP" : 100.0,
+    "allyAttack" : 65,
+    "allyDefense" : 22,
+    "allyPicture" : "BowArrowProfilePic.png",
+    "allyRawValue" : 4,
+
+}

@@ -1,0 +1,7 @@
+{
+    "allyHP" : 100.0,
+    "allyAttack" : 75,
+    "allyDefense" : 13,
+    "allyPicture" : "MageStaffProfilePic.png",
+    "allyRawValue" : 5,
+}

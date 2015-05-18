@@ -25,16 +25,14 @@ class GameScene: SKScene {
         
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        let background = SKSpriteNode(imageNamed: "Background")
+        let background = SKSpriteNode(imageNamed: GameData.sharedInstance.backgroundImage) // Why?
         addChild(background)
         
         addChild(gameLayer)
         
         let layerPosition =  adjustPoint(CGPoint(
             x: -TileWidthOriginal * CGFloat(NumColumns) / 2,
-            y: (-TileHeightOriginal * CGFloat(NumRows) / 2) - 170))//CGPoint(
-            //x: -TileWidth * CGFloat(NumColumns) / 2,
-            //y: (-TileHeight * CGFloat(NumRows) / 2) - 170)
+            y: (-TileHeightOriginal * CGFloat(NumRows) / 2) - 170))
         
         tilesLayer.position = layerPosition
         gameLayer.addChild(tilesLayer)
@@ -45,7 +43,8 @@ class GameScene: SKScene {
         swipeFromColumn = nil
         swipeFromRow = nil
         
-        self.level = Level(filename: "Level_1") // Worked so-so... Something is wrong!
+        // Check to make a system that alters the Level value here (or maybe try to do it in the GameViewController)
+        self.level = Level(levelFilename: GameData.sharedInstance.levelFile)
 
     }
     
@@ -112,6 +111,7 @@ class GameScene: SKScene {
             
             let moves = Array<Move>()
             
+            println("Passei aqui")// Isn't being called, ever!
             let sprite = SKSpriteNode(imageNamed: move.moveType.spriteName)
             sprite.position = pointForColumn(move.column, row:move.row)
             sprite.size = adjustSize(sprite.size)

@@ -11,24 +11,31 @@ import Foundation
 let NumColumns = 9
 let NumRows = 9
 
-var targetScore = 0
-var maximumMoves = 0
-
 class Level {
     
-    var teamPerformance : Array<Int>!
+    var teamPerformance : Array<Int>! = Array<Int>()
     
     private var moves:Array2D<Move>
     private var possibleSwaps = Set<Swap>()
     private var tiles = Array2D<Tile>(columns: NumColumns, rows: NumRows) // Was initialized... Why the issue?
+    
+    // This is the universal value for the singleton being used here. With: "GameData.sharedInstance" I can access the singleton I created to make it accessible wherever I am. This way, the player can easily pick the characters he wants, and once done, the data shall be accessed through this class as it is universally visible.
+    var party: [(HP: Float, Att: Int, Def: Int, Picture: String, RawValue : Int)]! = GameData.sharedInstance.team
+    
+    // Variable that will hold the extra defense points of each round
+    var roundDefensiveInstance : Int = 0 // For now, the logic will be simple enough, so using an Int is alright + Remember to make it zero, after each round again
+    
+    var enemyHP: Int! = 0
+    var enemyAttack: Int! = 0
+    var enemyDefense: Int! = 0
+    var enemyAI: Int! = 0 // Don't know what is should de for now... It just needs to carry an ID to be substituted by it's equivalent in the class: Enemy_AI
+
     
     func tileAtColumn(column: Int, row: Int) -> Tile? {
         assert(column >= 0 && column < NumColumns)
         assert(row >= 0 && row < NumRows)
         return tiles[column, row]
     }
-    
-    // Still, surprisingly, going...
     
     // The idea here is, firstly, to make copies of the moves. And, then, to update them to the Array (Matrix)
     
@@ -47,18 +54,18 @@ class Level {
         swap.moveA.row = rowB
     }
 
-    
-    /* So far so good 3 */
-    
-    init(filename: String) {
+    init(levelFilename: String) {
 
-        if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle(filename) {
+        if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle(levelFilename) {
  
             if let tilesArray: AnyObject = dictionary["tiles"] {
                 
-                targetScore = dictionary["targetScore"] as! Int
-                maximumMoves = dictionary["moves"] as! Int
+                enemyHP = dictionary["enemyHP"] as! Int
+                enemyAttack = dictionary["enemyAttack"] as! Int
+                enemyDefense = dictionary["enemyDefense"] as! Int
+                enemyAI = dictionary["enemyAI"] as! Int
                 
+
                 for (row, rowArray) in enumerate(tilesArray as! [[Int]]) {
                     let tileRow = NumRows - row - 1
                     
@@ -70,10 +77,8 @@ class Level {
                 }
             }
         }
-        
         self.moves = Array2D<Move>(columns: NumColumns, rows: NumRows)
     }
-
 
     func moveAtColumn(column: Int, row: Int) -> Move? {
                 
@@ -84,19 +89,22 @@ class Level {
     
         }
 
-
     private func createInitialMoves() -> Array<Move> {
         var set = Array<Move>()
+        var i : Int! = 0
+        
+        for i in 0..<4
+        {
+        teamPerformance.append(0)
+        }
 
                 for row in 0..<NumRows {
             for column in 0..<NumColumns {
               
-                
-                if tiles[column, row] != nil { /* So far so good 4 */
+            
+                if tiles[column, row] != nil {
                 
                 // Responsible for guaranteeing a random move to show at a column and row, but only  if there are less than 3 of the same put together
-                    
-                //var moveType = MoveType.random()
                     
                     var moveType: MoveType
                     do {
@@ -110,25 +118,16 @@ class Level {
                                 moves[column, row - 2]?.moveType == moveType)
                 
                 let move = Move(column: column, row: row, moveType: moveType)
-                    
-                   /* moves[column][row] = moveSquare*/
-                    
-                /* moves[column][row] = moveSquare (Why didn't it work? Even after following the commands to actually add a vector: '+=' and 'append')*/
                 
                 self.moves[column,row] =  move
                 set.append(move)
             }
             }
         }
-        
-
-        
-        println("Eu sou -> shuffle \(self)")
         return set
     }
     
     private func detectHorizontalMatches() -> Array<Chain> {
-        // 1
         var set = Array<Chain>()
         
         // Loop through the rows and columns. Note that you don’t need to look at the last two columns because these cookies can never begin a new chain.
@@ -193,12 +192,10 @@ class Level {
         return set
     }
     
-    
-
-    
     func removeMatches() -> Array<Chain> {
         var horizontalChains = detectHorizontalMatches()
         var verticalChains = detectVerticalMatches()
+        var updatePoints : Array<Int>! = Array<Int>()
        
         // For iteration
         var i : Int!
@@ -222,25 +219,21 @@ class Level {
             
         }
         
+        // To update the value, even after it the new pieces fall and make points -> Watch out for adding int + nothing/'nil' in each position, atthe first turn
+        updatePoints = roundResults(horizontalActs,vertical: verticalActs)
         
-        self.teamPerformance = roundResults(horizontalActs,vertical: verticalActs)
+        var j : Int! = 0
+        for j in 0..<4{
+        teamPerformance[j] = teamPerformance[j] + updatePoints[j]
+        }
         
         println("Horizontal matches: \(horizontalChains)")
         println("Vertical matches: \(verticalChains)")
-      //  println("TESTING RAW VALUE --> \(verticalActs[0].1)")
         
         removeMoves(horizontalChains)
         removeMoves(verticalChains)
         
         while verticalChains.count > i {
-        
-        // Here we select all the matches made and return them at once
-            
-        /*
-            calculateScores(horizontalChains)
-            calculateScores(verticalChains)
-            
-            */
             
         horizontalChains.append(verticalChains[i])
         i = i + 1
@@ -253,29 +246,27 @@ class Level {
     // Method responsible for calculating the results based on the characters actions of the passed round.
     
     func roundResults(horizontal: [( Int, MoveType)], vertical: [(Int, MoveType)]) -> Array<Int>!{
-        
-        // The array that will hold the points each character made. If they did nothing their position will receive 0.
-        var charactersContribuition : Array<Int>! = Array<Int>()
-        
+
         var i : Int! = 0
         var j : Int! = 0
         
-        for j in 0..<5
+        var charactersContribuition : Array<Int>! = Array<Int>()
+        
+        for j in 0..<4
         {
-          //  charactersContribuition[j] = 0
-            charactersContribuition.append(0)
+        charactersContribuition.append(0)
         }
-        
         j = 0
+
         
-        while j < 5{ // It will run 5 times. One for each character that there currently is. By doing so it shall search for the particular character until it's either found or not. By being found it run's the logic to add points.
+        while j < 4{ // It will run 5 times. One for each character that there currently is + the shield. By doing so it shall search for the particular character until it's either found or not. By being found it run's the logic to add points.
             
             for i in 0..<horizontal.count{
                 
-                if horizontal[i].1.rawValue == (j + 1) // Compares to (j + 1) since j = 0 is of type Unknown.
+                if horizontal[i].1.rawValue == party[j].RawValue // Comparison with the rawValue of the character
+                    // Used to compare to (j + 1) since j = 0 is of type Unknown. -> Maybe it's what's causing the problem with the points...
                 {
-                    
-                    // This is the basic logic for scoring: If the character makes a line of 3, he gets 30 points. But, if he gets more than 3, he will receive a boost of 40 points per additional block. *Later, a more developed mechanism can be implemented, such as an Icon getting more points per additional piece of the row, and other special effects
+
                     if horizontal[i].0 == 3 {
                         
                         charactersContribuition[j] = charactersContribuition[j] + 60
@@ -284,18 +275,37 @@ class Level {
                         
                     else {
                         
-                        charactersContribuition[j] = charactersContribuition[j] + ((horizontal[i].0 - 3)*40 + 60)
+                        charactersContribuition[j] = charactersContribuition[j] + ((horizontal[i].0 - 3)*party[j].Att + 60) // Just remember to check if it truly is 'party[j]'
                         
                     }
                     
+                }
+                
+                // The shield has it's own logic (special case)
+                else if horizontal[i].1.rawValue == 1 // Shield's rawValue
+                {
+                    // Very simple test logic
+                
+                    if horizontal[i].0 == 3 {
+                        
+                        roundDefensiveInstance = 3
+                        
+                    }
+                        
+                    else {
+                        
+                        roundDefensiveInstance = 3 + ((horizontal[i].0 - 3)*3)
+                        
+                    }
+                
                 }
             }
             
             for i in 0..<vertical.count{
                 
-                if vertical[i].1.rawValue == (j + 1){
+                if vertical[i].1.rawValue == party[j].RawValue { // Comparison with the rawValue of the character
                     
-                    // This is the basic logic for scoring: If the character makes a line of 3, he gets 30 points. But, if he gets more than 3, he will receive a boost of 40 points per additional block. *Later, a more developed mechanism can be implemented, such as an Icon getting more points per additional piece of the row, and other special effects
+                    // This is the basic logic for scoring: If the character makes a line of 3, he gets 60 points. But, if he gets more than 3, he will receive a boost of 40 points per additional block. *Later, a more developed mechanism can be implemented, such as an Icon getting more points per additional piece of the row, and other special effects
                     if vertical[i].0 == 3 {
                         
                         charactersContribuition[j] = charactersContribuition[j] + 60
@@ -304,7 +314,7 @@ class Level {
                         
                     else {
                         
-                        charactersContribuition[j] = charactersContribuition[j] + ((vertical[i].0 - 3)*40 + 60)
+                        charactersContribuition[j] = charactersContribuition[j] + ((vertical[i].0 - 3)*party[j].Att + 60) // Just remember to check if it truly is 'party[j]'
                         
                     }
                     
@@ -314,7 +324,6 @@ class Level {
         }
         
         return charactersContribuition
-        
     }
     
     private func removeMoves(chains: Array<Chain>) {
@@ -423,7 +432,7 @@ class Level {
         return columns
     }
     
-    // Puts new moves nto the - now - blank spaces
+    // Puts new moves into the - now - blank spaces
     func topUpMoves() -> [[Move]] {
         var columns = [[Move]]()
         var moveType: MoveType = .Unknown
@@ -451,14 +460,6 @@ class Level {
         }
         return columns
     }
-/*
-    private func calculateScores(chains: Set<Chain>) {
-
-    Sugestion to use this method to see everything that each piece did
-    
-    }
-*/
-
     
     func shuffle() -> Array<Move> {
         return createInitialMoves()

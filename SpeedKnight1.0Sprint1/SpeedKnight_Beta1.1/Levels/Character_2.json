@@ -1,0 +1,8 @@
+{
+    "allyHP" : 100.0,
+    "allyAttack" : 45,
+    "allyDefense" : 45,
+    "allyPicture" : "DualWieldProfilePic.png",
+    "allyRawValue" : 2,
+
+}

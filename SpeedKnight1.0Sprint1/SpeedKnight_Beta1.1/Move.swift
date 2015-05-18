@@ -9,15 +9,17 @@
 import SpriteKit
 
 enum MoveType: Int {
-    case Unknown = 0, IconeAxe, IconeShield, IconeSingleSwordDualWield, IconeDualSword, IconeSingleSword
+    case Unknown = 0, IconeShield, IconeAxe, IconeSingleSwordDualWield, IconeDualSword, IconeBowArrow, IconeStaff
 
+    // Alter here to put, instead of the sprites themselves, already, make a method to choose only the ones that shall actually appear (based on the players of the round)
     var spriteName: String {
         let spriteNames = [
-            "Icone-Axe",
             "Icone-Shield",
+            "Icone-Axe",
             "Icone-SingleSword(DualWield)",
             "Icone-DualSword",
-            "Icone-SingleSword"]
+            "Icone-BowArrow",
+            "Icone-Staff"]
         
         return spriteNames[rawValue]
     }
@@ -27,10 +29,21 @@ enum MoveType: Int {
     }
     
     static func random() -> MoveType {
-        
-        return MoveType(rawValue: Int(arc4random_uniform(5)))!
 
-        //return MoveType(rawValue: Int(arc4random_uniform(6)) + 1)!
+        var aux : Int! = Int(arc4random_uniform(6))
+        
+        // Here it will check whether the random rawValue is of a character that is actually in the match. If it is, it shall be displayed. Otherwise, it will call the function again, recursively.
+        
+        if (aux == GameData.sharedInstance.team[0].RawValue) || (aux == GameData.sharedInstance.team[1].RawValue) || (aux == GameData.sharedInstance.team[2].RawValue) || (aux == GameData.sharedInstance.team[3].RawValue) || (aux == 0) // This is the Shield (special case)
+        {
+        return MoveType(rawValue: aux)!
+        }
+        
+        
+        else
+        {
+        return random()
+        }
     }
 
 }

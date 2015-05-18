@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Ogari Pata Pacheco. All rights reserved.
 //
 
-struct Swap: Printable, Hashable { // So far so good (4)
+struct Swap: Printable, Hashable { 
     let moveA: Move
     let moveB: Move
     
