@@ -87,7 +87,7 @@ class ChooseYourPartyScreen : UIViewController {
     }
     
     // This is actually going to be a mage's staff. IGNORE THE NAME OF THE METHOD FOR NOW!
-    @IBAction func CharacterSingleSword(sender: AnyObject) {
+    @IBAction func Mage(sender: AnyObject) {
         if (!checkSingleSword) && (counter < 4){
             
             
