@@ -218,7 +218,7 @@ class Level {
             verticalActs += [(verticalChains[i].moves.count, verticalChains[i].moves[0].moveType)] // Note that I put moves[0] since I already know, for sure that all the pieces are of the same type, so, by picking either the first one up to the third I guarantee it's of the same type.
             
         }
-        
+       /*
         // To update the value, even after it the new pieces fall and make points -> Watch out for adding int + nothing/'nil' in each position, atthe first turn
         updatePoints = roundResults(horizontalActs,vertical: verticalActs)
         
@@ -226,6 +226,7 @@ class Level {
         for j in 0..<4{
         teamPerformance[j] = teamPerformance[j] + updatePoints[j]
         }
+        */
         
         println("Horizontal matches: \(horizontalChains)")
         println("Vertical matches: \(verticalChains)")
@@ -238,6 +239,14 @@ class Level {
         horizontalChains.append(verticalChains[i])
         i = i + 1
         
+        }
+        
+        // To update the value, even after it the new pieces fall and make points -> Watch out for adding int + nothing/'nil' in each position, atthe first turn
+        updatePoints = roundResults(horizontalActs,vertical: verticalActs)
+        
+        var j : Int! = 0
+        for j in 0..<4{
+            teamPerformance[j] = teamPerformance[j] +  updatePoints[j]
         }
         
         return horizontalChains 
@@ -402,6 +411,7 @@ class Level {
         
         possibleSwaps = set
     }
+
     
     func fillHoles() -> [[Move]] {
         var columns = [[Move]]()
@@ -409,9 +419,9 @@ class Level {
         for column in 0..<NumColumns {
             var array = [Move]()
             for row in 0..<NumRows {
-                // If there’s a tile at a position but no cookie, then there’s a hole
+
                 if tiles[column, row] != nil && moves[column, row] == nil {
-                    // Scan up to find the cookie above the hole
+
                     for lookup in (row + 1)..<NumRows {
                         if let move = moves[column, lookup] {
                             // Here you put the Move down a space

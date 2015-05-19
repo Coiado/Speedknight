@@ -27,6 +27,7 @@ class GameViewController: UIViewController {
     var enemyDamageDealt : Array<Float>! = []
     var enemyDefense: Int!
     
+    
     var buttonYes : UIButton!
     var buttonNo : UIButton!
     
@@ -116,7 +117,7 @@ class GameViewController: UIViewController {
         for i in 0..<4 {
         
         partyAttack = partyAttack + self.scene.level.teamPerformance[i]
-        // Add the attack on each character
+        // Add the attack of each character
         
         }
         
@@ -283,10 +284,10 @@ class GameViewController: UIViewController {
         }
     }
     
-    func handleMatches() {
+    func handleMatches(){
         let chains = self.scene.level.removeMatches()
         
-        
+       
         if chains.count == 0 {
            // beginNextTurn()
             return
@@ -299,7 +300,7 @@ class GameViewController: UIViewController {
             self.scene.animateFallingMoves(columns) {
             let columns = self.scene.level.topUpMoves()
             self.scene.animateNewMoves(columns) {
-            self.handleMatches()// *Need to create the animations, so that the player will see what each character did. While the animations play, the User Interaction with the View will be disabled. But, as soon as it ends, it shall be enabled.
+            self.handleMatches()// * Need to create the animations, so that the player will see what each character did. While the animations play, the User Interaction with the View will be disabled. But, as soon as it ends, it shall be enabled.
                 }
             }
         }
