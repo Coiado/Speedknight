@@ -192,7 +192,7 @@
 		286E5DA51AF2A65000733054 /* Character_Battle_Profile_Teste(2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character_Battle_Profile_Teste(2).png"; sourceTree = "<group>"; };
 		286E5DA61AF2A65000733054 /* Character_Battle_Profile_Teste(3).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character_Battle_Profile_Teste(3).png"; sourceTree = "<group>"; };
 		286E5DA71AF2A65000733054 /* Character_Battle_Profile_Teste(4).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character_Battle_Profile_Teste(4).png"; sourceTree = "<group>"; };
-		286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedKnightFunctions.swift; sourceTree = "<group>"; };
+		286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeedKnightFunctions.swift; path = ../SpeedKnightFunctions.swift; sourceTree = "<group>"; };
 		286E5DAF1AF2F8B800733054 /* Enemy_AI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy_AI.swift; sourceTree = "<group>"; };
 		289EEEAF1B03846400ECE4B7 /* Character_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Character_0.json; sourceTree = "<group>"; };
 		289EEEB11B03909E00ECE4B7 /* ChooseYourPartyScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseYourPartyScreen.swift; sourceTree = "<group>"; };
@@ -362,7 +362,6 @@
 		28E753AC1ADF37FF00956E16 = {
 			isa = PBXGroup;
 			children = (
-				286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */,
 				28E753B71ADF37FF00956E16 /* SpeedKnight_Beta1.1 */,
 				28E753D11ADF37FF00956E16 /* SpeedKnight_Beta1.1Tests */,
 				28E753B61ADF37FF00956E16 /* Products */,
@@ -381,6 +380,7 @@
 		28E753B71ADF37FF00956E16 /* SpeedKnight_Beta1.1 */ = {
 			isa = PBXGroup;
 			children = (
+				286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */,
 				28E753BA1ADF37FF00956E16 /* AppDelegate.swift */,
 				28E753BE1ADF37FF00956E16 /* GameScene.swift */,
 				28E753C01ADF37FF00956E16 /* GameViewController.swift */,

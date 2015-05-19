@@ -41,8 +41,6 @@ func adjustRectSize(originalRectangle:CGRect)->CGRect {
     
     
     let bounds = UIScreen.mainScreen().bounds.size
-     println("\(bounds)")
-    
     
     return CGRect(x: originalRectangle.origin.x*(bounds.width/375),
         y: originalRectangle.origin.y*(bounds.height/667),
