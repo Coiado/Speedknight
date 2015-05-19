@@ -146,7 +146,8 @@ class GameViewController: UIViewController {
             
             // Once the time has ended,it will verify all the matches and remove them, calculating their meaning!
             handleMatches()
-            presentResults(self.scene.level.teamPerformance)
+            println("\nTestando o handleMatches\n")
+            //presentResults(self.scene.level.teamPerformance)
             
             // Remember so it keeps on repeaing just fine.
             timerRunning = false
@@ -178,7 +179,7 @@ class GameViewController: UIViewController {
     
     func shuffle() {
         
-        println("Passei aqui") // <- Entered here
+        //println("Passei aqui") // <- Entered here
         newMoves = scene.level.shuffle() 
         scene.addSpritesForMoves(newMoves)
     
@@ -291,6 +292,8 @@ class GameViewController: UIViewController {
         
         if chains.count == 0 {
            // beginNextTurn()
+            presentResults(self.scene.level.teamPerformance)
+
             return
         }
         
