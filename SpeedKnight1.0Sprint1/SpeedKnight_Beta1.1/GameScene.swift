@@ -111,7 +111,7 @@ class GameScene: SKScene {
             
             let moves = Array<Move>()
             
-            println("Passei aqui")// Isn't being called, ever!
+            //println("Passei aqui")// Isn't being called, ever!
             let sprite = SKSpriteNode(imageNamed: move.moveType.spriteName)
             sprite.position = pointForColumn(move.column, row:move.row)
             sprite.size = adjustSize(sprite.size)

@@ -215,18 +215,28 @@ class Level {
         var verticalActs: [(Int, MoveType)] = []
         for i in 0..<verticalChains.count {
             
-            verticalActs += [(verticalChains[i].moves.count, verticalChains[i].moves[0].moveType)] // Note that I put moves[0] since I already know, for sure that all the pieces are of the same type, so, by picking either the first one up to the third I guarantee it's of the same type.
+            verticalActs += [(verticalChains[i].moves.count, verticalChains[i].moves[0].moveType)] // Note that I put moves[0] since I already kn fow, for sure that all the pieces are of the same type, so, by picking either the first one up to the third I guarantee it's of the same type.
             
         }
        /*
         // To update the value, even after it the new pieces fall and make points -> Watch out for adding int + nothing/'nil' in each position, atthe first turn
         updatePoints = roundResults(horizontalActs,vertical: verticalActs)
         
+        println("pontos foi de \(updatePoints)\n")
+        
         var j : Int! = 0
+        
+        
+        println("team performance antes \(teamPerformance)\n")
+        
+
+        
         for j in 0..<4{
         teamPerformance[j] = teamPerformance[j] + updatePoints[j]
         }
         */
+        
+        println("team performance \(teamPerformance)\n")
         
         println("Horizontal matches: \(horizontalChains)")
         println("Vertical matches: \(verticalChains)")

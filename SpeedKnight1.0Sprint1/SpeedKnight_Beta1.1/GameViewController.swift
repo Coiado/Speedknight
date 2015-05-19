@@ -9,6 +9,8 @@
 import UIKit
 import SpriteKit
 
+// teste fucking bitches in da house
+
 // Check the logic after the first round, since it is now allowing the moves to be instantly destryed afterwards [X] -> Problem solved! Now just add a check to see if the enemy died (or you)! And, if so, end the level! Than focus on the battle system
 class GameViewController: UIViewController {
     var scene: GameScene!
@@ -89,7 +91,7 @@ class GameViewController: UIViewController {
     func play_or_not(sender:UIButton!)
     {
         if buttonYes.touchInside == true {
-            println("YES tapped")
+            //println("YES tapped")
             
             // Removes each individual piece of the initial text box (the box and the 2 buttons)
             
@@ -103,7 +105,7 @@ class GameViewController: UIViewController {
         }
             
         else if buttonNo.touchInside == true {
-            println("NO tapped")
+            //println("NO tapped")
             
             // Will be used to go back to the main menu
         }
@@ -114,12 +116,15 @@ class GameViewController: UIViewController {
         
         var i : Int! = 0
         
+        partyAttack = 0
+        
         for i in 0..<4 {
         
         partyAttack = partyAttack + self.scene.level.teamPerformance[i]
         // Add the attack of each character
         
         }
+        
         
         if partyAttack > def  && (partyAttack - def) < currentEnemyHP{
             
@@ -145,12 +150,14 @@ class GameViewController: UIViewController {
             
             // Once the time has ended,it will verify all the matches and remove them, calculating their meaning!
             handleMatches()
-            presentResults(self.scene.level.teamPerformance)
+            
+            //presentResults(self.scene.level.teamPerformance)
             
             // Remember so it keeps on repeaing just fine.
             timerRunning = false
             timerCount = 13
             battleTimerLabel.text = "\(timerCount)"
+          //println("\nTestando o handleMatches\n")
           //  scene.movesLayer.removeAllChildren()
             turnNumber?++
 
@@ -177,7 +184,7 @@ class GameViewController: UIViewController {
     
     func shuffle() {
         
-        println("Passei aqui") // <- Entered here
+        //println("Passei aqui") // <- Entered here
         newMoves = scene.level.shuffle() 
         scene.addSpritesForMoves(newMoves)
     
@@ -195,12 +202,13 @@ class GameViewController: UIViewController {
             buttonNext.removeFromSuperview()
             beginGame()
             counter = 0
+            self.scene.level.teamPerformance = [0,0,0,0]
             
         }
         else {
             resultsBox = UIImageView(frame:adjustRectSize(CGRectMake(27, 110, 320, 220))) //y:410
             resultsBox.image = UIImage(named:"Character_Battle_Profile_Teste(\(counter))")
-            println(self.scene.level.teamPerformance[counter]) // It's where the class (level) has the property.
+            println("\(self.scene.level.teamPerformance[counter])") // It's where the class (level) has the property.
             self.view.addSubview(resultsBox)
         
             buttonNext = UIButton() as UIButton // Needs to be made custom so you can alter the image.
@@ -290,7 +298,8 @@ class GameViewController: UIViewController {
        
         if chains.count == 0 {
            // beginNextTurn()
-            return
+            presentResults(self.scene.level.teamPerformance)
+            //return
         }
         
         else {

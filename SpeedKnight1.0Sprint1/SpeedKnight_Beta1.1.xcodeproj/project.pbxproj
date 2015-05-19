@@ -104,6 +104,8 @@
 		28E753E11ADF3EC000956E16 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753E01ADF3EC000956E16 /* Move.swift */; };
 		28E753E31ADF3FE700956E16 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753E21ADF3FE700956E16 /* Array2D.swift */; };
 		28E753E51ADF404700956E16 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753E41ADF404700956E16 /* Level.swift */; };
+		3F10B3761B0BB57C00C1BC55 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10B3751B0BB57C00C1BC55 /* SelectView.swift */; };
+		3F10B3781B0BB69700C1BC55 /* Minus_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F10B3771B0BB69700C1BC55 /* Minus_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,7 +194,7 @@
 		286E5DA51AF2A65000733054 /* Character_Battle_Profile_Teste(2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character_Battle_Profile_Teste(2).png"; sourceTree = "<group>"; };
 		286E5DA61AF2A65000733054 /* Character_Battle_Profile_Teste(3).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character_Battle_Profile_Teste(3).png"; sourceTree = "<group>"; };
 		286E5DA71AF2A65000733054 /* Character_Battle_Profile_Teste(4).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Character_Battle_Profile_Teste(4).png"; sourceTree = "<group>"; };
-		286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedKnightFunctions.swift; sourceTree = "<group>"; };
+		286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeedKnightFunctions.swift; path = ../SpeedKnightFunctions.swift; sourceTree = "<group>"; };
 		286E5DAF1AF2F8B800733054 /* Enemy_AI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy_AI.swift; sourceTree = "<group>"; };
 		289EEEAF1B03846400ECE4B7 /* Character_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Character_0.json; sourceTree = "<group>"; };
 		289EEEB11B03909E00ECE4B7 /* ChooseYourPartyScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseYourPartyScreen.swift; sourceTree = "<group>"; };
@@ -219,6 +221,8 @@
 		28E753E01ADF3EC000956E16 /* Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		28E753E21ADF3FE700956E16 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		28E753E41ADF404700956E16 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		3F10B3751B0BB57C00C1BC55 /* SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		3F10B3771B0BB69700C1BC55 /* Minus_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Minus_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +278,7 @@
 				286E5D361AEEB5AD00733054 /* Icone-Shield-Selecionado.png */,
 				286E5D371AEEB5AD00733054 /* Icone-Shield.png */,
 				286E5D621AEEB82700733054 /* Icone-SingleSword.png */,
+				3F10B3771B0BB69700C1BC55 /* Minus_icon.png */,
 				286E5D641AEEB83000733054 /* Icone-DualSword.png */,
 				286E5D381AEEB5AD00733054 /* Icone-SingleSword-Selecionado.png */,
 				286E5D391AEEB5AD00733054 /* Icone-SingleSword(DualWield)-Selecionado.png */,
@@ -362,7 +367,6 @@
 		28E753AC1ADF37FF00956E16 = {
 			isa = PBXGroup;
 			children = (
-				286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */,
 				28E753B71ADF37FF00956E16 /* SpeedKnight_Beta1.1 */,
 				28E753D11ADF37FF00956E16 /* SpeedKnight_Beta1.1Tests */,
 				28E753B61ADF37FF00956E16 /* Products */,
@@ -381,6 +385,7 @@
 		28E753B71ADF37FF00956E16 /* SpeedKnight_Beta1.1 */ = {
 			isa = PBXGroup;
 			children = (
+				286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */,
 				28E753BA1ADF37FF00956E16 /* AppDelegate.swift */,
 				28E753BE1ADF37FF00956E16 /* GameScene.swift */,
 				28E753C01ADF37FF00956E16 /* GameViewController.swift */,
@@ -395,6 +400,7 @@
 				280BCCD11AE13D8B0062D550 /* Swap.swift */,
 				286E5DAF1AF2F8B800733054 /* Enemy_AI.swift */,
 				285F898A1B061D4C0097574F /* GameData.swift */,
+				3F10B3751B0BB57C00C1BC55 /* SelectView.swift */,
 				28E753C21ADF37FF00956E16 /* Main.storyboard */,
 				28E753C51ADF37FF00956E16 /* Images.xcassets */,
 				28E753C71ADF37FF00956E16 /* LaunchScreen.xib */,
@@ -570,6 +576,7 @@
 				286D422F1B03DD9600CDAA8E /* Icone-BowArrow-Selecionado.png in Resources */,
 				286E5D421AEEB5AD00733054 /* Icone-Shield.png in Resources */,
 				286D423A1B03DDB000CDAA8E /* Icone-Staff@2x.png in Resources */,
+				3F10B3781B0BB69700C1BC55 /* Minus_icon.png in Resources */,
 				286E5D451AEEB5AD00733054 /* Icone-SingleSword(DualWield).png in Resources */,
 				286E5D631AEEB82700733054 /* Icone-SingleSword.png in Resources */,
 				286E5D531AEEB69300733054 /* Icone-Axe-Selecionado@2x.png in Resources */,
@@ -629,6 +636,7 @@
 				28E753BF1ADF37FF00956E16 /* GameScene.swift in Sources */,
 				280BCCC51AE021540062D550 /* Extensions.swift in Sources */,
 				286E5DAE1AF2D59600733054 /* SpeedKnightFunctions.swift in Sources */,
+				3F10B3761B0BB57C00C1BC55 /* SelectView.swift in Sources */,
 				280BCCC31AE020B80062D550 /* Tile.swift in Sources */,
 				289EEEB21B03909E00ECE4B7 /* ChooseYourPartyScreen.swift in Sources */,
 				28A5EE171B0521D9002B214D /* LevelMenu.swift in Sources */,
