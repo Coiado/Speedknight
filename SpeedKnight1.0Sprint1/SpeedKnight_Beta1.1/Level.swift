@@ -305,16 +305,14 @@ class Level {
                 {
                     // Very simple test logic
                 
-                    if horizontal[i].0 == 3 {
-                        
+                    if horizontal[i].0 == 3
+                    {
                         roundDefensiveInstance = 3
-                        
                     }
                         
                     else {
-                        
+    
                         roundDefensiveInstance = 3 + ((horizontal[i].0 - 3)*3)
-                        
                     }
                 
                 }

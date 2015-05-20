@@ -114,6 +114,16 @@ class GameViewController: UIViewController {
     }
     
     
+    func returnMin(num1: Float , num2: Float) -> Float!
+    {
+        println("\(num1) \(num2)\n")
+        if(num1 > num2){
+            return num2
+        }
+        return num1
+        
+    }
+    
     func battleSystem (at: Array<Float>!, def: Array<Int>!){
         
         var opponentDefense : Int! = 0
@@ -128,9 +138,10 @@ class GameViewController: UIViewController {
         // Add the defense points against each one's attack
         opponentDefense = opponentDefense + def[i]
         // Each character takes the damage of the round
-        partyMembers[i].HP = partyMembers[i].HP - at[i]
+        partyMembers[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
+        println("Party member \(i) : sera \(partyMembers[i].HP)\n")
         }
-        
+        //self.scene.level.roundDefensiveInstance = 0
         
         if partyAttack > opponentDefense  && (partyAttack - opponentDefense) < currentEnemyHP
         {
@@ -201,6 +212,7 @@ class GameViewController: UIViewController {
             enemyDamageDealt = ai.attackAI(data.attackAI)
             enemyDefense = ai.defenseAI(data.defenseAI, roundActions: self.scene.level.teamPerformance)
             battleSystem(enemyDamageDealt, def: enemyDefense)
+            println("Party Defense: \(self.scene.level.roundDefensiveInstance)")
             println("Enemy Defense: \(self.enemyDefense[0]) \(self.enemyDefense[1]) \(self.enemyDefense[2]) \(self.enemyDefense[3])")
             enemyHpDisplay()
             resultsBox.removeFromSuperview()

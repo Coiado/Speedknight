@@ -10,7 +10,7 @@
                [0, 0, 0, 0, 0, 0, 0, 0, 0 ] ],
     
     "enemyHP" : 1000,
-    "enemyAttack" : 50,
+    "enemyAttack" : 56,
     "enemyDefense" : 30,
     "enemyAI" : 1000,
     "enemyImage" : "",
