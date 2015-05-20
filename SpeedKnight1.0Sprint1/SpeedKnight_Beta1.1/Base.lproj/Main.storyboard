@@ -121,6 +121,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="VerifyingParty:" destination="vfH-Am-3im" eventType="touchUpInside" id="Oaw-1S-wK6"/>
                                             <segue destination="vlX-Fc-fmE" kind="show" id="5KC-ec-sG4"/>
                                         </connections>
                                     </button>
