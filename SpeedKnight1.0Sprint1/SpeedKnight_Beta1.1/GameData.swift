@@ -12,6 +12,10 @@ class GameData: NSObject {
     
     var levelFile : String! = ""
     var backgroundImage : String! = ""
+    var attackAI : String! = ""
+    var defenseAI : String! = ""
+    var enemyAttack : Int! = 0
+    var enemyDefense : Int! = 0
     var team : [(HP: Float, Att: Int, Def: Int, Picture: String, RawValue: Int)]! = []
     
     

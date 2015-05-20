@@ -15,6 +15,7 @@ import SpriteKit
 class GameViewController: UIViewController {
     var scene: GameScene!
     let ai : Enemy_AI! = Enemy_AI()
+    let data:GameData = GameData.sharedInstance
     
     @IBOutlet weak var enemyHpBar: UIImageView!
     
@@ -26,8 +27,9 @@ class GameViewController: UIViewController {
     var currentEnemyHP : Int! = 0
     var totalEnemyHP : Int! = 0
     var partyAttack : Int! = 0
+    var partyMembers: [(HP: Float, Att: Int, Def: Int, Picture: String, RawValue : Int)]! = GameData.sharedInstance.team
     var enemyDamageDealt : Array<Float>! = []
-    var enemyDefense: Int!
+    var enemyDefense: Array<Int>!
     
     
     var buttonYes : UIButton!
@@ -112,30 +114,43 @@ class GameViewController: UIViewController {
     }
     
     
-    func battleSystem (at: Array<Float>!, def: Int!){
+    func returnMin(num1: Float , num2: Float) -> Float!
+    {
+        println("\(num1) \(num2)\n")
+        if(num1 > num2){
+            return num2
+        }
+        return num1
+        
+    }
+    
+    func battleSystem (at: Array<Float>!, def: Array<Int>!){
+        
+        var opponentDefense : Int! = 0
         
         var i : Int! = 0
-        
         partyAttack = 0
         
         for i in 0..<4 {
         
-        partyAttack = partyAttack + self.scene.level.teamPerformance[i]
         // Add the attack of each character
+        partyAttack = partyAttack + self.scene.level.teamPerformance[i]
+        // Add the defense points against each one's attack
+        opponentDefense = opponentDefense + def[i]
+        // Each character takes the damage of the round
+        partyMembers[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
+        println("Party member \(i) : sera \(partyMembers[i].HP)\n")
+        }
+        //self.scene.level.roundDefensiveInstance = 0
         
+        if partyAttack > opponentDefense  && (partyAttack - opponentDefense) < currentEnemyHP
+        {
+        currentEnemyHP = currentEnemyHP - (partyAttack - opponentDefense)
         }
         
-        
-        if partyAttack > def  && (partyAttack - def) < currentEnemyHP{
-            
-        currentEnemyHP = currentEnemyHP - (partyAttack - def)
-            
-        }
-        
-        else if (partyAttack - def) > currentEnemyHP {
-        
+        else if (partyAttack - opponentDefense) > currentEnemyHP
+        {
         currentEnemyHP = 0
-        
         }
         
     }
@@ -194,21 +209,24 @@ class GameViewController: UIViewController {
         
         if counter == 4 { // <- Watch out for the shield
             
-            enemyDamageDealt = ai.easyAIAttack(turnNumber)
-            enemyDefense = ai.easyAIDefense(turnNumber)
+            enemyDamageDealt = ai.attackAI(data.attackAI)
+            enemyDefense = ai.defenseAI(data.defenseAI, roundActions: self.scene.level.teamPerformance)
             battleSystem(enemyDamageDealt, def: enemyDefense)
+            println("Party Defense: \(self.scene.level.roundDefensiveInstance)")
+            println("Enemy Defense: \(self.enemyDefense[0]) \(self.enemyDefense[1]) \(self.enemyDefense[2]) \(self.enemyDefense[3])")
             enemyHpDisplay()
             resultsBox.removeFromSuperview()
             buttonNext.removeFromSuperview()
             beginGame()
             counter = 0
             self.scene.level.teamPerformance = [0,0,0,0]
+            println("Party HP:\(partyMembers[0].HP)      \(partyMembers[1].HP)       \(partyMembers[2].HP)       \(partyMembers[3].HP)")
             
         }
         else {
             resultsBox = UIImageView(frame:adjustRectSize(CGRectMake(27, 110, 320, 220))) //y:410
             resultsBox.image = UIImage(named:"Character_Battle_Profile_Teste(\(counter))")
-            println("\(self.scene.level.teamPerformance[counter])") // It's where the class (level) has the property.
+            println("Character Attack: \(self.scene.level.teamPerformance[counter])") // It's where the class (level) has the property.
             self.view.addSubview(resultsBox)
         
             buttonNext = UIButton() as UIButton // Needs to be made custom so you can alter the image.

@@ -10,8 +10,8 @@
                [0, 0, 0, 0, 0, 0, 0, 0, 0 ] ],
     
     "enemyHP" : 2000,
-    "enemyAttack" : 1000,
-    "enemyDefense" : 1000,
+    "enemyAttack" : 65,
+    "enemyDefense" : 25,
     "enemyAI" : 1000,
     "enemyImage" : "",
     "background" : "BackgroundTest1",
