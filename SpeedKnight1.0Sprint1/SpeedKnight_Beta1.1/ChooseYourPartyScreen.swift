@@ -108,7 +108,7 @@ class ChooseYourPartyScreen : UIViewController {
     
     @IBAction func CharacterBowArrow(sender: AnyObject) {
     
-        if (!checkBowArrow) && (counter < 4){
+        if (!checkBowArrow) && (self.counter < 4){
             
             
             if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle("Character_4") {
@@ -127,5 +127,13 @@ class ChooseYourPartyScreen : UIViewController {
     
     }
     
+    @IBAction func VerifyingParty(sender: AnyObject) {
+        let alertController = UIAlertController(title: "Error", message: "Choose 4 characters", preferredStyle: UIAlertControllerStyle.Alert)
+        if !(counter == 4) {
+        alertController.addAction(UIAlertAction(title: "Dismiss", style:UIAlertActionStyle.Default,handler: nil))
+            
+        self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
 }
 
