@@ -9,13 +9,11 @@
 import UIKit
 import SpriteKit
 
-// teste fucking bitches in da house
-
 // Check the logic after the first round, since it is now allowing the moves to be instantly destryed afterwards [X] -> Problem solved! Now just add a check to see if the enemy died (or you)! And, if so, end the level! Than focus on the battle system
 class GameViewController: UIViewController {
     var scene: GameScene!
     let ai : Enemy_AI! = Enemy_AI()
-    let data:GameData = GameData.sharedInstance
+    let data : GameData = GameData.sharedInstance
     
     @IBOutlet weak var enemyHpBar: UIImageView!
     
@@ -116,12 +114,10 @@ class GameViewController: UIViewController {
     
     func returnMin(num1: Float , num2: Float) -> Float!
     {
-        println("\(num1) \(num2)\n")
-        if(num1 > num2){
-            return num2
+        if(num1 < num2){
+            return num1
         }
-        return num1
-        
+        return num2
     }
     
     func battleSystem (at: Array<Float>!, def: Array<Int>!){
@@ -139,7 +135,12 @@ class GameViewController: UIViewController {
         opponentDefense = opponentDefense + def[i]
         // Each character takes the damage of the round
         partyMembers[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
-        println("Party member \(i) : sera \(partyMembers[i].HP)\n")
+            if partyMembers[i].HP < 0{
+                partyMembers[i].HP = 0.0
+            }
+            if partyMembers[i].HP == 0.0  {
+            self.scene.teamDeaths.append(partyMembers[i].RawValue)
+            }
         }
         //self.scene.level.roundDefensiveInstance = 0
         
@@ -298,6 +299,7 @@ class GameViewController: UIViewController {
     func handleSwipe(swap: Swap) {
         view.userInteractionEnabled = false
         
+      //  if self.scene.level.isPossibleSwap(swap) {
         scene.level.performSwap(swap)
         
         scene.animateSwap(swap) {
@@ -307,7 +309,14 @@ class GameViewController: UIViewController {
        // self.scene.animateMatchedMoves(chains) {
        // self.view.userInteractionEnabled = true
        //     }
-        }
+       // }
+            
+    }
+        /* else
+        {
+        self.view.userInteractionEnabled = true
+        } */
+
     }
     
     func handleMatches(){
@@ -335,7 +344,7 @@ class GameViewController: UIViewController {
 }
     
     func beginNextTurn() {
-        self.scene.level.detectPossibleSwaps()
+       // self.scene.level.detectPossibleSwaps()
         view.userInteractionEnabled = true
     }
     

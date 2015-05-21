@@ -49,6 +49,10 @@ class Enemy_AI{
             
             return conclusion
             
+            case "mediumAtt":
+            
+            return [100.0, 0.0, 0.0, 0.0]
+            
         default:
             return [0.0, 0.0, 0.0, 0.0]
         }
