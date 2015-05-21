@@ -135,6 +135,7 @@ class GameViewController: UIViewController {
         opponentDefense = opponentDefense + def[i]
         // Each character takes the damage of the round
         partyMembers[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
+        GameData.sharedInstance.team[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
             if partyMembers[i].HP < 0{
                 partyMembers[i].HP = 0.0
             }
