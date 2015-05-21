@@ -15,6 +15,7 @@ class GameScene: SKScene {
     var swipeFromColumn: Int?
     var swipeFromRow: Int?
     var swipeHandler: ((Swap) -> ())? // This (closure/function) takes a Swap object as its parameter and returns nothing. The question mark indicates that it can be nil... (right?).
+    var teamDeaths : Array<Int>! = []
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder) is not used in this app")
@@ -93,12 +94,15 @@ class GameScene: SKScene {
         // Then, it finds out if the touch is inside a square on the level grid by calling the method below
         let (success, column, row) = convertPoint(location)
         if success {
-            // Next, the method verifies that the touch is on a move rather than on an empty square.
-            if let move = level.moveAtColumn(column, row: row) { // Now the same 'nil unwrapping error' is happenning here....
+            // Next, the method sees if the move you're touching is actually alive.
+            if !contains(teamDeaths, level.moveAtColumn(column, row: row)!.moveType.rawValue){ // FUCKING BITCHES IN DA HOUSE
+                // Next, the method verifies that the touch is on a move rather than on an empty square.
+                if let move = level.moveAtColumn(column, row: row) { // Now the same 'nil unwrapping error' is happenning here....
                 
-                swipeFromColumn = column
-                swipeFromRow = row
-                highlightMove(move)
+                    swipeFromColumn = column
+                    swipeFromRow = row
+                    highlightMove(move)
+                }
             }
         }
         
@@ -138,20 +142,24 @@ class GameScene: SKScene {
     }
     
     func trySwapHorizontal(horzDelta: Int, vertical vertDelta: Int) {
-        // You calculate the column and row numbers of the cookie to swap with.
+        // You calculate the column and row numbers of the move to swap with.
         let toColumn = swipeFromColumn! + horzDelta
         let toRow = swipeFromRow! + vertDelta
     
         if toColumn < 0 || toColumn >= NumColumns { return }
         if toRow < 0 || toRow >= NumRows { return }
+        // Next, the method checks if the move with which it intends to switch is actually alive (not-dead)
+        if contains(teamDeaths, level.moveAtColumn(toColumn, row: toRow)!.moveType.rawValue) { return } // FUCKING BITCHES IN DA HOUSE :) !!!
     
         if let toMove = level.moveAtColumn(toColumn, row: toRow) {
             if let fromMove = level.moveAtColumn(swipeFromColumn!, row: swipeFromRow!) {
+               // if !contains(teamDeaths, fromMove.moveType.rawValue) || !contains(teamDeaths, toMove.moveType.rawValue){
                 // When you get here, it means everything is ok and this is a valid swap
-                if let handler = swipeHandler {
-                    let swap = Swap(moveA: fromMove, moveB: toMove)
-                    handler(swap) // Seems fine, so far.... (5)
-                }
+                    if let handler = swipeHandler {
+                        let swap = Swap(moveA: fromMove, moveB: toMove)
+                        handler(swap) // Seems fine, so far.... (5)
+                    }
+                //}
             }
         }
         
