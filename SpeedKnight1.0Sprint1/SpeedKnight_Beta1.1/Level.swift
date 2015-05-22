@@ -24,6 +24,7 @@ class Level {
     
     // Variable that will hold the extra defense points of each round
     var roundDefensiveInstance : Int = 0 // For now, the logic will be simple enough, so using an Int is alright + Remember to make it zero, after each round again
+    var teamDeaths : Array<Int>! = []
     
     var enemyHP: Int! = 0
     var enemyAttack: Int! = 0
@@ -45,6 +46,7 @@ class Level {
         let columnB = swap.moveB.column
         let rowB = swap.moveB.row
         
+        
         moves[columnA, rowA] = swap.moveB
         swap.moveB.column = columnA
         swap.moveB.row = rowA
@@ -52,6 +54,21 @@ class Level {
         moves[columnB, rowB] = swap.moveA
         swap.moveA.column = columnB
         swap.moveA.row = rowB
+       
+        /*
+        if contains(teamDeaths, swap.moveA.moveType.rawValue) || contains(teamDeaths, swap.moveB.moveType.rawValue){
+        
+            println("entrei")
+            moves[columnA, rowA] = swap.moveA
+            swap.moveB.column = columnB
+            swap.moveB.row = rowB
+            
+            moves[columnB, rowB] = swap.moveB
+            swap.moveA.column = columnA
+            swap.moveA.row = rowA
+        }
+        */
+        
     }
 
     init(levelFilename: String) {
@@ -162,7 +179,6 @@ class Level {
         }
         return set
     }
-    
     private func detectVerticalMatches() -> Array<Chain> {
         var set = Array<Chain>()
         
@@ -191,7 +207,7 @@ class Level {
         }
         return set
     }
-    
+
     func removeMatches() -> Array<Chain> {
         var horizontalChains = detectHorizontalMatches()
         var verticalChains = detectVerticalMatches()
@@ -352,9 +368,10 @@ class Level {
     }
     
     func isPossibleSwap(swap: Swap) -> Bool {
-        return possibleSwaps.contains(swap)
+        return contains(possibleSwaps, swap)
     }
     
+ /* SUCK IT 2!
     private func hasChainAtColumn(column: Int, row: Int) -> Bool {
         let moveType = moves[column, row]!.moveType
         
@@ -372,28 +389,38 @@ class Level {
             ++i, ++vertLength { }
         return vertLength >= 3
     }
+*/
     
+/* SUCK IT!
     func detectPossibleSwaps() {
         var set = Set<Swap>()
+        var aux : Int! = 0
+        println("entrei dettect swaps")
         
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
                 if let move = moves[column, row] {
                     
-                    // Is it possible to swap this cookie with the one on the right?
+                    // Is it possible to swap this move with the one on the right?
                     if column < NumColumns - 1 {
                         if let other = moves[column + 1, row] {
                             moves[column, row] = other
                             moves[column + 1, row] = move
+                           
+                            // Checks to see if either of the moves is of a dead character
+                            if contains(teamDeaths, moves[column, row]!.moveType.rawValue) || contains(teamDeaths, moves[column + 1, row]!.moveType.rawValue)
+                            {
+                                println("if")
+                                // Swap them back
+                                moves[column, row] = move
+                                moves[column + 1, row] = other
+                            }
                             
-                            if hasChainAtColumn(column + 1, row: row) ||
-                                hasChainAtColumn(column, row: row) {
+                            else {
+                                println("else")
                                 set.insert(Swap(moveA: move, moveB: other))
                             }
                             
-                            // Swap them back
-                            moves[column, row] = move
-                            moves[column + 1, row] = other
                         }
                     }
                     
@@ -402,24 +429,27 @@ class Level {
                             moves[column, row] = other
                             moves[column, row + 1] = move
                             
-                            // Is either cookie now part of a chain?
-                            if hasChainAtColumn(column, row: row + 1) ||
-                                hasChainAtColumn(column, row: row) {
+                            // Checks to see if either of the moves is of a dead character
+                            if contains(teamDeaths, moves[column, row]!.moveType.rawValue) || contains(teamDeaths, moves[column, row + 1]!.moveType.rawValue)
+                            {
+                                println("if")
+                                // Swap them back
+                                moves[column, row] = move
+                                moves[column, row + 1] = other
+                            }
+                            else {
+                                println("else")
                                 set.insert(Swap(moveA: move, moveB: other))
                             }
                             
-                            // Swap them back
-                            moves[column, row] = move
-                            moves[column, row + 1] = other
-                        }
+                       }
                     }
                 }
             }
         }
-        
         possibleSwaps = set
     }
-
+*/
     
     func fillHoles() -> [[Move]] {
         var columns = [[Move]]()

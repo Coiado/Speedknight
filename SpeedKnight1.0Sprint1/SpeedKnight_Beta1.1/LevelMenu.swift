@@ -21,7 +21,7 @@ class LevelMenu : UIViewController {
             data.enemyDefense = dictionary["enemyDefense"] as! Int
         }
         data.levelFile = "Level_0"
-        data.attackAI = "easyAtt"
+        data.attackAI = "easyAtt2"
         data.defenseAI = "easyDef"
     }
 
@@ -32,7 +32,7 @@ class LevelMenu : UIViewController {
             data.enemyDefense = dictionary["enemyDefense"] as! Int
         }
         data.levelFile = "Level_1"
-        data.attackAI = "easyAtt"
+        data.attackAI = "easyAtt1"
         data.defenseAI = "easyDef"
     }
 
