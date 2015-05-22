@@ -31,7 +31,9 @@ class GameViewController: UIViewController {
     var enemyDamageDealt : Array<Float>! = []
     var enemyDefense: Array<Int>!
     
-    
+    var labelAtack: UILabel = UILabel()
+    var labelDefense: UILabel = UILabel()
+
     var buttonYes : UIButton!
     var buttonNo : UIButton!
     
@@ -50,6 +52,18 @@ class GameViewController: UIViewController {
     
     // Creates the  box to warn the player of the fight!
     override func viewDidAppear(animated: Bool) {
+        
+        labelAtack.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelAtack.textColor = UIColor.whiteColor()
+        labelAtack.frame = adjustRectSize(CGRectMake(73, 75, 400, 400))
+        labelAtack.hidden = true
+        self.view.addSubview(labelAtack)
+        labelDefense.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelDefense.textColor = UIColor.whiteColor()
+        labelDefense.frame = adjustRectSize(CGRectMake(73, 55, 400, 400))
+        labelDefense.hidden = true
+        self.view.addSubview(labelDefense)
+        
         
         //level = Level(filename: "Level1")
         timerCount = 13
@@ -161,10 +175,10 @@ class GameViewController: UIViewController {
     timerCount = timerCount - 1
     battleTimerLabel.text = "\(timerCount)"
         if timerCount < 1 {
+            self.view.userInteractionEnabled = false
             timer.invalidate()
             
             // Once the time has ended,it will verify all the matches and remove them, calculating their meaning!
-            handleMatches()
             
             //presentResults(self.scene.level.teamPerformance)
             
@@ -172,9 +186,10 @@ class GameViewController: UIViewController {
             timerRunning = false
             timerCount = 13
             battleTimerLabel.text = "\(timerCount)"
-          //println("\nTestando o handleMatches\n")
           //  scene.movesLayer.removeAllChildren()
             turnNumber?++
+            //self.view.userInteractionEnabled = true 
+            handleMatches()
 
             }
   
@@ -186,6 +201,7 @@ class GameViewController: UIViewController {
     func beginGame() {
         
         battleTimerLabel.hidden = false
+        self.view.userInteractionEnabled = true
         if timerRunning == false {
         
         timer = NSTimer()
@@ -207,23 +223,33 @@ class GameViewController: UIViewController {
     
     func presentResults(actions: Array<Int>!){
         
-        if counter == 4 { // <- Watch out for the shield
+        //if counter == 4 { // <- Watch out for the shield
             
+            
+        
+            labelAtack.text = ("Ataque Total:\(self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3])\n defesa Total: \(self.scene.level.roundDefensiveInstance)")
+            labelDefense.text = ("defesa Total: \(self.scene.level.roundDefensiveInstance)")
+            labelDefense.hidden = false
+            labelAtack.hidden = false
+        
+
+        
             enemyDamageDealt = ai.attackAI(data.attackAI)
             enemyDefense = ai.defenseAI(data.defenseAI, roundActions: self.scene.level.teamPerformance)
             battleSystem(enemyDamageDealt, def: enemyDefense)
             println("Party Defense: \(self.scene.level.roundDefensiveInstance)")
             println("Enemy Defense: \(self.enemyDefense[0]) \(self.enemyDefense[1]) \(self.enemyDefense[2]) \(self.enemyDefense[3])")
             enemyHpDisplay()
-            resultsBox.removeFromSuperview()
-            buttonNext.removeFromSuperview()
-            beginGame()
-            counter = 0
+            //resultsBox.removeFromSuperview()
+            //buttonNext.removeFromSuperview()
+        
+            //counter = 0
             self.scene.level.teamPerformance = [0,0,0,0]
             println("Party HP:\(partyMembers[0].HP)      \(partyMembers[1].HP)       \(partyMembers[2].HP)       \(partyMembers[3].HP)")
-            
-        }
-        else {
+            timerRunning = false
+              beginGame()
+        //}
+        /*else {
             resultsBox = UIImageView(frame:adjustRectSize(CGRectMake(27, 110, 320, 220))) //y:410
             resultsBox.image = UIImage(named:"Character_Battle_Profile_Teste(\(counter))")
             println("Character Attack: \(self.scene.level.teamPerformance[counter])") // It's where the class (level) has the property.
@@ -234,7 +260,10 @@ class GameViewController: UIViewController {
             buttonNext.setImage(yesImage, forState: UIControlState.Normal)
             buttonNext.addTarget(self, action: "nextResult:", forControlEvents: UIControlEvents.TouchUpInside)
             self.view.addSubview(buttonNext)
-        }
+            
+            
+            
+        }*/
         
     }
     
@@ -312,8 +341,6 @@ class GameViewController: UIViewController {
     
     func handleMatches(){
         let chains = self.scene.level.removeMatches()
-        
-       
         if chains.count == 0 {
            // beginNextTurn()
             presentResults(self.scene.level.teamPerformance)
