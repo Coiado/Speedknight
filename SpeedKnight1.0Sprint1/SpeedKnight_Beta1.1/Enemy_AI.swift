@@ -105,11 +105,22 @@ class Enemy_AI{
         {
             // A first example of AI defense. In this case, the enemy will simply analyze how many points each character did during the current round. With that, he will act accordingly. If a character was only able to hit for 60 points (minimum of 3 pieces), the enemy will use it's natural defense. If, on the other hand this points escalate up to 130, he will double his defense in order to adapt to the harder hit. And, the same goes if the attack surpasses such case, making the enemy reach a maximum of the triple of his original defense.
         case "easyDef1":
-            
+            i=Int(arc4random_uniform(4))
             if teamAtt != 0{
                 do{
-                    if party[i].Att < 0{
-                      enemyDefending[i]=enemyDef
+                    if party[i].Att > 0{
+                        if roundActions[i] == 60{
+                            enemyDefending[i] = enemyDef
+                        }
+                        else if roundActions[i] > 60 && (roundActions[i] < 130 || roundActions[i] == 130){
+                            enemyDefending[i] = 2*enemyDef
+                        }
+                        else if roundActions[i] > 130 {
+                            enemyDefending[i] = 3*enemyDef
+                        }
+                        else if roundActions[i] == 0{
+                            enemyDefending[i] = 10
+                        }
                     }
                 }while party[i].Att == 0
                 return enemyDefending
