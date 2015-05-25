@@ -284,7 +284,8 @@ class Level {
 
         var i : Int! = 0
         var j : Int! = 0
-        
+        var defCountHorizontal : Int! = 0
+        var defCountVertical : Int! = 0
         var charactersContribuition : Array<Int>! = Array<Int>()
         
         for j in 0..<4
@@ -317,11 +318,13 @@ class Level {
                 }
                 
                 // The shield has it's own logic (special case)
-                else if horizontal[i].1.rawValue == 1 // Shield's rawValue
+                else if horizontal[i].1.rawValue == 0 // Shield's rawValue
                 {
                     // Very simple test logic
+                    
+                defCountHorizontal = horizontal[i].0
                 
-                    if horizontal[i].0 == 3
+                  /*  if horizontal[i].0 == 3
                     {
                         roundDefensiveInstance = 3
                     }
@@ -329,7 +332,7 @@ class Level {
                     else {
     
                         roundDefensiveInstance = 3 + ((horizontal[i].0 - 3)*3)
-                    }
+                    } */
                 
                 }
             }
@@ -352,10 +355,36 @@ class Level {
                     }
                     
                 }
+                
+                    // The shield has it's own logic (special case)
+                else if vertical[i].1.rawValue == 0 // Shield's rawValue
+                {
+                    // Very simple test logic
+                    
+                    defCountVertical = vertical[i].0
+                    
+                   /* if vertical[i].0 == 3
+                    {
+                        roundDefensiveInstance = 3
+                    }
+                        
+                    else {
+                        
+                        roundDefensiveInstance = roundDefensiveInstance + 3 + ((vertical[i].0 - 3)*3)
+                    } */
+                    
+                }
             }
             j?++
         }
-        
+        if defCountHorizontal == 3 || defCountHorizontal > 3
+        {
+        roundDefensiveInstance = 3 + ((defCountHorizontal - 3)*3)
+        }
+        if defCountVertical == 3 || defCountVertical > 3
+        {
+            roundDefensiveInstance = roundDefensiveInstance + 3 + ((defCountVertical - 3)*3)
+        }
         return charactersContribuition
     }
     

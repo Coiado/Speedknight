@@ -158,7 +158,7 @@ class GameViewController: UIViewController {
             self.scene.teamDeaths.append(partyMembers[i].RawValue)
             }
         }
-        //self.scene.level.roundDefensiveInstance = 0
+        self.scene.level.roundDefensiveInstance = 0
         
         if partyAttack > opponentDefense  && (partyAttack - opponentDefense) < currentEnemyHP
         {
