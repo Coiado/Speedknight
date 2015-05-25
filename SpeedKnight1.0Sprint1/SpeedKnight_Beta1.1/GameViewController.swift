@@ -149,9 +149,10 @@ class GameViewController: UIViewController {
         opponentDefense = opponentDefense + def[i]
         // Each character takes the damage of the round
         partyMembers[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
-        GameData.sharedInstance.team[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
+        GameData.sharedInstance.team[i].HP = partyMembers[i].HP
             if partyMembers[i].HP < 0{
                 partyMembers[i].HP = 0.0
+                GameData.sharedInstance.team[i].HP = 0.0
             }
             if partyMembers[i].HP == 0.0  {
             self.scene.teamDeaths.append(partyMembers[i].RawValue)
@@ -247,6 +248,10 @@ class GameViewController: UIViewController {
         
             //counter = 0
             self.scene.level.teamPerformance = [0,0,0,0]
+            for i in 0..<3{
+                //GameData.sharedInstance.team[i].HP = partyMembers[i].HP
+                self.ai.party[i].HP = partyMembers[i].HP
+            }
             println("Party HP:\(partyMembers[0].HP)      \(partyMembers[1].HP)       \(partyMembers[2].HP)       \(partyMembers[3].HP)")
             timerRunning = false
               beginGame()
