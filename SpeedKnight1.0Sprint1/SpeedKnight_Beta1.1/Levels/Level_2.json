@@ -9,7 +9,7 @@
                [1, 1, 1, 1, 1, 1, 1, 1, 1 ],
                [0, 0, 0, 0, 0, 0, 0, 0, 0 ] ],
     
-    "enemyHP" : 2000,
+    "enemyHP" : 1,
     "enemyAttack" : 65,
     "enemyDefense" : 25,
     "enemyAI" : 1000,

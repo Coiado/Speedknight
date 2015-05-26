@@ -248,30 +248,29 @@ class GameViewController: UIViewController {
         
             //counter = 0
             self.scene.level.teamPerformance = [0,0,0,0]
+            var totalPartyHP : Float = 0.0
             for i in 0..<3{
-                //GameData.sharedInstance.team[i].HP = partyMembers[i].HP
                 self.ai.party[i].HP = partyMembers[i].HP
+                totalPartyHP = totalPartyHP + partyMembers[i].HP
             }
             println("Party HP:\(partyMembers[0].HP)      \(partyMembers[1].HP)       \(partyMembers[2].HP)       \(partyMembers[3].HP)")
             timerRunning = false
+        
+            // Logic to check whether the level is over or not
+        if currentEnemyHP > 0 && totalPartyHP > 0.0 {
               beginGame()
-        //}
-        /*else {
-            resultsBox = UIImageView(frame:adjustRectSize(CGRectMake(27, 110, 320, 220))) //y:410
-            resultsBox.image = UIImage(named:"Character_Battle_Profile_Teste(\(counter))")
-            println("Character Attack: \(self.scene.level.teamPerformance[counter])") // It's where the class (level) has the property.
-            self.view.addSubview(resultsBox)
+        }
+            
+        else if currentEnemyHP == 0 && totalPartyHP > 0.0{
+        // Mother of God......
+        self.view.userInteractionEnabled = true
+        self.showEndGame("LevelComplete")
+        }
         
-            buttonNext = UIButton() as UIButton // Needs to be made custom so you can alter the image.
-            buttonNext.frame = adjustRectSize(CGRectMake(253, 245, 75, 58)) //y:545
-            buttonNext.setImage(yesImage, forState: UIControlState.Normal)
-            buttonNext.addTarget(self, action: "nextResult:", forControlEvents: UIControlEvents.TouchUpInside)
-            self.view.addSubview(buttonNext)
-            
-            
-            
-        }*/
-        
+        else {
+        self.view.userInteractionEnabled = true
+        self.showEndGame("GameOver")
+        }
     }
     
     func nextResult(sender:UIButton!){
@@ -381,6 +380,31 @@ class GameViewController: UIViewController {
         view.userInteractionEnabled = true
     }
     
+    func showEndGame(imageName: String) {
+        let outcomeImage = UIImage(named:imageName) as UIImage!
+        
+        let endLevelResult = UIButton() as UIButton // Needs to be made custom so you can alter the image.
+        endLevelResult.frame = adjustRectSize(CGRectMake(43, 195, 300, 300))
+        endLevelResult.setImage(outcomeImage, forState: UIControlState.Normal)
+        endLevelResult.userInteractionEnabled = true
+        endLevelResult.addTarget(self, action: "hideEndGame", forControlEvents: UIControlEvents.TouchUpInside) // Remeber to put ":" after the selector's name (in this case the "play_or_not" method)
+        
+        self.scene.view!.addSubview(endLevelResult)
+        self.scene.view!.bringSubviewToFront(endLevelResult)
+    }
+    
+    
+    func hideEndGame()
+    {
+        scene.userInteractionEnabled = true
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let levelMenuViewController = storyBoard.instantiateViewControllerWithIdentifier("LevelMenuID") as! LevelMenu!
+        self.presentViewController(levelMenuViewController, animated:true, completion:nil)
+        
+    }
+
+    
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -395,6 +419,7 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       // endGameResult.hidden = true
         
         // Configure the view.
         let skView = view as! SKView

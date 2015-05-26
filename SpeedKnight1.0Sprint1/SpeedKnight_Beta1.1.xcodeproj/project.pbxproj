@@ -93,6 +93,8 @@
 		28A5EE151B03FF1D002B214D /* TwoSwordsProfilePic.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A5EE0F1B03FF1D002B214D /* TwoSwordsProfilePic.png */; };
 		28A5EE171B0521D9002B214D /* LevelMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5EE161B0521D9002B214D /* LevelMenu.swift */; };
 		28A5EE1B1B0524F2002B214D /* dungeonTest2.png in Resources */ = {isa = PBXBuildFile; fileRef = 28A5EE1A1B0524F2002B214D /* dungeonTest2.png */; };
+		28C2BD1D1B14AFD2009E4DA1 /* victorySample.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C2BD1C1B14AFD2009E4DA1 /* victorySample.png */; };
+		28C2BD1F1B14AFDA009E4DA1 /* gameOverSample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28C2BD1E1B14AFDA009E4DA1 /* gameOverSample.jpg */; };
 		28E753BB1ADF37FF00956E16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753BA1ADF37FF00956E16 /* AppDelegate.swift */; };
 		28E753BF1ADF37FF00956E16 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753BE1ADF37FF00956E16 /* GameScene.swift */; };
 		28E753C11ADF37FF00956E16 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753C01ADF37FF00956E16 /* GameViewController.swift */; };
@@ -206,6 +208,8 @@
 		28A5EE0F1B03FF1D002B214D /* TwoSwordsProfilePic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwoSwordsProfilePic.png; sourceTree = "<group>"; };
 		28A5EE161B0521D9002B214D /* LevelMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMenu.swift; sourceTree = "<group>"; };
 		28A5EE1A1B0524F2002B214D /* dungeonTest2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dungeonTest2.png; sourceTree = "<group>"; };
+		28C2BD1C1B14AFD2009E4DA1 /* victorySample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = victorySample.png; sourceTree = "<group>"; };
+		28C2BD1E1B14AFDA009E4DA1 /* gameOverSample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gameOverSample.jpg; sourceTree = "<group>"; };
 		28E753B51ADF37FF00956E16 /* SpeedKnight_Beta1.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedKnight_Beta1.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E753B91ADF37FF00956E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28E753BA1ADF37FF00956E16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -418,6 +422,8 @@
 			children = (
 				286D42201B03B03400CDAA8E /* Characters-Images */,
 				286E5DA31AF2A65000733054 /* Character_Battle_Profile_Teste(0).png */,
+				28C2BD1E1B14AFDA009E4DA1 /* gameOverSample.jpg */,
+				28C2BD1C1B14AFD2009E4DA1 /* victorySample.png */,
 				286E5DA41AF2A65000733054 /* Character_Battle_Profile_Teste(1).png */,
 				286E5DA51AF2A65000733054 /* Character_Battle_Profile_Teste(2).png */,
 				286E5DA61AF2A65000733054 /* Character_Battle_Profile_Teste(3).png */,
@@ -536,6 +542,7 @@
 				286E5DAA1AF2A65000733054 /* Character_Battle_Profile_Teste(2).png in Resources */,
 				2808346B1AF317940062FFD6 /* HP_Enemy_90.png in Resources */,
 				286D42311B03DD9600CDAA8E /* Icone-Staff-Selecionado.png in Resources */,
+				28C2BD1F1B14AFDA009E4DA1 /* gameOverSample.jpg in Resources */,
 				286E5DAB1AF2A65000733054 /* Character_Battle_Profile_Teste(3).png in Resources */,
 				286E5D541AEEB69300733054 /* Icone-Axe@2x.png in Resources */,
 				280834691AF317940062FFD6 /* HP_Enemy_80.png in Resources */,
@@ -554,6 +561,7 @@
 				280834601AF317940062FFD6 /* HP_Enemy_35.png in Resources */,
 				286E5D401AEEB5AD00733054 /* Icone-ParedeDeTijolos.png in Resources */,
 				280834641AF317940062FFD6 /* HP_Enemy_55.png in Resources */,
+				28C2BD1D1B14AFD2009E4DA1 /* victorySample.png in Resources */,
 				286E5D6E1AEFF34E00733054 /* Game_TextBox_NoButton1.png in Resources */,
 				280834681AF317940062FFD6 /* HP_Enemy_75.png in Resources */,
 				286D421F1B039C0300CDAA8E /* Character_3.json in Resources */,

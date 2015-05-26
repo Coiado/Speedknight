@@ -95,7 +95,7 @@ class GameScene: SKScene {
         let (success, column, row) = convertPoint(location)
         if success {
             // Next, the method sees if the move you're touching is actually alive.
-            if !contains(teamDeaths, level.moveAtColumn(column, row: row)!.moveType.rawValue){ // FUCKING BITCHES IN DA HOUSE
+            if !contains(teamDeaths!, level.moveAtColumn(column, row: row)!.moveType.rawValue){ // FUCKING BITCHES IN DA HOUSE
                 // Next, the method verifies that the touch is on a move rather than on an empty square.
                 if let move = level.moveAtColumn(column, row: row) { // Now the same 'nil unwrapping error' is happenning here....
                 
@@ -327,4 +327,5 @@ class GameScene: SKScene {
     
     let gameLayer = SKNode()
     let movesLayer = SKNode()
+
 }
