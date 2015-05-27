@@ -27,6 +27,16 @@
 		2808346A1AF317940062FFD6 /* HP_Enemy_85.png in Resources */ = {isa = PBXBuildFile; fileRef = 280834561AF317940062FFD6 /* HP_Enemy_85.png */; };
 		2808346B1AF317940062FFD6 /* HP_Enemy_90.png in Resources */ = {isa = PBXBuildFile; fileRef = 280834571AF317940062FFD6 /* HP_Enemy_90.png */; };
 		2808346C1AF317940062FFD6 /* HP_Enemy_95.png in Resources */ = {isa = PBXBuildFile; fileRef = 280834581AF317940062FFD6 /* HP_Enemy_95.png */; };
+		28091DA31B162B1C003AEAE3 /* Icone-Axe-Morto.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091D9F1B162B1C003AEAE3 /* Icone-Axe-Morto.png */; };
+		28091DA41B162B1C003AEAE3 /* Icone-BowArrow-Morto.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DA01B162B1C003AEAE3 /* Icone-BowArrow-Morto.png */; };
+		28091DA51B162B1C003AEAE3 /* Icone-DualSword-Morto.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DA11B162B1C003AEAE3 /* Icone-DualSword-Morto.png */; };
+		28091DA61B162B1C003AEAE3 /* Icone-SingleSword(DualWield)-Morto.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DA21B162B1C003AEAE3 /* Icone-SingleSword(DualWield)-Morto.png */; };
+		28091DA81B162B28003AEAE3 /* Icone-Staff-Morto.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DA71B162B28003AEAE3 /* Icone-Staff-Morto.png */; };
+		28091DAD1B162B45003AEAE3 /* Icone-Axe-Morto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DA91B162B45003AEAE3 /* Icone-Axe-Morto@2x.png */; };
+		28091DAE1B162B45003AEAE3 /* Icone-DualSword-Morto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DAA1B162B45003AEAE3 /* Icone-DualSword-Morto@2x.png */; };
+		28091DAF1B162B45003AEAE3 /* Icone-SingleSword(DualWield)-Morto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DAB1B162B45003AEAE3 /* Icone-SingleSword(DualWield)-Morto@2x.png */; };
+		28091DB01B162B45003AEAE3 /* Icone-Staff-Morto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DAC1B162B45003AEAE3 /* Icone-Staff-Morto@2x.png */; };
+		28091DB21B162B53003AEAE3 /* Icone-BowArrow-Morto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28091DB11B162B53003AEAE3 /* Icone-BowArrow-Morto@2x.png */; };
 		280BCCC31AE020B80062D550 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280BCCC21AE020B80062D550 /* Tile.swift */; };
 		280BCCC51AE021540062D550 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280BCCC41AE021540062D550 /* Extensions.swift */; };
 		280BCCCC1AE047770062D550 /* Level_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 280BCCC71AE047770062D550 /* Level_0.json */; };
@@ -141,6 +151,16 @@
 		280834561AF317940062FFD6 /* HP_Enemy_85.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP_Enemy_85.png; sourceTree = "<group>"; };
 		280834571AF317940062FFD6 /* HP_Enemy_90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP_Enemy_90.png; sourceTree = "<group>"; };
 		280834581AF317940062FFD6 /* HP_Enemy_95.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP_Enemy_95.png; sourceTree = "<group>"; };
+		28091D9F1B162B1C003AEAE3 /* Icone-Axe-Morto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-Axe-Morto.png"; sourceTree = "<group>"; };
+		28091DA01B162B1C003AEAE3 /* Icone-BowArrow-Morto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-BowArrow-Morto.png"; sourceTree = "<group>"; };
+		28091DA11B162B1C003AEAE3 /* Icone-DualSword-Morto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-DualSword-Morto.png"; sourceTree = "<group>"; };
+		28091DA21B162B1C003AEAE3 /* Icone-SingleSword(DualWield)-Morto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-SingleSword(DualWield)-Morto.png"; sourceTree = "<group>"; };
+		28091DA71B162B28003AEAE3 /* Icone-Staff-Morto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-Staff-Morto.png"; sourceTree = "<group>"; };
+		28091DA91B162B45003AEAE3 /* Icone-Axe-Morto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-Axe-Morto@2x.png"; sourceTree = "<group>"; };
+		28091DAA1B162B45003AEAE3 /* Icone-DualSword-Morto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-DualSword-Morto@2x.png"; sourceTree = "<group>"; };
+		28091DAB1B162B45003AEAE3 /* Icone-SingleSword(DualWield)-Morto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-SingleSword(DualWield)-Morto@2x.png"; sourceTree = "<group>"; };
+		28091DAC1B162B45003AEAE3 /* Icone-Staff-Morto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-Staff-Morto@2x.png"; sourceTree = "<group>"; };
+		28091DB11B162B53003AEAE3 /* Icone-BowArrow-Morto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icone-BowArrow-Morto@2x.png"; sourceTree = "<group>"; };
 		280BCCC21AE020B80062D550 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		280BCCC41AE021540062D550 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		280BCCC71AE047770062D550 /* Level_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_0.json; sourceTree = "<group>"; };
@@ -291,6 +311,11 @@
 				286D422C1B03DD9600CDAA8E /* Icone-BowArrow.png */,
 				286D422D1B03DD9600CDAA8E /* Icone-Staff-Selecionado.png */,
 				286D422E1B03DD9600CDAA8E /* Icone-Staff.png */,
+				28091D9F1B162B1C003AEAE3 /* Icone-Axe-Morto.png */,
+				28091DA01B162B1C003AEAE3 /* Icone-BowArrow-Morto.png */,
+				28091DA11B162B1C003AEAE3 /* Icone-DualSword-Morto.png */,
+				28091DA21B162B1C003AEAE3 /* Icone-SingleSword(DualWield)-Morto.png */,
+				28091DA71B162B28003AEAE3 /* Icone-Staff-Morto.png */,
 			);
 			name = "Icons(32-36)";
 			sourceTree = "<group>";
@@ -313,6 +338,11 @@
 				286D42341B03DDB000CDAA8E /* Icone-BowArrow@2x.png */,
 				286D42351B03DDB000CDAA8E /* Icone-Staff-Selecionado@2x.png */,
 				286D42361B03DDB000CDAA8E /* Icone-Staff@2x.png */,
+				28091DA91B162B45003AEAE3 /* Icone-Axe-Morto@2x.png */,
+				28091DAA1B162B45003AEAE3 /* Icone-DualSword-Morto@2x.png */,
+				28091DAB1B162B45003AEAE3 /* Icone-SingleSword(DualWield)-Morto@2x.png */,
+				28091DAC1B162B45003AEAE3 /* Icone-Staff-Morto@2x.png */,
+				28091DB11B162B53003AEAE3 /* Icone-BowArrow-Morto@2x.png */,
 			);
 			name = "Icons(64-72)";
 			sourceTree = "<group>";
@@ -537,6 +567,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28091DB21B162B53003AEAE3 /* Icone-BowArrow-Morto@2x.png in Resources */,
 				286E5DA91AF2A65000733054 /* Character_Battle_Profile_Teste(1).png in Resources */,
 				2808345F1AF317940062FFD6 /* HP_Enemy_30.png in Resources */,
 				286E5DAA1AF2A65000733054 /* Character_Battle_Profile_Teste(2).png in Resources */,
@@ -545,21 +576,25 @@
 				28C2BD1F1B14AFDA009E4DA1 /* gameOverSample.jpg in Resources */,
 				286E5DAB1AF2A65000733054 /* Character_Battle_Profile_Teste(3).png in Resources */,
 				286E5D541AEEB69300733054 /* Icone-Axe@2x.png in Resources */,
+				28091DAE1B162B45003AEAE3 /* Icone-DualSword-Morto@2x.png in Resources */,
 				280834691AF317940062FFD6 /* HP_Enemy_80.png in Resources */,
 				286E5D651AEEB83000733054 /* Icone-DualSword.png in Resources */,
 				286D421D1B039BEF00CDAA8E /* Character_2.json in Resources */,
 				28E753C91ADF37FF00956E16 /* LaunchScreen.xib in Resources */,
 				286E5D571AEEB69300733054 /* Icone-ParedeDeTijolos@2x.png in Resources */,
 				286E5D3D1AEEB5AD00733054 /* Icone-Axe.png in Resources */,
+				28091DAD1B162B45003AEAE3 /* Icone-Axe-Morto@2x.png in Resources */,
 				2808345D1AF317940062FFD6 /* HP_Enemy_20.png in Resources */,
 				286E5D5A1AEEB69300733054 /* Icone-SingleSword-Selecionado@2x.png in Resources */,
 				286D42371B03DDB000CDAA8E /* Icone-BowArrow-Selecionado@2x.png in Resources */,
 				286E5D6A1AEFEE0C00733054 /* TesteGame_Textbox_1.png in Resources */,
 				2808346A1AF317940062FFD6 /* HP_Enemy_85.png in Resources */,
+				28091DA41B162B1C003AEAE3 /* Icone-BowArrow-Morto.png in Resources */,
 				2808345E1AF317940062FFD6 /* HP_Enemy_25.png in Resources */,
 				280BCCD01AE047770062D550 /* Level_4.json in Resources */,
 				280834601AF317940062FFD6 /* HP_Enemy_35.png in Resources */,
 				286E5D401AEEB5AD00733054 /* Icone-ParedeDeTijolos.png in Resources */,
+				28091DB01B162B45003AEAE3 /* Icone-Staff-Morto@2x.png in Resources */,
 				280834641AF317940062FFD6 /* HP_Enemy_55.png in Resources */,
 				28C2BD1D1B14AFD2009E4DA1 /* victorySample.png in Resources */,
 				286E5D6E1AEFF34E00733054 /* Game_TextBox_NoButton1.png in Resources */,
@@ -570,8 +605,10 @@
 				286D42321B03DD9600CDAA8E /* Icone-Staff.png in Resources */,
 				280834621AF317940062FFD6 /* HP_Enemy_45.png in Resources */,
 				280834591AF317940062FFD6 /* HP_Enemy_0.png in Resources */,
+				28091DA51B162B1C003AEAE3 /* Icone-DualSword-Morto.png in Resources */,
 				286D42381B03DDB000CDAA8E /* Icone-BowArrow@2x.png in Resources */,
 				28A5EE131B03FF1D002B214D /* DualWieldProfilePic.png in Resources */,
+				28091DA81B162B28003AEAE3 /* Icone-Staff-Morto.png in Resources */,
 				28A5EE141B03FF1D002B214D /* MageStaffProfilePic.png in Resources */,
 				286E5D441AEEB5AD00733054 /* Icone-SingleSword(DualWield)-Selecionado.png in Resources */,
 				28A5EE151B03FF1D002B214D /* TwoSwordsProfilePic.png in Resources */,
@@ -580,6 +617,7 @@
 				286E5D9C1AF00C2700733054 /* HP_Enemy_100.png in Resources */,
 				286D423E1B03DE1100CDAA8E /* Character_4.json in Resources */,
 				286D422A1B03B08100CDAA8E /* DefensiveStanceImage.png in Resources */,
+				28091DAF1B162B45003AEAE3 /* Icone-SingleSword(DualWield)-Morto@2x.png in Resources */,
 				280BCCCC1AE047770062D550 /* Level_0.json in Resources */,
 				286D422F1B03DD9600CDAA8E /* Icone-BowArrow-Selecionado.png in Resources */,
 				286E5D421AEEB5AD00733054 /* Icone-Shield.png in Resources */,
@@ -590,6 +628,7 @@
 				286E5D531AEEB69300733054 /* Icone-Axe-Selecionado@2x.png in Resources */,
 				2808345B1AF317940062FFD6 /* HP_Enemy_10.png in Resources */,
 				286E5D6C1AEFF1FA00733054 /* Game_TextBox_YesButton1.png in Resources */,
+				28091DA61B162B1C003AEAE3 /* Icone-SingleSword(DualWield)-Morto.png in Resources */,
 				28E753C61ADF37FF00956E16 /* Images.xcassets in Resources */,
 				2808345A1AF317940062FFD6 /* HP_Enemy_5.png in Resources */,
 				286E5D431AEEB5AD00733054 /* Icone-SingleSword-Selecionado.png in Resources */,
@@ -609,6 +648,7 @@
 				286E5DA81AF2A65000733054 /* Character_Battle_Profile_Teste(0).png in Resources */,
 				286E5DAC1AF2A65000733054 /* Character_Battle_Profile_Teste(4).png in Resources */,
 				28A5EE1B1B0524F2002B214D /* dungeonTest2.png in Resources */,
+				28091DA31B162B1C003AEAE3 /* Icone-Axe-Morto.png in Resources */,
 				286E5D551AEEB69300733054 /* Icone-DualSword-Selecionado@2x.png in Resources */,
 				286E5D3C1AEEB5AD00733054 /* Icone-Axe-Selecionado.png in Resources */,
 				28E753DF1ADF3DDE00956E16 /* Sprites.atlas in Resources */,

@@ -156,6 +156,9 @@ class GameViewController: UIViewController {
             }
             if partyMembers[i].HP == 0.0  {
             self.scene.teamDeaths.append(partyMembers[i].RawValue)
+            var currentField : Array<Move>! = self.scene.level.determineFieldOfMoves()
+            scene.movesLayer.removeAllChildren()
+            scene.addSpritesForMoves(self.scene.teamDeaths, moves: currentField)
             }
         }
         self.scene.level.roundDefensiveInstance = 0
@@ -220,7 +223,7 @@ class GameViewController: UIViewController {
         
         //println("Passei aqui") // <- Entered here
         newMoves = scene.level.shuffle() 
-        scene.addSpritesForMoves(newMoves)
+        scene.addSpritesForMoves(self.scene.teamDeaths, moves: newMoves)
     
     }
     

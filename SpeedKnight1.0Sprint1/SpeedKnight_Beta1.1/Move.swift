@@ -28,6 +28,10 @@ enum MoveType: Int {
         return spriteName + "-Selecionado"
     }
     
+    var deadSpriteName: String {
+        return spriteName + "-Morto"
+    }
+    
     static func random() -> MoveType {
 
         var aux : Int! = Int(arc4random_uniform(6))
@@ -45,7 +49,7 @@ enum MoveType: Int {
         return random()
         }
     }
-
+    
 }
 
 class Move: Printable, Hashable {
