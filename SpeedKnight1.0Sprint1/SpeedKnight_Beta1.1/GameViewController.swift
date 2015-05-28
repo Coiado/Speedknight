@@ -260,36 +260,50 @@ class GameViewController: UIViewController {
         
         //if counter == 4 { // <- Watch out for the shield
             
-            
+        let ataqueTotal = self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3]
         
-            labelAtack.text = ("Ataque Total:\(self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3])\n defesa Total: \(self.scene.level.roundDefensiveInstance)")
+            labelAtack.text = ("Ataque Total:\(ataqueTotal)")
             labelDefense.text = ("defesa Total: \(self.scene.level.roundDefensiveInstance)")
             labelHP.text = ("Party HP:")
             labelDefense.hidden = false
             labelAtack.hidden = false
             labelHP.hidden = false
 
-        
             enemyDamageDealt = ai.attackAI(data.attackAI)
             enemyDefense = ai.defenseAI(data.defenseAI, roundActions: self.scene.level.teamPerformance)
             battleSystem(enemyDamageDealt, def: enemyDefense)
             println("Party Defense: \(self.scene.level.roundDefensiveInstance)")
             println("Enemy Defense: \(self.enemyDefense[0]) \(self.enemyDefense[1]) \(self.enemyDefense[2]) \(self.enemyDefense[3])")
+        
+        
+        if( ataqueTotal > 0){
+            var sprite = self.scene.monster
+            //sprite.hidden = true
+            let waitAction = SKAction.waitForDuration(1)
+            let changeColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.7)
+            let backColor = SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.7)
+            
+            sprite.runAction(SKAction.sequence([changeColor,backColor]))
+        }
+        
             enemyHpDisplay()
+        
+        
+            self.scene.level.teamPerformance = [0 , 0 , 0 ,0]
             //resultsBox.removeFromSuperview()
             //buttonNext.removeFromSuperview()
         
             //counter = 0
 
-        labelPartyHP0.text = ("\(partyMembers[0].HP)")
-        labelPartyHP1.text = ("\(partyMembers[1].HP)")
-        labelPartyHP2.text = ("\(partyMembers[2].HP)")
-        labelPartyHP3.text = ("\(partyMembers[3].HP)")
-        labelPartyHP0.hidden = false
-        labelPartyHP1.hidden = false
-        labelPartyHP2.hidden = false
-        labelPartyHP3.hidden = false
-
+            labelPartyHP0.text = ("\(partyMembers[0].HP)")
+            labelPartyHP1.text = ("\(partyMembers[1].HP)")
+            labelPartyHP2.text = ("\(partyMembers[2].HP)")
+            labelPartyHP3.text = ("\(partyMembers[3].HP)")
+            labelPartyHP0.hidden = false
+            labelPartyHP1.hidden = false
+            labelPartyHP2.hidden = false
+            labelPartyHP3.hidden = false
+        
             var totalPartyHP : Float = 0.0
             for i in 0..<3{
                 self.ai.party[i].HP = partyMembers[i].HP

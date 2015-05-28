@@ -17,6 +17,7 @@ class GameData: NSObject {
     var enemyAttack : Int! = 0
     var enemyDefense : Int! = 0
     var team : [(HP: Float, Att: Int, Def: Int, Picture: String, RawValue: Int)]! = []
+    var enemyImage : String! = ""
     
     
   

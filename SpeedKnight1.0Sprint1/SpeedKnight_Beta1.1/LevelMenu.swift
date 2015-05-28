@@ -19,6 +19,7 @@ class LevelMenu : UIViewController {
             data.backgroundImage = dictionary["background"] as! String
             data.enemyAttack = dictionary["enemyAttack"] as! Int
             data.enemyDefense = dictionary["enemyDefense"] as! Int
+            data.enemyImage = dictionary["enemyImage"] as! String
         }
         data.levelFile = "Level_0"
         data.attackAI = "easyAtt2"
@@ -30,6 +31,7 @@ class LevelMenu : UIViewController {
             data.backgroundImage = dictionary["background"] as! String
             data.enemyAttack = dictionary["enemyAttack"] as! Int
             data.enemyDefense = dictionary["enemyDefense"] as! Int
+            data.enemyImage = dictionary["enemyImage"] as! String
         }
         data.levelFile = "Level_1"
         data.attackAI = "easyAtt1"
@@ -42,6 +44,7 @@ class LevelMenu : UIViewController {
             data.backgroundImage = dictionary["background"] as! String
             data.enemyAttack = dictionary["enemyAttack"] as! Int
             data.enemyDefense = dictionary["enemyDefense"] as! Int
+            data.enemyImage = dictionary["enemyImage"] as! String
         }
         
         data.levelFile = "Level_2"
@@ -56,6 +59,7 @@ class LevelMenu : UIViewController {
             data.backgroundImage = dictionary["background"] as! String
             data.enemyAttack = dictionary["enemyAttack"] as! Int
             data.enemyDefense = dictionary["enemyDefense"] as! Int
+            data.enemyImage = dictionary["enemyImage"] as! String
         }
         
         data.levelFile = "Level_3"

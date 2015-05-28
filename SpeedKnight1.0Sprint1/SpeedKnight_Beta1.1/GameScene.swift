@@ -16,7 +16,8 @@ class GameScene: SKScene {
     var swipeFromRow: Int?
     var swipeHandler: ((Swap) -> ())? // This (closure/function) takes a Swap object as its parameter and returns nothing. The question mark indicates that it can be nil... (right?).
     var teamDeaths : Array<Int>! = []
-    
+    let monster = SKSpriteNode (imageNamed: GameData.sharedInstance.enemyImage)
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder) is not used in this app")
     }
@@ -28,6 +29,8 @@ class GameScene: SKScene {
         
         let background = SKSpriteNode(imageNamed: GameData.sharedInstance.backgroundImage) // Why?
         addChild(background)
+
+        addChild(monster)
         
         addChild(gameLayer)
         
@@ -111,7 +114,6 @@ class GameScene: SKScene {
     
     func addSpritesForMoves(deadMembers : Array<Int>!, moves: Array<Move>) {
         var displayCharacterImage: String!
-        
         for move in moves {
             let moves = Array<Move>()
             
@@ -304,6 +306,7 @@ class GameScene: SKScene {
             for (idx, move) in enumerate(array) {
                 let sprite = SKSpriteNode(imageNamed: move.moveType.spriteName)
                 sprite.position = pointForColumn(move.column, row: startRow)
+                sprite.size = adjustSize(sprite.size)
                 movesLayer.addChild(sprite)
                 move.sprite = sprite
                 

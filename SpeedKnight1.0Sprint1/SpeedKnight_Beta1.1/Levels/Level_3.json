@@ -13,7 +13,7 @@
     "enemyAttack" : 67,
     "enemyDefense" : 25,
     "enemyAI" : 1000,
-    "enemyImage" : "",
+    "enemyImage" : "Monstro3",
     "background" : "BackgroundTest1",
     
 }
