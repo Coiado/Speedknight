@@ -134,7 +134,7 @@ class Level {
                                 moves[column, row - 1]?.moveType == moveType &&
                                 moves[column, row - 2]?.moveType == moveType)
                 
-                let move = Move(column: column, row: row, moveType: moveType)
+                    let move = Move(column: column, row: row, moveType: moveType)
                 
                 self.moves[column,row] =  move
                 set.append(move)
@@ -419,19 +419,23 @@ class Level {
         return vertLength >= 3
     }
 */
-    
-/* SUCK IT!
-    func detectPossibleSwaps() {
+  /*
+    func findDeadCharacters(deadPeople: Array<Int>!) -> [(Int, Int)]! {
         var set = Set<Swap>()
-        var aux : Int! = 0
+        var posDeadCharacter : [(Int, Int)]! = []
         println("entrei dettect swaps")
         
+        // Here I scan through the whole field ackowledging each position of a dead sprite.
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
-                if let move = moves[column, row] {
+                if let move = moves[column, row] { // check if it's really a "let" case - If I'm not making a mistake
+                    if contains(deadPeople, move.moveType.rawValue) {
+                        posDeadCharacter.append(column, row)
+                    }
                     
                     // Is it possible to swap this move with the one on the right?
-                    if column < NumColumns - 1 {
+                    /*if column < NumColumns{
+                        /*
                         if let other = moves[column + 1, row] {
                             moves[column, row] = other
                             moves[column + 1, row] = move
@@ -450,10 +454,10 @@ class Level {
                                 set.insert(Swap(moveA: move, moveB: other))
                             }
                             
-                        }
-                    }
-                    
-                    if row < NumRows - 1 {
+                        } */
+                    } */
+                  
+                  /*  if row < NumRows - 1 {
                         if let other = moves[column, row + 1] {
                             moves[column, row] = other
                             moves[column, row + 1] = move
@@ -472,13 +476,26 @@ class Level {
                             }
                             
                        }
-                    }
+                    } */
                 }
             }
         }
         possibleSwaps = set
     }
 */
+    
+    func determineFieldOfMoves() -> Array<Move> {
+        var currentField = Array<Move>()
+        
+        for row in 0..<NumRows {
+            for column in 0..<NumColumns {
+                if let move = moves[column, row] {
+                    currentField.append(move)
+                }
+            }
+        }
+            return currentField
+    }
     
     func fillHoles() -> [[Move]] {
         var columns = [[Move]]()

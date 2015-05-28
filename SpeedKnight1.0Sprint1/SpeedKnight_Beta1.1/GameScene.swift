@@ -95,7 +95,7 @@ class GameScene: SKScene {
         let (success, column, row) = convertPoint(location)
         if success {
             // Next, the method sees if the move you're touching is actually alive.
-            if !contains(teamDeaths, level.moveAtColumn(column, row: row)!.moveType.rawValue){ // FUCKING BITCHES IN DA HOUSE
+            if !contains(teamDeaths!, level.moveAtColumn(column, row: row)!.moveType.rawValue){ // VERIFY! Constantly shows that it found "nil"
                 // Next, the method verifies that the touch is on a move rather than on an empty square.
                 if let move = level.moveAtColumn(column, row: row) { // Now the same 'nil unwrapping error' is happenning here....
                 
@@ -109,22 +109,31 @@ class GameScene: SKScene {
         }
     }
     
-    func addSpritesForMoves(moves: Array<Move>) {
+    func addSpritesForMoves(deadMembers : Array<Int>!, moves: Array<Move>) {
+        var displayCharacterImage: String!
         
         for move in moves {
-            
             let moves = Array<Move>()
             
+            // Checks to see whether the player the move is alive or not, changing it's pic accordingly.
+            if contains(deadMembers, move.moveType.rawValue){
+            displayCharacterImage = move.moveType.deadSpriteName
+            }
+                
+            else {
+            displayCharacterImage = move.moveType.spriteName
+            }
             //println("Passei aqui")// Isn't being called, ever!
-            let sprite = SKSpriteNode(imageNamed: move.moveType.spriteName)
+            let sprite = SKSpriteNode(imageNamed: displayCharacterImage)
             sprite.position = pointForColumn(move.column, row:move.row)
             sprite.size = adjustSize(sprite.size)
             sprite.alpha = 1.0
             movesLayer.addChild(sprite)
             move.sprite = sprite
+            
         }
     }
-        
+    
     func pointForColumn(column: Int, row: Int) -> CGPoint { // Making mistakes in the calculations, maybe? (Unlikely, but...). It's possible that the  CGPoint is not generating a value lower than 0
         
         return adjustPoint(CGPoint(
@@ -327,4 +336,5 @@ class GameScene: SKScene {
     
     let gameLayer = SKNode()
     let movesLayer = SKNode()
+
 }
