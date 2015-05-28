@@ -28,7 +28,11 @@ class GameViewController: UIViewController {
     var partyMembers: [(HP: Float, Att: Int, Def: Int, Picture: String, RawValue : Int)]! = GameData.sharedInstance.team
     var enemyDamageDealt : Array<Float>! = []
     var enemyDefense: Array<Int>!
-    
+    var labelPartyHP0: UILabel = UILabel()
+    var labelPartyHP1: UILabel = UILabel()
+    var labelPartyHP2: UILabel = UILabel()
+    var labelPartyHP3: UILabel = UILabel()
+    var labelHP: UILabel = UILabel()
     var labelAtack: UILabel = UILabel()
     var labelDefense: UILabel = UILabel()
 
@@ -61,6 +65,31 @@ class GameViewController: UIViewController {
         labelDefense.frame = adjustRectSize(CGRectMake(73, 55, 400, 400))
         labelDefense.hidden = true
         self.view.addSubview(labelDefense)
+        labelHP.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelHP.textColor = UIColor.whiteColor()
+        labelHP.frame = adjustRectSize(CGRectMake(73, 95, 400, 400))
+        labelHP.hidden = true
+        self.view.addSubview(labelHP)
+        labelPartyHP0.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelPartyHP0.textColor = UIColor.whiteColor()
+        labelPartyHP0.frame = adjustRectSize(CGRectMake(73, 115, 400, 400))
+        labelPartyHP0.hidden = true
+        self.view.addSubview(labelPartyHP0)
+        labelPartyHP1.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelPartyHP1.textColor = UIColor.whiteColor()
+        labelPartyHP1.frame = adjustRectSize(CGRectMake(73, 135, 400, 400))
+        labelPartyHP1.hidden = true
+        self.view.addSubview(labelPartyHP1)
+        labelPartyHP2.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelPartyHP2.textColor = UIColor.whiteColor()
+        labelPartyHP2.frame = adjustRectSize(CGRectMake(73, 155, 400, 400))
+        labelPartyHP2.hidden = true
+        self.view.addSubview(labelPartyHP2)
+        labelPartyHP3.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelPartyHP3.textColor = UIColor.whiteColor()
+        labelPartyHP3.frame = adjustRectSize(CGRectMake(73, 175, 400, 400))
+        labelPartyHP3.hidden = true
+        self.view.addSubview(labelPartyHP3)
         
         
         //level = Level(filename: "Level1")
@@ -231,9 +260,10 @@ class GameViewController: UIViewController {
         
             labelAtack.text = ("Ataque Total:\(self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3])\n defesa Total: \(self.scene.level.roundDefensiveInstance)")
             labelDefense.text = ("defesa Total: \(self.scene.level.roundDefensiveInstance)")
+            labelHP.text = ("Party HP:")
             labelDefense.hidden = false
             labelAtack.hidden = false
-        
+            labelHP.hidden = false
 
         
             enemyDamageDealt = ai.attackAI(data.attackAI)
@@ -247,6 +277,15 @@ class GameViewController: UIViewController {
         
             //counter = 0
             self.scene.level.teamPerformance = [0,0,0,0]
+        labelPartyHP0.text = ("\(partyMembers[0].HP)")
+        labelPartyHP1.text = ("\(partyMembers[1].HP)")
+        labelPartyHP2.text = ("\(partyMembers[2].HP)")
+        labelPartyHP3.text = ("\(partyMembers[3].HP)")
+        labelPartyHP0.hidden = false
+        labelPartyHP1.hidden = false
+        labelPartyHP2.hidden = false
+        labelPartyHP3.hidden = false
+
             println("Party HP:\(partyMembers[0].HP)      \(partyMembers[1].HP)       \(partyMembers[2].HP)       \(partyMembers[3].HP)")
             timerRunning = false
               beginGame()
