@@ -52,6 +52,13 @@ class GameScene: SKScene {
 
     }
     
+    func createMovesLayer(){
+        movesLayer.position = adjustPoint(CGPoint(
+            x: -TileWidthOriginal * CGFloat(NumColumns) / 2,
+            y: (-TileHeightOriginal * CGFloat(NumRows) / 2) - 170))
+        gameLayer.addChild(movesLayer)
+    }
+    
     // Show highlighted images
     func highlightMove(move: Move) {
         if selectionSprite.parent != nil {

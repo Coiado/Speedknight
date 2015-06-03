@@ -38,6 +38,8 @@ class GameViewController: UIViewController {
 
     var buttonYes : UIButton!
     var buttonNo : UIButton!
+    var buttonShuffle : UIButton!
+    
     
     // Images for the "YES" an "NO" buttons for the initialTextox + the image for the actual TextBox, respectively
     let yesImage = UIImage(named: "Game_TextBox_YesButton1") as UIImage?
@@ -125,11 +127,26 @@ class GameViewController: UIViewController {
         
         self.view.addSubview(buttonNo)
         
+        buttonShuffle = UIButton() as UIButton
+        buttonShuffle.frame = adjustRectSize(CGRectMake(270, 55, 100, 100))
+        buttonShuffle.setTitle("Shuffle", forState: UIControlState.Normal)
+        buttonShuffle.addTarget(self, action: "troca", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        self.view.addSubview(buttonShuffle)
+        
         shuffle()
         
     } // As soon as it ends, the problem begins
     
     // Method that decides whether or not the player will begin the level!
+    
+    func troca()
+    {
+        self.scene.movesLayer.removeFromParent()
+        self.scene.movesLayer.removeAllChildren()
+        self.scene.createMovesLayer()
+        shuffle()
+    }
     
     func play_or_not(sender:UIButton!)
     {
