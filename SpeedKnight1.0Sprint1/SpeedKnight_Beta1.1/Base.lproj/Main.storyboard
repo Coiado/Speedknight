@@ -86,6 +86,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="removeCharacter:" destination="vfH-Am-3im" eventType="touchUpInside" id="JEt-u5-sPj"/>
                                             <action selector="removeHero:" destination="qiQ-qN-1Al" eventType="touchUpInside" id="Zwm-nW-cP7"/>
                                         </connections>
                                     </button>
@@ -253,7 +254,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zz8-aG-f96" firstAttribute="top" secondItem="MHJ-xh-ICN" secondAttribute="bottom" priority="700" constant="20" id="1gF-Dl-fF0"/>
                             <constraint firstItem="bX8-fj-gR9" firstAttribute="top" secondItem="d4A-MT-YhR" secondAttribute="bottom" priority="700" constant="20" id="1xm-A3-AIv"/>
@@ -262,7 +263,7 @@
                             <constraint firstItem="Lca-N9-58C" firstAttribute="top" secondItem="zz8-aG-f96" secondAttribute="bottom" priority="700" constant="20" id="MZu-mS-Npf"/>
                             <constraint firstAttribute="centerX" secondItem="zz8-aG-f96" secondAttribute="centerX" id="Td6-h5-Ggo"/>
                             <constraint firstAttribute="centerX" secondItem="Lca-N9-58C" secondAttribute="centerX" id="dnb-rt-Dp9"/>
-                            <constraint firstItem="d4A-MT-YhR" firstAttribute="top" secondItem="TJr-UD-Jrm" secondAttribute="bottom" constant="20" id="fyu-4k-LUB"/>
+                            <constraint firstItem="d4A-MT-YhR" firstAttribute="top" secondItem="TJr-UD-Jrm" secondAttribute="bottom" priority="749" constant="20" id="fyu-4k-LUB"/>
                             <constraint firstAttribute="centerX" secondItem="bX8-fj-gR9" secondAttribute="centerX" id="gsp-TV-R58"/>
                             <constraint firstAttribute="centerX" secondItem="d4A-MT-YhR" secondAttribute="centerX" id="qwA-vg-zFw"/>
                             <constraint firstAttribute="centerX" secondItem="MHJ-xh-ICN" secondAttribute="centerX" id="vBx-FI-Wue"/>

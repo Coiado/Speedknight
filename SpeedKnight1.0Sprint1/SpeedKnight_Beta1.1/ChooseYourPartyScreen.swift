@@ -27,7 +27,28 @@ class ChooseYourPartyScreen : UIViewController {
         counter = 0
     }
     
+    @IBAction func removeCharacter(sender: AnyObject) {
+        if counter > 0{
+            if data.team[counter-1].Picture == "AxeProfilePic.png" {
+                checkAxe = false
+            }
+            if data.team[counter-1].Picture == "TwoSwordsProfilePic.png" {
+                check2Swords = false
+            }
+            if data.team[counter-1].Picture == "DualWieldProfilePic.png" {
+                checkDualWield = false
+            }
+            if data.team[counter-1].Picture == "MageStaffProfilePic.png"{
+                checkSingleSword = false
+            }
+            if data.team[counter-1].Picture == "BowArrowProfilePic.png" {
+                checkBowArrow  = false
+            }
+            counter=counter-1
+        }
+    }
     // * -> Once after it's done and working, create a method to replicate this actions, since they are all literally the same
+    
     
     @IBAction func CharacterAxe(sender: AnyObject) {
         if (!checkAxe) && (counter < 4){
