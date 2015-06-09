@@ -109,7 +109,6 @@
 		28E753BF1ADF37FF00956E16 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753BE1ADF37FF00956E16 /* GameScene.swift */; };
 		28E753C11ADF37FF00956E16 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753C01ADF37FF00956E16 /* GameViewController.swift */; };
 		28E753C41ADF37FF00956E16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E753C21ADF37FF00956E16 /* Main.storyboard */; };
-		28E753C61ADF37FF00956E16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E753C51ADF37FF00956E16 /* Images.xcassets */; };
 		28E753C91ADF37FF00956E16 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28E753C71ADF37FF00956E16 /* LaunchScreen.xib */; };
 		28E753D51ADF37FF00956E16 /* SpeedKnight_Beta1_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753D41ADF37FF00956E16 /* SpeedKnight_Beta1_1Tests.swift */; };
 		28E753DF1ADF3DDE00956E16 /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 28E753DE1ADF3DDE00956E16 /* Sprites.atlas */; };
@@ -118,6 +117,7 @@
 		28E753E51ADF404700956E16 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753E41ADF404700956E16 /* Level.swift */; };
 		3F10B3761B0BB57C00C1BC55 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10B3751B0BB57C00C1BC55 /* SelectView.swift */; };
 		3F10B3781B0BB69700C1BC55 /* Minus_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F10B3771B0BB69700C1BC55 /* Minus_icon.png */; };
+		3F90ABD11B270F730003D947 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F90ABD01B270F730003D947 /* Images.xcassets */; };
 		5FE5C0FE1B1752D500CE3B84 /* Monstro3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE5C0FD1B1752D500CE3B84 /* Monstro3.png */; };
 /* End PBXBuildFile section */
 
@@ -237,7 +237,6 @@
 		28E753BE1ADF37FF00956E16 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		28E753C01ADF37FF00956E16 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		28E753C31ADF37FF00956E16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		28E753C51ADF37FF00956E16 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		28E753C81ADF37FF00956E16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		28E753CE1ADF37FF00956E16 /* SpeedKnight_Beta1.1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedKnight_Beta1.1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E753D31ADF37FF00956E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -248,6 +247,7 @@
 		28E753E41ADF404700956E16 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		3F10B3751B0BB57C00C1BC55 /* SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		3F10B3771B0BB69700C1BC55 /* Minus_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Minus_icon.png; sourceTree = "<group>"; };
+		3F90ABD01B270F730003D947 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5FE5C0FD1B1752D500CE3B84 /* Monstro3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Monstro3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -439,6 +439,7 @@
 				3F10B3751B0BB57C00C1BC55 /* SelectView.swift */,
 				28E753C21ADF37FF00956E16 /* Main.storyboard */,
 				28E753C71ADF37FF00956E16 /* LaunchScreen.xib */,
+				3F90ABD01B270F730003D947 /* Images.xcassets */,
 				28E753DE1ADF3DDE00956E16 /* Sprites.atlas */,
 				289EEEAE1B0383FF00ECE4B7 /* Characters */,
 				280BCCC61AE047770062D550 /* Levels */,
@@ -537,7 +538,7 @@
 				TargetAttributes = {
 					28E753B41ADF37FF00956E16 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = R938J43A5M;
+						DevelopmentTeam = AZAF32L5F6;
 					};
 					28E753CD1ADF37FF00956E16 = {
 						CreatedOnToolsVersion = 6.2;
@@ -660,6 +661,7 @@
 				280834651AF317940062FFD6 /* HP_Enemy_60.png in Resources */,
 				286D42391B03DDB000CDAA8E /* Icone-Staff-Selecionado@2x.png in Resources */,
 				286E5D5B1AEEB69300733054 /* Icone-SingleSword(DualWield)-Selecionado@2x.png in Resources */,
+				3F90ABD11B270F730003D947 /* Images.xcassets in Resources */,
 				28A5EE111B03FF1D002B214D /* BowArrowProfilePic.png in Resources */,
 				280834661AF317940062FFD6 /* HP_Enemy_65.png in Resources */,
 				28A5EE101B03FF1D002B214D /* AxeProfilePic.png in Resources */,
@@ -818,11 +820,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bruno Eiji Yoshida (6XZCS9K2JZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SpeedKnight_Beta1.1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -830,11 +834,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bruno Eiji Yoshida (6XZCS9K2JZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SpeedKnight_Beta1.1/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
