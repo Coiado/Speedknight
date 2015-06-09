@@ -35,9 +35,14 @@ class GameViewController: UIViewController {
     var labelHP: UILabel = UILabel()
     var labelAtack: UILabel = UILabel()
     var labelDefense: UILabel = UILabel()
-
+    var labelShuffle: UILabel = UILabel()
+    
     var buttonYes : UIButton!
     var buttonNo : UIButton!
+    var buttonShuffle : UIButton!
+    
+    var qtdShuffle : Int!
+    
     
     // Images for the "YES" an "NO" buttons for the initialTextox + the image for the actual TextBox, respectively
     let yesImage = UIImage(named: "Game_TextBox_YesButton1") as UIImage?
@@ -54,6 +59,8 @@ class GameViewController: UIViewController {
     
     // Creates the  box to warn the player of the fight!
     override func viewDidAppear(animated: Bool) {
+        
+        self.view.userInteractionEnabled = false
         
         labelAtack.font = UIFont(name: ("Bradley Hand"), size: 20)
         labelAtack.textColor = UIColor.whiteColor()
@@ -104,32 +111,79 @@ class GameViewController: UIViewController {
         
         // Check to load the team here
         
-        initialTextBox  = UIImageView(frame:adjustRectSize(CGRectMake(27, 410, 320, 220)));
-        initialTextBox.image = UIImage(named:"TesteGame_Textbox_1.png")
-        self.view.addSubview(initialTextBox)
+//        initialTextBox  = UIImageView(frame:adjustRectSize(CGRectMake(27, 410, 320, 220)));
+//        initialTextBox.image = UIImage(named:"TesteGame_Textbox_1.png")
+//        self.view.addSubview(initialTextBox)
+//        
+//        // Creates the "YES" and "NO" buttons respectively
+//        
+//        buttonYes = UIButton() as UIButton // Needs to be made custom so you can alter the image.
+//        buttonYes.frame = adjustRectSize(CGRectMake(253, 545, 75, 58))
+//        buttonYes.setImage(yesImage, forState: UIControlState.Normal)
+//        buttonYes.addTarget(self, action: "play_or_not:", forControlEvents: UIControlEvents.TouchUpInside) // Remeber to put ":" after the selector's name (in this case the "play_or_not" method)
+//        
+//        self.view.addSubview(buttonYes)
+//        
+//        buttonNo = UIButton() as UIButton
+//        buttonNo.frame = adjustRectSize(CGRectMake(52, 545, 75, 58))
+//        // Image not showing up
+//        buttonNo.setImage(noImage, forState: UIControlState.Normal)
+//        buttonNo.addTarget(self, action: "play_or_not:", forControlEvents: UIControlEvents.TouchUpInside)
+//        
+//        self.view.addSubview(buttonNo)
         
-        // Creates the "YES" and "NO" buttons respectively
+        buttonShuffle = UIButton() as UIButton
+        buttonShuffle.frame = adjustRectSize(CGRectMake(200, 55, 100, 100))
+        buttonShuffle.setTitle("Shuffle", forState: UIControlState.Normal)
+        buttonShuffle.addTarget(self, action: "troca", forControlEvents: UIControlEvents.TouchUpInside)
+        self.qtdShuffle = 3
+        self.view.addSubview(buttonShuffle)
         
-        buttonYes = UIButton() as UIButton // Needs to be made custom so you can alter the image.
-        buttonYes.frame = adjustRectSize(CGRectMake(253, 545, 75, 58))
-        buttonYes.setImage(yesImage, forState: UIControlState.Normal)
-        buttonYes.addTarget(self, action: "play_or_not:", forControlEvents: UIControlEvents.TouchUpInside) // Remeber to put ":" after the selector's name (in this case the "play_or_not" method)
-        
-        self.view.addSubview(buttonYes)
-        
-        buttonNo = UIButton() as UIButton
-        buttonNo.frame = adjustRectSize(CGRectMake(52, 545, 75, 58))
-        // Image not showing up
-        buttonNo.setImage(noImage, forState: UIControlState.Normal)
-        buttonNo.addTarget(self, action: "play_or_not:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        self.view.addSubview(buttonNo)
+        //labelShuffle.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelShuffle.textColor = UIColor.whiteColor()
+        labelShuffle.frame = adjustRectSize(CGRectMake(280, 80, 50, 50))
+        labelShuffle.text = "x\(self.qtdShuffle)"
+        self.view.addSubview(labelShuffle)
         
         shuffle()
+        startGame()
         
     } // As soon as it ends, the problem begins
     
     // Method that decides whether or not the player will begin the level!
+    
+    func startGame() {
+        var prepareLabel = UILabel()
+        prepareLabel.text = "PREPARE FOR FIGHT"
+        prepareLabel.font = UIFont(name: "Comic Sans", size: 60)
+        prepareLabel.frame = adjustRectSize(CGRectMake(110, 140, 500, 500))
+        prepareLabel.textColor = UIColor.whiteColor()
+        self.view.addSubview(prepareLabel)
+        let block = SKAction.runBlock()
+            {
+                prepareLabel.text = "FIGHT!!!!"
+                self.beginGame()
+            }
+        let remove = SKAction.runBlock()
+            {
+                prepareLabel.removeFromSuperview()
+            }
+        let wait = SKAction.waitForDuration(3)
+        self.scene.runAction(SKAction.sequence([wait,block,wait,remove]))
+        
+    }
+    
+    func troca()
+    {
+        if(self.qtdShuffle > 0){
+            self.qtdShuffle = self.qtdShuffle - 1
+            self.labelShuffle.text =  "x\(self.qtdShuffle)"
+            self.scene.movesLayer.removeFromParent()
+            self.scene.movesLayer.removeAllChildren()
+            self.scene.createMovesLayer()
+            shuffle()
+        }
+    }
     
     func play_or_not(sender:UIButton!)
     {
@@ -452,6 +506,7 @@ class GameViewController: UIViewController {
     
     func hideEndGame()
     {
+        
         scene.userInteractionEnabled = true
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let levelMenuViewController = storyBoard.instantiateViewControllerWithIdentifier("LevelMenuID") as! LevelMenu!
