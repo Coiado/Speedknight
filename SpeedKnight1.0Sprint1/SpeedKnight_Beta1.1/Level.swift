@@ -450,19 +450,23 @@ class Level {
         if numAxe > maxNum{
             maxC = 1;
             maxNum=numAxe;
-        }else{if numSingleS > maxNum{
+        }
+        if numSingleS > maxNum{
                 maxC = 2;
                 maxNum=numSingleS;
-        }else{if numTwoS > maxNum{
+        }
+        if numTwoS > maxNum{
             maxC = 3;
             maxNum=numTwoS;
-        }else{if numArrow > maxNum{
+        }
+        if numArrow > maxNum{
             maxC = 4;
             maxNum=numArrow;
-        }else{if numMage > maxNum{
+        }
+        if numMage > maxNum{
             maxC = 5;
             maxNum=numMage;
-        }}}}}
+        }
             GameData.sharedInstance.Maxcharacter=maxC;
     }
     
