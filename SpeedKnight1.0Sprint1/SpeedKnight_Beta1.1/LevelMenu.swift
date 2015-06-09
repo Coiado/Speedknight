@@ -24,6 +24,7 @@ class LevelMenu : UIViewController {
         data.levelFile = "Level_0"
         data.attackAI = "easyAtt2"
         data.defenseAI = "easyDef"
+        performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
 
     @IBAction func LevelTwo(sender: AnyObject) {
@@ -36,6 +37,8 @@ class LevelMenu : UIViewController {
         data.levelFile = "Level_1"
         data.attackAI = "easyAtt1"
         data.defenseAI = "easyDef"
+        //presentViewController(GameViewController, animated: true, completion: nil)
+        performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
 
     @IBAction func LevelThree(sender: AnyObject) {
@@ -50,6 +53,7 @@ class LevelMenu : UIViewController {
         data.levelFile = "Level_2"
         data.attackAI = "easyAtt"
         data.defenseAI = "easyDef"
+        performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
 
     @IBAction func LevelFour(sender: AnyObject) {
@@ -65,6 +69,7 @@ class LevelMenu : UIViewController {
         data.levelFile = "Level_3"
         data.attackAI = "mediumAtt"
         data.defenseAI = "easyDef"
+        performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
  
 }
