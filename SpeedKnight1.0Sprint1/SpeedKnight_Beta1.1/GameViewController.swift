@@ -243,7 +243,6 @@ class GameViewController: UIViewController {
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("fightTime"), userInfo: nil, repeats: true) // No need to put ":" after the selector when using "Selector(selector's name)"
         timerRunning = true
             }
-    
         //shuffle()
     }
     
@@ -259,7 +258,7 @@ class GameViewController: UIViewController {
     func presentResults(actions: Array<Int>!){
         
         //if counter == 4 { // <- Watch out for the shield
-            
+        self.scene.level.findCharacters()
         let ataqueTotal = self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3]
         
             labelAtack.text = ("Ataque Total:\(ataqueTotal)")

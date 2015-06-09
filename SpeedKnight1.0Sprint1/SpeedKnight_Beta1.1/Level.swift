@@ -400,7 +400,6 @@ class Level {
         return contains(possibleSwaps, swap)
     }
     
- /* SUCK IT 2!
     private func hasChainAtColumn(column: Int, row: Int) -> Bool {
         let moveType = moves[column, row]!.moveType
         
@@ -418,71 +417,109 @@ class Level {
             ++i, ++vertLength { }
         return vertLength >= 3
     }
-*/
-  /*
-    func findDeadCharacters(deadPeople: Array<Int>!) -> [(Int, Int)]! {
-        var set = Set<Swap>()
-        var posDeadCharacter : [(Int, Int)]! = []
-        println("entrei dettect swaps")
+
+    func findCharacters() -> () {
+        var numAxe: Int!=0
+        var numArrow: Int!=0
+        var numTwoS: Int!=0
+        var numMage: Int!=0
+        var numSingleS: Int!=0
+        var maxNum: Int!=0
+        var maxC: Int!=0
         
         // Here I scan through the whole field ackowledging each position of a dead sprite.
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
-                if let move = moves[column, row] { // check if it's really a "let" case - If I'm not making a mistake
-                    if contains(deadPeople, move.moveType.rawValue) {
-                        posDeadCharacter.append(column, row)
-                    }
-                    
-                    // Is it possible to swap this move with the one on the right?
-                    /*if column < NumColumns{
-                        /*
-                        if let other = moves[column + 1, row] {
-                            moves[column, row] = other
-                            moves[column + 1, row] = move
-                           
-                            // Checks to see if either of the moves is of a dead character
-                            if contains(teamDeaths, moves[column, row]!.moveType.rawValue) || contains(teamDeaths, moves[column + 1, row]!.moveType.rawValue)
-                            {
-                                println("if")
-                                // Swap them back
-                                moves[column, row] = move
-                                moves[column + 1, row] = other
-                            }
-                            
-                            else {
-                                println("else")
-                                set.insert(Swap(moveA: move, moveB: other))
-                            }
-                            
-                        } */
-                    } */
-                  
-                  /*  if row < NumRows - 1 {
-                        if let other = moves[column, row + 1] {
-                            moves[column, row] = other
-                            moves[column, row + 1] = move
-                            
-                            // Checks to see if either of the moves is of a dead character
-                            if contains(teamDeaths, moves[column, row]!.moveType.rawValue) || contains(teamDeaths, moves[column, row + 1]!.moveType.rawValue)
-                            {
-                                println("if")
-                                // Swap them back
-                                moves[column, row] = move
-                                moves[column, row + 1] = other
-                            }
-                            else {
-                                println("else")
-                                set.insert(Swap(moveA: move, moveB: other))
-                            }
-                            
-                       }
-                    } */
+                if !contains(teamDeaths, 1) && moves[column, row]?.moveType.rawValue == 1{
+                    numAxe = numAxe+1;
+                }
+                if !contains(teamDeaths, 2) && moves[column, row]?.moveType.rawValue == 2{
+                    numSingleS = numSingleS+1;
+                }
+                if !contains(teamDeaths, 3) && moves[column, row]?.moveType.rawValue == 3{
+                    numTwoS = numTwoS+1;
+                }
+                if !contains(teamDeaths, 4) && moves[column, row]?.moveType.rawValue == 4{
+                    numArrow = numArrow+1;
+                }
+                if !contains(teamDeaths, 5) && moves[column, row]?.moveType.rawValue == 5{
+                    numMage = numMage+1;
                 }
             }
         }
-        possibleSwaps = set
+        if numAxe > maxNum{
+            maxC = 1;
+            maxNum=numAxe;
+        }else{if numSingleS > maxNum{
+                maxC = 2;
+                maxNum=numSingleS;
+        }else{if numTwoS > maxNum{
+            maxC = 3;
+            maxNum=numTwoS;
+        }else{if numArrow > maxNum{
+            maxC = 4;
+            maxNum=numArrow;
+        }else{if numMage > maxNum{
+            maxC = 5;
+            maxNum=numMage;
+        }}}}}
+            GameData.sharedInstance.Maxcharacter=maxC;
     }
-*/
+    
+//                    }
+//                    if contains(deadPeople, move.moveType.rawValue) {
+//                        posDeadCharacter.append(column, row)
+//                    }
+//                    moves[column, row].row.value
+//                    // Is it possible to swap this move with the one on the right?
+//                    if column < NumColumns{
+//                        
+//                        if let other = moves[column + 1, row] {
+//                            moves[column, row] = other
+//                            moves[column + 1, row] = move
+//                           
+//                            // Checks to see if either of the moves is of a dead character
+//                            if contains(teamDeaths, moves[column, row]!.moveType.rawValue) || contains(teamDeaths, moves[column + 1, row]!.moveType.rawValue)
+//                            {
+//                                println("if")
+//                                // Swap them back
+//                                moves[column, row] = move
+//                                moves[column + 1, row] = other
+//                            }
+//                            
+//                            else {
+//                                println("else")
+//                                set.insert(Swap(moveA: move, moveB: other))
+//                            }
+//                            
+//                        }
+//                    }
+//                  
+//                    if row < NumRows - 1 {
+//                        if let other = moves[column, row + 1] {
+//                            moves[column, row] = other
+//                            moves[column, row + 1] = move
+//                            
+//                            // Checks to see if either of the moves is of a dead character
+//                            if contains(teamDeaths, moves[column, row]!.moveType.rawValue) || contains(teamDeaths, moves[column, row + 1]!.moveType.rawValue)
+//                            {
+//                                println("if")
+//                                // Swap them back
+//                                moves[column, row] = move
+//                                moves[column, row + 1] = other
+//                            }
+//                            else {
+//                                println("else")
+//                                set.insert(Swap(moveA: move, moveB: other))
+//                            }
+//                            
+//                       }
+//                    }
+//                }
+//            }
+//        }
+//        possibleSwaps = set
+//    }
     
     func determineFieldOfMoves() -> Array<Move> {
         var currentField = Array<Move>()

@@ -56,6 +56,7 @@ class Enemy_AI{
             damage = Float(enemyAtt - party[Int(posMinHP)].Def)
             conclusion[Int(posMinHP)] = damage
             return conclusion
+            
         case "easyAtt":
             
             
@@ -79,9 +80,17 @@ class Enemy_AI{
             
             return conclusion
             
-            case "mediumAtt":
+        case "mediumAtt":
+            i=0;
+            for i in 0...party.count{
+                if party[i].RawValue==GameData.sharedInstance.Maxcharacter{
+                    break;
+                }
+            }
+            damage = Float(enemyAtt - party[i].Def);
+            conclusion[i] = damage
             
-            return [100.0, 0.0, 0.0, 0.0]
+            return conclusion
             
         default:
             return [0.0, 0.0, 0.0, 0.0]

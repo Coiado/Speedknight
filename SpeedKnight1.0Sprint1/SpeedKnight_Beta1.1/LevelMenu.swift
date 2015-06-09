@@ -63,7 +63,7 @@ class LevelMenu : UIViewController {
         }
         
         data.levelFile = "Level_3"
-        data.attackAI = "easyAtt"
+        data.attackAI = "mediumAtt"
         data.defenseAI = "easyDef"
     }
  
