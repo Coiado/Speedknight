@@ -22,7 +22,7 @@ class LevelMenu : UIViewController {
             data.enemyImage = dictionary["enemyImage"] as! String
         }
         data.levelFile = "Level_0"
-        data.attackAI = "easyAtt2"
+        data.attackAI = "easyAtt1"
         data.defenseAI = "easyDef"
         performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
@@ -35,7 +35,7 @@ class LevelMenu : UIViewController {
             data.enemyImage = dictionary["enemyImage"] as! String
         }
         data.levelFile = "Level_1"
-        data.attackAI = "easyAtt1"
+        data.attackAI = "easyAtt2"
         data.defenseAI = "easyDef"
         //presentViewController(GameViewController, animated: true, completion: nil)
         performSegueWithIdentifier("GameViewControllerSegue", sender: self)

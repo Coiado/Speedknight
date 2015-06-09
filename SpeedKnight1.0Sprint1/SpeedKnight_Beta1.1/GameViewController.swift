@@ -311,8 +311,8 @@ class GameViewController: UIViewController {
     
     func presentResults(actions: Array<Int>!){
         
-        //if counter == 4 { // <- Watch out for the shield
         self.scene.level.findCharacters()
+        //if counter == 4 { // <- Watch out for the shield
         let ataqueTotal = self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3]
         
             labelAtack.text = ("Ataque Total:\(ataqueTotal)")

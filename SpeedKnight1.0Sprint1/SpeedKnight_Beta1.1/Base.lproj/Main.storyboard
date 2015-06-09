@@ -205,68 +205,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4A-MT-YhR">
-                                <rect key="frame" x="278" y="40" width="45" height="30"/>
-                                <state key="normal" title="Level1">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="LevelOne:" destination="vlX-Fc-fmE" eventType="touchUpInside" id="cwF-a4-vKd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bX8-fj-gR9">
-                                <rect key="frame" x="278" y="90" width="45" height="30"/>
+                                <rect key="frame" x="278" y="285" width="45" height="30"/>
                                 <state key="normal" title="Level2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="LevelTwo:" destination="vlX-Fc-fmE" eventType="touchUpInside" id="7Ly-QY-cqf"/>
+                                    <segue destination="LVB-YS-i5n" kind="show" id="YR3-2q-XHa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHJ-xh-ICN">
-                                <rect key="frame" x="277" y="140" width="45" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zz8-aG-f96">
+                                <rect key="frame" x="278" y="335" width="45" height="30"/>
                                 <state key="normal" title="Level3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="LevelThree:" destination="vlX-Fc-fmE" eventType="touchUpInside" id="N9e-dh-R7B"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zz8-aG-f96">
-                                <rect key="frame" x="277" y="190" width="45" height="30"/>
-                                <state key="normal" title="Level4">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
                                     <action selector="LevelFour:" destination="vlX-Fc-fmE" eventType="touchUpInside" id="Bkv-91-u23"/>
+                                    <segue destination="LVB-YS-i5n" kind="show" id="0Db-Fl-qCS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lca-N9-58C">
-                                <rect key="frame" x="285" y="240" width="30" height="320"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="Pkv-VQ-YJq"/>
-                                </constraints>
-                                <state key="normal" title="Play">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4A-MT-YhR">
+                                <rect key="frame" x="278" y="235" width="45" height="30"/>
+                                <state key="normal" title="Level1">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="LVB-YS-i5n" kind="show" id="MxG-OI-h3x"/>
+                                    <action selector="LevelOne:" destination="vlX-Fc-fmE" eventType="touchUpInside" id="cwF-a4-vKd"/>
+                                    <segue destination="LVB-YS-i5n" kind="show" id="kgf-m3-c0a"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zz8-aG-f96" firstAttribute="top" secondItem="MHJ-xh-ICN" secondAttribute="bottom" priority="700" constant="20" id="1gF-Dl-fF0"/>
                             <constraint firstItem="bX8-fj-gR9" firstAttribute="top" secondItem="d4A-MT-YhR" secondAttribute="bottom" priority="700" constant="20" id="1xm-A3-AIv"/>
-                            <constraint firstItem="MHJ-xh-ICN" firstAttribute="top" secondItem="bX8-fj-gR9" secondAttribute="bottom" priority="700" constant="20" id="9Hg-ck-7bb"/>
-                            <constraint firstItem="MyX-68-ttN" firstAttribute="top" secondItem="Lca-N9-58C" secondAttribute="bottom" constant="40" id="9qW-o7-KWP"/>
-                            <constraint firstItem="Lca-N9-58C" firstAttribute="top" secondItem="zz8-aG-f96" secondAttribute="bottom" priority="700" constant="20" id="MZu-mS-Npf"/>
+                            <constraint firstAttribute="centerX" secondItem="bX8-fj-gR9" secondAttribute="centerX" id="Dy8-RF-AxU"/>
                             <constraint firstAttribute="centerX" secondItem="zz8-aG-f96" secondAttribute="centerX" id="Td6-h5-Ggo"/>
-                            <constraint firstAttribute="centerX" secondItem="Lca-N9-58C" secondAttribute="centerX" id="dnb-rt-Dp9"/>
-                            <constraint firstItem="d4A-MT-YhR" firstAttribute="top" secondItem="TJr-UD-Jrm" secondAttribute="bottom" priority="749" constant="20" id="fyu-4k-LUB"/>
+                            <constraint firstAttribute="centerY" secondItem="bX8-fj-gR9" secondAttribute="centerY" id="cmj-8f-dHm"/>
+                            <constraint firstItem="zz8-aG-f96" firstAttribute="top" secondItem="bX8-fj-gR9" secondAttribute="bottom" constant="20" id="gac-Dh-G3F"/>
                             <constraint firstAttribute="centerX" secondItem="bX8-fj-gR9" secondAttribute="centerX" id="gsp-TV-R58"/>
                             <constraint firstAttribute="centerX" secondItem="d4A-MT-YhR" secondAttribute="centerX" id="qwA-vg-zFw"/>
-                            <constraint firstAttribute="centerX" secondItem="MHJ-xh-ICN" secondAttribute="centerX" id="vBx-FI-Wue"/>
                         </constraints>
                     </view>
                     <connections>

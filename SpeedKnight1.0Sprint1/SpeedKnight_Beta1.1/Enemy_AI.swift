@@ -19,8 +19,8 @@ class Enemy_AI{
     func attackAI(difficulty: String!) -> Array<Float>!
     {
         
-        var minHP : Float!
-        var posMinHP: Float!
+        var minDef : Int!
+        var posMinDef: Int!
         var i : Int! = Int(arc4random_uniform(4))
         var damage : Float! = 0.0
         var conclusion : Array<Float>! = []
@@ -28,67 +28,69 @@ class Enemy_AI{
         
         switch difficulty
         {
-        // A first example of AI for the enemy attack. In this simple case, the enemy will randomly choose someone to attack. If this person has more HP than the one directly at it's side (considering the team a circle), it will attack it. Otherwise, it will attack it's neighbour.
+        // A first example of AI for the enemy attack. In this simple case, the enemy will randomly choose someone to attack.
         case "easyAtt1":
             do{
             if party[i].HP > 0 && enemyAtt > party[i].Def{
                 damage = Float(enemyAtt - party[i].Def)
+                break
             }
+                i=Int(arc4random_uniform(4))
             }while party[i].HP == 0
             conclusion[i]=damage
             return conclusion
-            
+        //Attack the character with less defense
         case "easyAtt2":
-            minHP = party[0].HP
-            posMinHP=0
+            minDef = party[0].Def
+            posMinDef=0
             for i in 0..<3{
-                if minHP != 0{
-                    if minHP > party[i+1].HP{
-                        minHP=party[i+1].HP
-                        posMinHP = Float(i+1)
+                if party[i].HP != 0{
+                    if minDef > party[i+1].Def{
+                        minDef=party[i+1].Def
+                        posMinDef = i+1
                     }
                 }
                 else{
-                    minHP=party[i+1].HP
-                    posMinHP = Float(i+1)
+                    minDef=party[i+1].Def
+                    posMinDef = i+1
                 }
             }
-            damage = Float(enemyAtt - party[Int(posMinHP)].Def)
-            conclusion[Int(posMinHP)] = damage
+            damage = Float(enemyAtt - party[Int(posMinDef)].Def)
+            conclusion[Int(posMinDef)] = damage
             return conclusion
             
-        case "easyAtt":
-            
-            
-            
-            if i < 3 && party[i].HP > party[i+1].HP
-            {
-                damage = Float(enemyAtt - party[i].Def)
-            }
-                
-            else if i == 3 && party[i].HP > party[0].HP
-            {
-                damage = Float(enemyAtt - party[i].Def)
-            }
-                
-            else if i < 3 && (party[i].HP < party[i+1].HP || party[i].HP == party[i+1].HP)
-            {
-                damage = Float(enemyAtt - party[i+1].Def)
-            }
-            
-            conclusion[i] = damage
-            
-            return conclusion
-            
+//        case "easyAtt":
+//            
+//            
+//            
+//            if i < 3 && party[i].HP > party[i+1].HP
+//            {
+//                damage = Float(enemyAtt - party[i].Def)
+//            }
+//                
+//            else if i == 3 && party[i].HP > party[0].HP
+//            {
+//                damage = Float(enemyAtt - party[i].Def)
+//            }
+//                
+//            else if i < 3 && (party[i].HP < party[i+1].HP || party[i].HP == party[i+1].HP)
+//            {
+//                damage = Float(enemyAtt - party[i+1].Def)
+//            }
+//            
+//            conclusion[i] = damage
+//            
+//            return conclusion
+        //Attack the character with more pieces in the table
         case "mediumAtt":
-            i=0;
-            for i in 0...party.count{
-                if party[i].RawValue==GameData.sharedInstance.Maxcharacter{
+            var j:Int=0;
+            for j in 0..<party.count{
+                if party[j].RawValue==GameData.sharedInstance.Maxcharacter{
+                    damage = Float(enemyAtt - party[j].Def);
+                    conclusion[j] = damage
                     break;
                 }
             }
-            damage = Float(enemyAtt - party[i].Def);
-            conclusion[i] = damage
             
             return conclusion
             

@@ -426,11 +426,16 @@ class Level {
         var numSingleS: Int!=0
         var maxNum: Int!=0
         var maxC: Int!=0
-        
+        var i: Int!=0
+        for i in 0..<4{
+            if GameData.sharedInstance.team[i].HP==0 && !contains(teamDeaths,GameData.sharedInstance.team[i].RawValue){
+                teamDeaths.append(GameData.sharedInstance.team[i].RawValue)
+            }
+        }
         // Here I scan through the whole field ackowledging each position of a dead sprite.
         for row in 0..<NumRows {
             for column in 0..<NumColumns {
-                if !contains(teamDeaths, 1) && moves[column, row]?.moveType.rawValue == 1{
+                if  !contains(teamDeaths, 1) && moves[column, row]?.moveType.rawValue == 1{
                     numAxe = numAxe+1;
                 }
                 if !contains(teamDeaths, 2) && moves[column, row]?.moveType.rawValue == 2{
@@ -450,19 +455,23 @@ class Level {
         if numAxe > maxNum{
             maxC = 1;
             maxNum=numAxe;
-        }else{if numSingleS > maxNum{
+        }
+        if numSingleS > maxNum{
                 maxC = 2;
                 maxNum=numSingleS;
-        }else{if numTwoS > maxNum{
+        }
+        if numTwoS > maxNum{
             maxC = 3;
             maxNum=numTwoS;
-        }else{if numArrow > maxNum{
+        }
+        if numArrow > maxNum{
             maxC = 4;
             maxNum=numArrow;
-        }else{if numMage > maxNum{
+        }
+        if numMage > maxNum{
             maxC = 5;
             maxNum=numMage;
-        }}}}}
+        }
             GameData.sharedInstance.Maxcharacter=maxC;
     }
     
