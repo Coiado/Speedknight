@@ -10,7 +10,7 @@
                [0, 0, 0, 0, 0, 0, 0, 0, 0 ] ],
     
     "enemyHP" : 2000,
-    "enemyAttack" : 1000,
+    "enemyAttack" : 100000,
     "enemyDefense" : 1000,
     "enemyAI" : 1000,
 }

@@ -264,7 +264,6 @@ class GameViewController: UIViewController {
     timerCount = timerCount - 1
     battleTimerLabel.text = "\(timerCount)"
         if timerCount < 1 {
-            self.scene.level.findCharacters()
             self.view.userInteractionEnabled = false
             timer.invalidate()
             

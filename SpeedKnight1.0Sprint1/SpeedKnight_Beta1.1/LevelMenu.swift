@@ -22,7 +22,7 @@ class LevelMenu : UIViewController {
             data.enemyImage = dictionary["enemyImage"] as! String
         }
         data.levelFile = "Level_0"
-        data.attackAI = "easyAtt2"
+        data.attackAI = "easyAtt1"
         data.defenseAI = "easyDef"
     }
 
@@ -34,23 +34,23 @@ class LevelMenu : UIViewController {
             data.enemyImage = dictionary["enemyImage"] as! String
         }
         data.levelFile = "Level_1"
-        data.attackAI = "easyAtt1"
+        data.attackAI = "easyAtt2"
         data.defenseAI = "easyDef"
     }
 
-    @IBAction func LevelThree(sender: AnyObject) {
-        
-        if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle("Level_2") {
-            data.backgroundImage = dictionary["background"] as! String
-            data.enemyAttack = dictionary["enemyAttack"] as! Int
-            data.enemyDefense = dictionary["enemyDefense"] as! Int
-            data.enemyImage = dictionary["enemyImage"] as! String
-        }
-        
-        data.levelFile = "Level_2"
-        data.attackAI = "easyAtt"
-        data.defenseAI = "easyDef"
-    }
+//    @IBAction func LevelThree(sender: AnyObject) {
+//        
+//        if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle("Level_2") {
+//            data.backgroundImage = dictionary["background"] as! String
+//            data.enemyAttack = dictionary["enemyAttack"] as! Int
+//            data.enemyDefense = dictionary["enemyDefense"] as! Int
+//            data.enemyImage = dictionary["enemyImage"] as! String
+//        }
+//        
+//        data.levelFile = "Level_2"
+//        data.attackAI = "easyAtt"
+//        data.defenseAI = "easyDef"
+//    }
 
     @IBAction func LevelFour(sender: AnyObject) {
         
