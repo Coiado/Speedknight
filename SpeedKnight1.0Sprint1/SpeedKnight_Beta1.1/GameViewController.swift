@@ -59,6 +59,7 @@ class GameViewController: UIViewController {
     
     // Creates the  box to warn the player of the fight!
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         self.view.userInteractionEnabled = false
         
@@ -149,6 +150,13 @@ class GameViewController: UIViewController {
         startGame()
         
     } // As soon as it ends, the problem begins
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let skView = view as! SKView
+        skView.presentScene(nil)
+    }
     
     // Method that decides whether or not the player will begin the level!
     
