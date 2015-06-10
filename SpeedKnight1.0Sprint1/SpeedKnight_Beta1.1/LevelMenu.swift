@@ -23,7 +23,7 @@ class LevelMenu : UIViewController {
         }
         data.levelFile = "Level_0"
         data.attackAI = "easyAtt1"
-        data.defenseAI = "easyDef"
+        data.defenseAI = "easyDef1"
     }
 
     @IBAction func LevelTwo(sender: AnyObject) {

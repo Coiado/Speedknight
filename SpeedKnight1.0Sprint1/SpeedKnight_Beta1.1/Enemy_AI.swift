@@ -41,18 +41,14 @@ class Enemy_AI{
             return conclusion
         //Attack the character with less defense
         case "easyAtt2":
-            minDef = party[0].Def
+            minDef = 1000
             posMinDef=0
             for i in 0..<3{
                 if party[i].HP != 0{
-                    if minDef > party[i+1].Def{
-                        minDef=party[i+1].Def
-                        posMinDef = i+1
+                    if minDef > party[i].Def{
+                        minDef=party[i].Def
+                        posMinDef = i
                     }
-                }
-                else{
-                    minDef=party[i+1].Def
-                    posMinDef = i+1
                 }
             }
             damage = Float(enemyAtt - party[Int(posMinDef)].Def)
@@ -114,12 +110,12 @@ class Enemy_AI{
         
         switch difficulty
         {
-            // A first example of AI defense. In this case, the enemy will simply analyze how many points each character did during the current round. With that, he will act accordingly. If a character was only able to hit for 60 points (minimum of 3 pieces), the enemy will use it's natural defense. If, on the other hand this points escalate up to 130, he will double his defense in order to adapt to the harder hit. And, the same goes if the attack surpasses such case, making the enemy reach a maximum of the triple of his original defense.
+        //The 
         case "easyDef1":
             i=Int(arc4random_uniform(4))
             if teamAtt != 0{
-                do{
-                    if party[i].Att > 0{
+                for j in 0..<4{
+                    if roundActions[i] > 0{
                         if roundActions[i] == 60{
                             enemyDefending[i] = enemyDef
                         }
@@ -133,31 +129,34 @@ class Enemy_AI{
                             enemyDefending[i] = 10
                         }
                     }
-                }while party[i].Att == 0
+                    i=i+1
+                    i=i%4
+                }
                 return enemyDefending
             }
             else{
                 return [0, 0, 0, 0]
             }
-        case "easyDef":
-            
-            for i in 0..<4
-            {
-                if roundActions[i] == 60{
-                    enemyDefending[i] = enemyDef
-                }
-                else if roundActions[i] > 60 && (roundActions[i] < 130 || roundActions[i] == 130){
-                    enemyDefending[i] = 2*enemyDef
-                }
-                else if roundActions[i] > 130 {
-                    enemyDefending[i] = 3*enemyDef
-                }
-                else if roundActions[i] == 0{
-                    enemyDefending[i] = 10
-                }
-            }
-            
-            return enemyDefending
+            // A first example of AI defense. In this case, the enemy will simply analyze how many points each character did during the current round. With that, he will act accordingly. If a character was only able to hit for 60 points (minimum of 3 pieces), the enemy will use it's natural defense. If, on the other hand this points escalate up to 130, he will double his defense in order to adapt to the harder hit. And, the same goes if the attack surpasses such case, making the enemy reach a maximum of the triple of his original defense.
+//        case "easyDef":
+//            
+//            for i in 0..<4
+//            {
+//                if roundActions[i] == 60{
+//                    enemyDefending[i] = enemyDef
+//                }
+//                else if roundActions[i] > 60 && (roundActions[i] < 130 || roundActions[i] == 130){
+//                    enemyDefending[i] = 2*enemyDef
+//                }
+//                else if roundActions[i] > 130 {
+//                    enemyDefending[i] = 3*enemyDef
+//                }
+//                else if roundActions[i] == 0{
+//                    enemyDefending[i] = 10
+//                }
+//            }
+//            
+//            return enemyDefending
             
         default:
             return [0, 0, 0, 0]
