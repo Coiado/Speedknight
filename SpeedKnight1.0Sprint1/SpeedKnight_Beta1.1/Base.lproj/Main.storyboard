@@ -247,6 +247,9 @@
                             <constraint firstAttribute="centerX" secondItem="d4A-MT-YhR" secondAttribute="centerX" id="qwA-vg-zFw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="LVB-YS-i5n" kind="show" identifier="GameViewControllerSegue" id="I6c-VZ-baP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQc-v8-3d5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -306,6 +309,6 @@
         <image name="TwoSwordsProfilePic.png" width="602" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kgf-m3-c0a"/>
+        <segue reference="I6c-VZ-baP"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -36,21 +36,24 @@ class LevelMenu : UIViewController {
         data.levelFile = "Level_1"
         data.attackAI = "easyAtt2"
         data.defenseAI = "easyDef"
+        //presentViewController(GameViewController, animated: true, completion: nil)
+        performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
 
-//    @IBAction func LevelThree(sender: AnyObject) {
-//        
-//        if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle("Level_2") {
-//            data.backgroundImage = dictionary["background"] as! String
-//            data.enemyAttack = dictionary["enemyAttack"] as! Int
-//            data.enemyDefense = dictionary["enemyDefense"] as! Int
-//            data.enemyImage = dictionary["enemyImage"] as! String
-//        }
-//        
-//        data.levelFile = "Level_2"
-//        data.attackAI = "easyAtt"
-//        data.defenseAI = "easyDef"
-//    }
+    @IBAction func LevelThree(sender: AnyObject) {
+        
+        if let dictionary = Dictionary<String, AnyObject>.loadJSONFromBundle("Level_2") {
+            data.backgroundImage = dictionary["background"] as! String
+            data.enemyAttack = dictionary["enemyAttack"] as! Int
+            data.enemyDefense = dictionary["enemyDefense"] as! Int
+            data.enemyImage = dictionary["enemyImage"] as! String
+        }
+        
+        data.levelFile = "Level_2"
+        data.attackAI = "easyAtt"
+        data.defenseAI = "easyDef"
+        performSegueWithIdentifier("GameViewControllerSegue", sender: self)
+    }
 
     @IBAction func LevelFour(sender: AnyObject) {
         
@@ -65,6 +68,7 @@ class LevelMenu : UIViewController {
         data.levelFile = "Level_3"
         data.attackAI = "mediumAtt"
         data.defenseAI = "easyDef"
+        performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
  
 }
