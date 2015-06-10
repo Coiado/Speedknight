@@ -117,6 +117,10 @@
 		28E753E51ADF404700956E16 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753E41ADF404700956E16 /* Level.swift */; };
 		3F10B3761B0BB57C00C1BC55 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10B3751B0BB57C00C1BC55 /* SelectView.swift */; };
 		3F10B3781B0BB69700C1BC55 /* Minus_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F10B3771B0BB69700C1BC55 /* Minus_icon.png */; };
+		3F43A0321B28734400BDB929 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43A0311B28734400BDB929 /* TutorialViewController.swift */; };
+		3F43A0341B287CD400BDB929 /* page1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F43A0331B287CD400BDB929 /* page1.xib */; };
+		3F43A0361B2885BC00BDB929 /* page2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F43A0351B2885BC00BDB929 /* page2.xib */; };
+		3F43A0381B28860500BDB929 /* page3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F43A0371B28860500BDB929 /* page3.xib */; };
 		3F90ABD11B270F730003D947 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F90ABD01B270F730003D947 /* Images.xcassets */; };
 		5FE5C0FE1B1752D500CE3B84 /* Monstro3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE5C0FD1B1752D500CE3B84 /* Monstro3.png */; };
 /* End PBXBuildFile section */
@@ -247,6 +251,10 @@
 		28E753E41ADF404700956E16 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		3F10B3751B0BB57C00C1BC55 /* SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		3F10B3771B0BB69700C1BC55 /* Minus_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Minus_icon.png; sourceTree = "<group>"; };
+		3F43A0311B28734400BDB929 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		3F43A0331B287CD400BDB929 /* page1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = page1.xib; sourceTree = "<group>"; };
+		3F43A0351B2885BC00BDB929 /* page2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = page2.xib; sourceTree = "<group>"; };
+		3F43A0371B28860500BDB929 /* page3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = page3.xib; sourceTree = "<group>"; };
 		3F90ABD01B270F730003D947 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5FE5C0FD1B1752D500CE3B84 /* Monstro3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Monstro3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -437,6 +445,7 @@
 				286E5DAF1AF2F8B800733054 /* Enemy_AI.swift */,
 				285F898A1B061D4C0097574F /* GameData.swift */,
 				3F10B3751B0BB57C00C1BC55 /* SelectView.swift */,
+				3F43A0311B28734400BDB929 /* TutorialViewController.swift */,
 				28E753C21ADF37FF00956E16 /* Main.storyboard */,
 				28E753C71ADF37FF00956E16 /* LaunchScreen.xib */,
 				3F90ABD01B270F730003D947 /* Images.xcassets */,
@@ -452,6 +461,9 @@
 		28E753B81ADF37FF00956E16 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3F43A0331B287CD400BDB929 /* page1.xib */,
+				3F43A0351B2885BC00BDB929 /* page2.xib */,
+				3F43A0371B28860500BDB929 /* page3.xib */,
 				286D42201B03B03400CDAA8E /* Characters-Images */,
 				286E5DA31AF2A65000733054 /* Character_Battle_Profile_Teste(0).png */,
 				28C2BD1E1B14AFDA009E4DA1 /* gameOverSample.jpg */,
@@ -578,6 +590,7 @@
 				286D42311B03DD9600CDAA8E /* Icone-Staff-Selecionado.png in Resources */,
 				28C2BD1F1B14AFDA009E4DA1 /* gameOverSample.jpg in Resources */,
 				286E5DAB1AF2A65000733054 /* Character_Battle_Profile_Teste(3).png in Resources */,
+				3F43A0341B287CD400BDB929 /* page1.xib in Resources */,
 				286E5D541AEEB69300733054 /* Icone-Axe@2x.png in Resources */,
 				28091DAE1B162B45003AEAE3 /* Icone-DualSword-Morto@2x.png in Resources */,
 				280834691AF317940062FFD6 /* HP_Enemy_80.png in Resources */,
@@ -649,6 +662,8 @@
 				280834671AF317940062FFD6 /* HP_Enemy_70.png in Resources */,
 				286E5D3E1AEEB5AD00733054 /* Icone-DualSword-Selecionado.png in Resources */,
 				286E5DA81AF2A65000733054 /* Character_Battle_Profile_Teste(0).png in Resources */,
+				3F43A0381B28860500BDB929 /* page3.xib in Resources */,
+				3F43A0361B2885BC00BDB929 /* page2.xib in Resources */,
 				286E5DAC1AF2A65000733054 /* Character_Battle_Profile_Teste(4).png in Resources */,
 				28A5EE1B1B0524F2002B214D /* dungeonTest2.png in Resources */,
 				28091DA31B162B1C003AEAE3 /* Icone-Axe-Morto.png in Resources */,
@@ -695,6 +710,7 @@
 				286E5D9E1AF047EB00733054 /* Chain.swift in Sources */,
 				28E753C11ADF37FF00956E16 /* GameViewController.swift in Sources */,
 				28E753BB1ADF37FF00956E16 /* AppDelegate.swift in Sources */,
+				3F43A0321B28734400BDB929 /* TutorialViewController.swift in Sources */,
 				286E5DB01AF2F8B800733054 /* Enemy_AI.swift in Sources */,
 				28E753E31ADF3FE700956E16 /* Array2D.swift in Sources */,
 				280BCCD21AE13D8B0062D550 /* Swap.swift in Sources */,

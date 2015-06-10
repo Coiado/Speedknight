@@ -23,7 +23,8 @@ class LevelMenu : UIViewController {
         }
         data.levelFile = "Level_0"
         data.attackAI = "easyAtt1"
-        data.defenseAI = "easyDef1"
+        data.defenseAI = "easyDef"
+        performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
 
     @IBAction func LevelTwo(sender: AnyObject) {
