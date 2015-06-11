@@ -45,6 +45,13 @@
 		280BCCCF1AE047770062D550 /* Level_3.json in Resources */ = {isa = PBXBuildFile; fileRef = 280BCCCA1AE047770062D550 /* Level_3.json */; };
 		280BCCD01AE047770062D550 /* Level_4.json in Resources */ = {isa = PBXBuildFile; fileRef = 280BCCCB1AE047770062D550 /* Level_4.json */; };
 		280BCCD21AE13D8B0062D550 /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280BCCD11AE13D8B0062D550 /* Swap.swift */; };
+		284BE36D1B28CBFA00DE4C0E /* 1180351-medieval.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 284BE36C1B28CBFA00DE4C0E /* 1180351-medieval.jpg */; };
+		284BE36F1B28CC0100DE4C0E /* Azul.png in Resources */ = {isa = PBXBuildFile; fileRef = 284BE36E1B28CC0100DE4C0E /* Azul.png */; };
+		284BE3711B28CC0A00DE4C0E /* Laranja.png in Resources */ = {isa = PBXBuildFile; fileRef = 284BE3701B28CC0A00DE4C0E /* Laranja.png */; };
+		284BE3731B28CC1200DE4C0E /* Roxo.png in Resources */ = {isa = PBXBuildFile; fileRef = 284BE3721B28CC1200DE4C0E /* Roxo.png */; };
+		284BE3751B28CC1900DE4C0E /* Verde.png in Resources */ = {isa = PBXBuildFile; fileRef = 284BE3741B28CC1900DE4C0E /* Verde.png */; };
+		284BE3771B28CC2400DE4C0E /* Vermelho.png in Resources */ = {isa = PBXBuildFile; fileRef = 284BE3761B28CC2400DE4C0E /* Vermelho.png */; };
+		284BE37D1B29D69000DE4C0E /* ShuffleButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 284BE37C1B29D69000DE4C0E /* ShuffleButton.png */; };
 		285F898B1B061D4C0097574F /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285F898A1B061D4C0097574F /* GameData.swift */; };
 		286D421B1B039BD900CDAA8E /* Character_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 286D421A1B039BD900CDAA8E /* Character_1.json */; };
 		286D421D1B039BEF00CDAA8E /* Character_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 286D421C1B039BEF00CDAA8E /* Character_2.json */; };
@@ -115,6 +122,10 @@
 		28E753E11ADF3EC000956E16 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753E01ADF3EC000956E16 /* Move.swift */; };
 		28E753E31ADF3FE700956E16 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753E21ADF3FE700956E16 /* Array2D.swift */; };
 		28E753E51ADF404700956E16 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E753E41ADF404700956E16 /* Level.swift */; };
+		28EF0DEA1B29F3750070997A /* Monstro1.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EF0DE91B29F3750070997A /* Monstro1.png */; };
+		28EF0DEC1B29F37D0070997A /* Monstro2.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EF0DEB1B29F37D0070997A /* Monstro2.png */; };
+		28EF0DEE1B2A01860070997A /* Take a Chance.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 28EF0DED1B2A01860070997A /* Take a Chance.mp3 */; };
+		28EF0DF01B2A01940070997A /* Volatile Reaction.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 28EF0DEF1B2A01940070997A /* Volatile Reaction.mp3 */; };
 		3F10B3761B0BB57C00C1BC55 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F10B3751B0BB57C00C1BC55 /* SelectView.swift */; };
 		3F10B3781B0BB69700C1BC55 /* Minus_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F10B3771B0BB69700C1BC55 /* Minus_icon.png */; };
 		3F43A0321B28734400BDB929 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F43A0311B28734400BDB929 /* TutorialViewController.swift */; };
@@ -174,6 +185,13 @@
 		280BCCCA1AE047770062D550 /* Level_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_3.json; sourceTree = "<group>"; };
 		280BCCCB1AE047770062D550 /* Level_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_4.json; sourceTree = "<group>"; };
 		280BCCD11AE13D8B0062D550 /* Swap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
+		284BE36C1B28CBFA00DE4C0E /* 1180351-medieval.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1180351-medieval.jpg"; sourceTree = "<group>"; };
+		284BE36E1B28CC0100DE4C0E /* Azul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Azul.png; sourceTree = "<group>"; };
+		284BE3701B28CC0A00DE4C0E /* Laranja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Laranja.png; sourceTree = "<group>"; };
+		284BE3721B28CC1200DE4C0E /* Roxo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Roxo.png; sourceTree = "<group>"; };
+		284BE3741B28CC1900DE4C0E /* Verde.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Verde.png; sourceTree = "<group>"; };
+		284BE3761B28CC2400DE4C0E /* Vermelho.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Vermelho.png; sourceTree = "<group>"; };
+		284BE37C1B29D69000DE4C0E /* ShuffleButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShuffleButton.png; sourceTree = "<group>"; };
 		285F898A1B061D4C0097574F /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
 		286D421A1B039BD900CDAA8E /* Character_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Character_1.json; sourceTree = "<group>"; };
 		286D421C1B039BEF00CDAA8E /* Character_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Character_2.json; sourceTree = "<group>"; };
@@ -249,6 +267,10 @@
 		28E753E01ADF3EC000956E16 /* Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		28E753E21ADF3FE700956E16 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		28E753E41ADF404700956E16 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		28EF0DE91B29F3750070997A /* Monstro1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Monstro1.png; sourceTree = "<group>"; };
+		28EF0DEB1B29F37D0070997A /* Monstro2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Monstro2.png; sourceTree = "<group>"; };
+		28EF0DED1B2A01860070997A /* Take a Chance.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Take a Chance.mp3"; sourceTree = "<group>"; };
+		28EF0DEF1B2A01940070997A /* Volatile Reaction.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Volatile Reaction.mp3"; sourceTree = "<group>"; };
 		3F10B3751B0BB57C00C1BC55 /* SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		3F10B3771B0BB69700C1BC55 /* Minus_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Minus_icon.png; sourceTree = "<group>"; };
 		3F43A0311B28734400BDB929 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -467,6 +489,15 @@
 				286D42201B03B03400CDAA8E /* Characters-Images */,
 				286E5DA31AF2A65000733054 /* Character_Battle_Profile_Teste(0).png */,
 				28C2BD1E1B14AFDA009E4DA1 /* gameOverSample.jpg */,
+				28EF0DED1B2A01860070997A /* Take a Chance.mp3 */,
+				28EF0DEF1B2A01940070997A /* Volatile Reaction.mp3 */,
+				284BE36C1B28CBFA00DE4C0E /* 1180351-medieval.jpg */,
+				284BE36E1B28CC0100DE4C0E /* Azul.png */,
+				284BE3721B28CC1200DE4C0E /* Roxo.png */,
+				284BE3741B28CC1900DE4C0E /* Verde.png */,
+				284BE3761B28CC2400DE4C0E /* Vermelho.png */,
+				284BE37C1B29D69000DE4C0E /* ShuffleButton.png */,
+				284BE3701B28CC0A00DE4C0E /* Laranja.png */,
 				28C2BD1C1B14AFD2009E4DA1 /* victorySample.png */,
 				286E5DA41AF2A65000733054 /* Character_Battle_Profile_Teste(1).png */,
 				286E5DA51AF2A65000733054 /* Character_Battle_Profile_Teste(2).png */,
@@ -474,6 +505,8 @@
 				286E5DA71AF2A65000733054 /* Character_Battle_Profile_Teste(4).png */,
 				286D42291B03B08100CDAA8E /* DefensiveStanceImage.png */,
 				28A5EE1A1B0524F2002B214D /* dungeonTest2.png */,
+				28EF0DE91B29F3750070997A /* Monstro1.png */,
+				28EF0DEB1B29F37D0070997A /* Monstro2.png */,
 				5FE5C0FD1B1752D500CE3B84 /* Monstro3.png */,
 				286E5D701AF009E700733054 /* HP-Enemy */,
 				286E5D6F1AF0097500733054 /* NewBattleTextBox */,
@@ -587,8 +620,12 @@
 				2808345F1AF317940062FFD6 /* HP_Enemy_30.png in Resources */,
 				286E5DAA1AF2A65000733054 /* Character_Battle_Profile_Teste(2).png in Resources */,
 				2808346B1AF317940062FFD6 /* HP_Enemy_90.png in Resources */,
+				28EF0DF01B2A01940070997A /* Volatile Reaction.mp3 in Resources */,
 				286D42311B03DD9600CDAA8E /* Icone-Staff-Selecionado.png in Resources */,
 				28C2BD1F1B14AFDA009E4DA1 /* gameOverSample.jpg in Resources */,
+				284BE36F1B28CC0100DE4C0E /* Azul.png in Resources */,
+				284BE37D1B29D69000DE4C0E /* ShuffleButton.png in Resources */,
+				28EF0DEC1B29F37D0070997A /* Monstro2.png in Resources */,
 				286E5DAB1AF2A65000733054 /* Character_Battle_Profile_Teste(3).png in Resources */,
 				3F43A0341B287CD400BDB929 /* page1.xib in Resources */,
 				286E5D541AEEB69300733054 /* Icone-Axe@2x.png in Resources */,
@@ -611,16 +648,21 @@
 				280834601AF317940062FFD6 /* HP_Enemy_35.png in Resources */,
 				286E5D401AEEB5AD00733054 /* Icone-ParedeDeTijolos.png in Resources */,
 				28091DB01B162B45003AEAE3 /* Icone-Staff-Morto@2x.png in Resources */,
+				284BE36D1B28CBFA00DE4C0E /* 1180351-medieval.jpg in Resources */,
+				284BE3751B28CC1900DE4C0E /* Verde.png in Resources */,
 				280834641AF317940062FFD6 /* HP_Enemy_55.png in Resources */,
 				28C2BD1D1B14AFD2009E4DA1 /* victorySample.png in Resources */,
 				286E5D6E1AEFF34E00733054 /* Game_TextBox_NoButton1.png in Resources */,
 				280834681AF317940062FFD6 /* HP_Enemy_75.png in Resources */,
 				286D421F1B039C0300CDAA8E /* Character_3.json in Resources */,
+				28EF0DEE1B2A01860070997A /* Take a Chance.mp3 in Resources */,
 				286E5D411AEEB5AD00733054 /* Icone-Shield-Selecionado.png in Resources */,
 				280BCCCE1AE047770062D550 /* Level_2.json in Resources */,
 				286D42321B03DD9600CDAA8E /* Icone-Staff.png in Resources */,
+				284BE3731B28CC1200DE4C0E /* Roxo.png in Resources */,
 				280834621AF317940062FFD6 /* HP_Enemy_45.png in Resources */,
 				280834591AF317940062FFD6 /* HP_Enemy_0.png in Resources */,
+				28EF0DEA1B29F3750070997A /* Monstro1.png in Resources */,
 				28091DA51B162B1C003AEAE3 /* Icone-DualSword-Morto.png in Resources */,
 				286D42381B03DDB000CDAA8E /* Icone-BowArrow@2x.png in Resources */,
 				28A5EE131B03FF1D002B214D /* DualWieldProfilePic.png in Resources */,
@@ -651,6 +693,7 @@
 				280834631AF317940062FFD6 /* HP_Enemy_50.png in Resources */,
 				289EEEB01B03846400ECE4B7 /* Character_0.json in Resources */,
 				28E753C41ADF37FF00956E16 /* Main.storyboard in Resources */,
+				284BE3771B28CC2400DE4C0E /* Vermelho.png in Resources */,
 				286D421B1B039BD900CDAA8E /* Character_1.json in Resources */,
 				280BCCCD1AE047770062D550 /* Level_1.json in Resources */,
 				286D42301B03DD9600CDAA8E /* Icone-BowArrow.png in Resources */,
@@ -674,6 +717,7 @@
 				28A5EE121B03FF1D002B214D /* DefensiveInstanceImage.png in Resources */,
 				286E5D5C1AEEB69300733054 /* Icone-SingleSword(DualWield)@2x.png in Resources */,
 				280834651AF317940062FFD6 /* HP_Enemy_60.png in Resources */,
+				284BE3711B28CC0A00DE4C0E /* Laranja.png in Resources */,
 				286D42391B03DDB000CDAA8E /* Icone-Staff-Selecionado@2x.png in Resources */,
 				286E5D5B1AEEB69300733054 /* Icone-SingleSword(DualWield)-Selecionado@2x.png in Resources */,
 				3F90ABD11B270F730003D947 /* Images.xcassets in Resources */,
