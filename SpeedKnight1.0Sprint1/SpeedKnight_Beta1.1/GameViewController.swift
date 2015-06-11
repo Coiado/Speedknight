@@ -154,7 +154,7 @@ class GameViewController: UIViewController {
     func initialValues(){
         var i = 0
         for i in 0..<4 {
-            self.partyMembers[i].HP = 0.0
+            self.partyMembers[i].HP = 100.0
             self.partyMembers[i].Att = 0
             self.partyMembers[i].Def = 0
         }
