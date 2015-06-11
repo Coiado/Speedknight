@@ -62,7 +62,7 @@ class GameViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.view.userInteractionEnabled = false
-        
+        initialValues()
         labelAtack.font = UIFont(name: ("Bradley Hand"), size: 20)
         labelAtack.textColor = UIColor.whiteColor()
         labelAtack.frame = adjustRectSize(CGRectMake(73, 75, 400, 400))
@@ -150,6 +150,15 @@ class GameViewController: UIViewController {
         startGame()
         
     } // As soon as it ends, the problem begins
+    
+    func initialValues(){
+        var i = 0
+        for i in 0..<4 {
+            self.partyMembers[i].HP = 0.0
+            self.partyMembers[i].Att = 0
+            self.partyMembers[i].Def = 0
+        }
+    }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
@@ -384,7 +393,7 @@ class GameViewController: UIViewController {
         self.showEndGame("LevelComplete")
         }
         
-        else {
+        else if totalPartyHP < 0.0{
         self.view.userInteractionEnabled = true
         self.showEndGame("GameOver")
         }

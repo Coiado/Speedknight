@@ -31,11 +31,11 @@ class Enemy_AI{
         // A first example of AI for the enemy attack. In this simple case, the enemy will randomly choose someone to attack.
         case "easyAtt1":
             do{
+            i=Int(arc4random_uniform(4))
             if party[i].HP > 0 && enemyAtt > party[i].Def{
                 damage = Float(enemyAtt - party[i].Def)
                 break
             }
-                i=Int(arc4random_uniform(4))
             }while party[i].HP == 0
             conclusion[i]=damage
             return conclusion
