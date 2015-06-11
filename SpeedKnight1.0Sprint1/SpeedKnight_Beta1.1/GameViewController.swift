@@ -49,7 +49,7 @@ class GameViewController: UIViewController {
     var qtdShuffle : Int!
     
     var backgroundMusic = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Volatile Reaction", ofType: "mp3")!)
-    var audioPlayer = AVAudioPlayer()
+    var backgroundSong = AVAudioPlayer()
     
     // Images for the "YES" an "NO" buttons for the initialTextox + the image for the actual TextBox, respectively
  //   let yesImage = UIImage(named: "Game_TextBox_YesButton1") as UIImage?
@@ -65,10 +65,10 @@ class GameViewController: UIViewController {
     
     // Creates the  box to warn the player of the fight!
     override func viewDidAppear(animated: Bool) {
-        
+        super.viewDidAppear(animated)
      //   let backgroundMusic = SKAction.repeatActionForever(SKAction.playSoundFileNamed("Volatile Reaction.mp3", waitForCompletion: true))
-        
-        audioPlayer.play()
+        initialValues()
+        backgroundSong.play()
         
         self.view.userInteractionEnabled = false
         labelHP.font = UIFont(name: ("Papyrus"), size: 20)
@@ -394,7 +394,7 @@ class GameViewController: UIViewController {
         self.showEndGame("LevelComplete")
         }
         
-        else {
+        else if totalPartyHP < 0.0{
         self.view.userInteractionEnabled = true
         self.showEndGame("GameOver")
         }
@@ -549,8 +549,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
        // endGameResult.hidden = true
         
-        audioPlayer = AVAudioPlayer(contentsOfURL: backgroundMusic, error: nil)
-        audioPlayer.prepareToPlay()
+        backgroundSong = AVAudioPlayer(contentsOfURL: backgroundMusic, error: nil)
+        backgroundSong.prepareToPlay()
         
         // Configure the view.
         let skView = view as! SKView
@@ -571,6 +571,23 @@ class GameViewController: UIViewController {
         
         // Present the scene.
         skView.presentScene(scene)
+      
+    }
+    
+    func initialValues(){
+        var i = 0
+        for i in 0..<4 {
+            self.partyMembers[i].HP = 100.0
+            self.partyMembers[i].Att = 0
+            self.partyMembers[i].Def = 0
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         
+        let skView = view as! SKView
+        skView.presentScene(nil)
+        backgroundSong.stop()
     }
 }

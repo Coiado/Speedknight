@@ -10,20 +10,20 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial2" translatesAutoresizingMaskIntoConstraints="NO" id="GT0-s7-kEX">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial4" translatesAutoresizingMaskIntoConstraints="NO" id="HQo-GY-YhF">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="GT0-s7-kEX" secondAttribute="bottom" constant="100" id="BHn-oO-GAH"/>
-                <constraint firstItem="GT0-s7-kEX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="D79-px-9wc"/>
-                <constraint firstAttribute="trailing" secondItem="GT0-s7-kEX" secondAttribute="trailing" id="bTf-Aw-d9n"/>
-                <constraint firstItem="GT0-s7-kEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hqh-Jg-Q8h"/>
+                <constraint firstAttribute="trailing" secondItem="HQo-GY-YhF" secondAttribute="trailing" id="3m5-c0-NDo"/>
+                <constraint firstAttribute="bottom" secondItem="HQo-GY-YhF" secondAttribute="bottom" constant="100" id="XDy-T1-TBF"/>
+                <constraint firstItem="HQo-GY-YhF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="i7v-E1-bqL"/>
+                <constraint firstItem="HQo-GY-YhF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="n9g-4j-d2l"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="tutorial2" width="373" height="599"/>
+        <image name="tutorial4" width="372" height="643"/>
     </resources>
 </document>

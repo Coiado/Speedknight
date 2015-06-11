@@ -50,6 +50,11 @@ class ChooseYourPartyScreen : UIViewController {
     // * -> Once after it's done and working, create a method to replicate this actions, since they are all literally the same
     
     
+    @IBAction func setTutorial(sender: AnyObject) {
+        let defaults = NSUserDefaults()
+        defaults.setBool(true, forKey: "aValue")
+        
+    }
     @IBAction func CharacterAxe(sender: AnyObject) {
         if (!checkAxe) && (counter < 4){
         
