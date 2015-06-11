@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Ogari Pata Pacheco. All rights reserved.
 //
 
+import AVFoundation
 import UIKit
 import SpriteKit
 
@@ -33,6 +34,10 @@ class GameViewController: UIViewController {
     var labelPartyHP2: UILabel = UILabel()
     var labelPartyHP3: UILabel = UILabel()
     var labelHP: UILabel = UILabel()
+    var labelPartyMember0: UIImageView = UIImageView()
+    var labelPartyMember1: UIImageView = UIImageView()
+    var labelPartyMember2: UIImageView = UIImageView()
+    var labelPartyMember3: UIImageView = UIImageView()
     var labelAtack: UILabel = UILabel()
     var labelDefense: UILabel = UILabel()
     var labelShuffle: UILabel = UILabel()
@@ -43,10 +48,12 @@ class GameViewController: UIViewController {
     
     var qtdShuffle : Int!
     
+    var backgroundMusic = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Volatile Reaction", ofType: "mp3")!)
+    var audioPlayer = AVAudioPlayer()
     
     // Images for the "YES" an "NO" buttons for the initialTextox + the image for the actual TextBox, respectively
-    let yesImage = UIImage(named: "Game_TextBox_YesButton1") as UIImage?
-    let noImage = UIImage(named: "Game_TextBox_NoButton1") as UIImage?
+ //   let yesImage = UIImage(named: "Game_TextBox_YesButton1") as UIImage?
+ //   let noImage = UIImage(named: "Game_TextBox_NoButton1") as UIImage?
     var initialTextBox : UIImageView!
     
     // Below are the variables responsible for the timer logic.
@@ -54,49 +61,57 @@ class GameViewController: UIViewController {
     var timerCount : Int!
     var timerRunning : Bool!
     var timer : NSTimer!
-
     
     
     // Creates the  box to warn the player of the fight!
     override func viewDidAppear(animated: Bool) {
         
-        self.view.userInteractionEnabled = false
+     //   let backgroundMusic = SKAction.repeatActionForever(SKAction.playSoundFileNamed("Volatile Reaction.mp3", waitForCompletion: true))
         
-        labelAtack.font = UIFont(name: ("Bradley Hand"), size: 20)
-        labelAtack.textColor = UIColor.whiteColor()
-        labelAtack.frame = adjustRectSize(CGRectMake(73, 75, 400, 400))
-        labelAtack.hidden = true
-        self.view.addSubview(labelAtack)
-        labelDefense.font = UIFont(name: ("Bradley Hand"), size: 20)
-        labelDefense.textColor = UIColor.whiteColor()
-        labelDefense.frame = adjustRectSize(CGRectMake(73, 55, 400, 400))
-        labelDefense.hidden = true
-        self.view.addSubview(labelDefense)
-        labelHP.font = UIFont(name: ("Bradley Hand"), size: 20)
+        audioPlayer.play()
+        
+        self.view.userInteractionEnabled = false
+        labelHP.font = UIFont(name: ("Papyrus"), size: 20)
         labelHP.textColor = UIColor.whiteColor()
-        labelHP.frame = adjustRectSize(CGRectMake(73, 95, 400, 400))
+        labelHP.frame = adjustRectSize(CGRectMake(13, -80, 400, 400))
         labelHP.hidden = true
         self.view.addSubview(labelHP)
-        labelPartyHP0.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelPartyHP0.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP0.textColor = UIColor.whiteColor()
-        labelPartyHP0.frame = adjustRectSize(CGRectMake(73, 115, 400, 400))
+        labelPartyHP0.frame = adjustRectSize(CGRectMake(53, -45, 400, 400))
         labelPartyHP0.hidden = true
         self.view.addSubview(labelPartyHP0)
-        labelPartyHP1.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelPartyMember0 = UIImageView((frame:adjustRectSize(CGRectMake(13, 138, 30, 30))))
+        labelPartyMember0.image = UIImage(named:data.team[0].Picture )
+        labelPartyMember0.hidden = true
+        self.view.addSubview(labelPartyMember0)
+        labelPartyHP1.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP1.textColor = UIColor.whiteColor()
-        labelPartyHP1.frame = adjustRectSize(CGRectMake(73, 135, 400, 400))
+        labelPartyHP1.frame = adjustRectSize(CGRectMake(53, -15, 400, 400))
         labelPartyHP1.hidden = true
         self.view.addSubview(labelPartyHP1)
-        labelPartyHP2.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelPartyMember1 = UIImageView((frame:adjustRectSize(CGRectMake(13, 168, 30, 30))))
+        labelPartyMember1.image = UIImage(named:data.team[1].Picture )
+        labelPartyMember1.hidden = true
+        self.view.addSubview(labelPartyMember1)
+        labelPartyHP2.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP2.textColor = UIColor.whiteColor()
-        labelPartyHP2.frame = adjustRectSize(CGRectMake(73, 155, 400, 400))
+        labelPartyHP2.frame = adjustRectSize(CGRectMake(53, 15, 400, 400))
         labelPartyHP2.hidden = true
         self.view.addSubview(labelPartyHP2)
-        labelPartyHP3.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelPartyMember2 = UIImageView((frame:adjustRectSize(CGRectMake(13, 198, 30, 30))))
+        labelPartyMember2.image = UIImage(named:data.team[2].Picture )
+        labelPartyMember2.hidden = true
+        self.view.addSubview(labelPartyMember2)
+        labelPartyHP3.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP3.textColor = UIColor.whiteColor()
-        labelPartyHP3.frame = adjustRectSize(CGRectMake(73, 175, 400, 400))
+        labelPartyHP3.frame = adjustRectSize(CGRectMake(53, 45, 400, 400))
         labelPartyHP3.hidden = true
         self.view.addSubview(labelPartyHP3)
+        labelPartyMember3 = UIImageView((frame:adjustRectSize(CGRectMake(13, 228, 30, 30))))
+        labelPartyMember3.image = UIImage(named:data.team[3].Picture )
+        labelPartyMember3.hidden = true
+        self.view.addSubview(labelPartyMember3)
         
         
         //level = Level(filename: "Level1")
@@ -132,16 +147,18 @@ class GameViewController: UIViewController {
 //        
 //        self.view.addSubview(buttonNo)
         
+        let shuffleImage = UIImage(named: "ShuffleButton") as UIImage?
+        
         buttonShuffle = UIButton() as UIButton
-        buttonShuffle.frame = adjustRectSize(CGRectMake(200, 55, 100, 100))
-        buttonShuffle.setTitle("Shuffle", forState: UIControlState.Normal)
+        buttonShuffle.frame = adjustRectSize(CGRectMake(250, 105, 75, 58))
+        buttonShuffle.setImage(shuffleImage, forState: UIControlState.Normal)
         buttonShuffle.addTarget(self, action: "troca", forControlEvents: UIControlEvents.TouchUpInside)
         self.qtdShuffle = 3
         self.view.addSubview(buttonShuffle)
         
-        //labelShuffle.font = UIFont(name: ("Bradley Hand"), size: 20)
+        labelShuffle.font = UIFont(name: ("Papyrus"), size: 20)
         labelShuffle.textColor = UIColor.whiteColor()
-        labelShuffle.frame = adjustRectSize(CGRectMake(280, 80, 50, 50))
+        labelShuffle.frame = adjustRectSize(CGRectMake(337, 110, 50, 50))
         labelShuffle.text = "x\(self.qtdShuffle)"
         self.view.addSubview(labelShuffle)
         
@@ -155,13 +172,13 @@ class GameViewController: UIViewController {
     func startGame() {
         var prepareLabel = UILabel()
         prepareLabel.text = "PREPARE FOR FIGHT"
-        prepareLabel.font = UIFont(name: "Comic Sans", size: 60)
-        prepareLabel.frame = adjustRectSize(CGRectMake(110, 140, 500, 500))
+        prepareLabel.font = UIFont(name: "Papyrus", size: 24)
+        prepareLabel.frame = adjustRectSize(CGRectMake(75, 100, 400, 400))
         prepareLabel.textColor = UIColor.whiteColor()
         self.view.addSubview(prepareLabel)
         let block = SKAction.runBlock()
             {
-                prepareLabel.text = "FIGHT!!!!"
+                prepareLabel.text = "           FIGHT!" // <- Preguica
                 self.beginGame()
             }
         let remove = SKAction.runBlock()
@@ -314,9 +331,6 @@ class GameViewController: UIViewController {
         self.scene.level.findCharacters()
         //if counter == 4 { // <- Watch out for the shield
         let ataqueTotal = self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3]
-        
-            labelAtack.text = ("Ataque Total:\(ataqueTotal)")
-            labelDefense.text = ("defesa Total: \(self.scene.level.roundDefensiveInstance)")
             labelHP.text = ("Party HP:")
             labelDefense.hidden = false
             labelAtack.hidden = false
@@ -356,6 +370,10 @@ class GameViewController: UIViewController {
             labelPartyHP1.hidden = false
             labelPartyHP2.hidden = false
             labelPartyHP3.hidden = false
+            labelPartyMember0.hidden = false
+            labelPartyMember1.hidden = false
+            labelPartyMember2.hidden = false
+            labelPartyMember3.hidden = false
         
             var totalPartyHP : Float = 0.0
             for i in 0..<3{
@@ -530,6 +548,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        // endGameResult.hidden = true
+        
+        audioPlayer = AVAudioPlayer(contentsOfURL: backgroundMusic, error: nil)
+        audioPlayer.prepareToPlay()
         
         // Configure the view.
         let skView = view as! SKView
