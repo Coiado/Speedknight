@@ -11,13 +11,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial5" translatesAutoresizingMaskIntoConstraints="NO" id="lqv-w7-a75">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                    <rect key="frame" x="0.0" y="20" width="600" height="500"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="lqv-w7-a75" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WUR-Wr-dXJ"/>
-                <constraint firstAttribute="bottom" secondItem="lqv-w7-a75" secondAttribute="bottom" constant="100" id="Xbd-Dj-Bfd"/>
+                <constraint firstItem="lqv-w7-a75" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="WUR-Wr-dXJ"/>
+                <constraint firstAttribute="bottom" secondItem="lqv-w7-a75" secondAttribute="bottom" constant="80" id="Xbd-Dj-Bfd"/>
                 <constraint firstItem="lqv-w7-a75" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zf0-Ak-gyt"/>
                 <constraint firstAttribute="trailing" secondItem="lqv-w7-a75" secondAttribute="trailing" id="tVG-ys-N4a"/>
             </constraints>

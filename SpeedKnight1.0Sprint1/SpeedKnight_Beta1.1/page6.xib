@@ -10,20 +10,20 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial3" translatesAutoresizingMaskIntoConstraints="NO" id="MpX-IQ-Ccu">
-                    <rect key="frame" x="0.0" y="20" width="600" height="500"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial6" translatesAutoresizingMaskIntoConstraints="NO" id="TBe-jU-dOU">
+                    <rect key="frame" x="0.0" y="30" width="600" height="490"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="MpX-IQ-Ccu" secondAttribute="trailing" id="Con-UZ-weS"/>
-                <constraint firstItem="MpX-IQ-Ccu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Voh-61-QOu"/>
-                <constraint firstItem="MpX-IQ-Ccu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i8y-bL-ukE"/>
-                <constraint firstAttribute="bottom" secondItem="MpX-IQ-Ccu" secondAttribute="bottom" constant="80" id="tYW-Cg-v1i"/>
+                <constraint firstAttribute="bottom" secondItem="TBe-jU-dOU" secondAttribute="bottom" constant="80" id="1bI-rV-dwF"/>
+                <constraint firstItem="TBe-jU-dOU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2fh-NE-Sgx"/>
+                <constraint firstItem="TBe-jU-dOU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="Zi6-f3-LJ6"/>
+                <constraint firstAttribute="trailing" secondItem="TBe-jU-dOU" secondAttribute="trailing" id="e4k-ot-TSc"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="tutorial3" width="374" height="647"/>
+        <image name="tutorial6" width="529" height="527"/>
     </resources>
 </document>

@@ -10,10 +10,14 @@ import UIKit
 
 class TutorialViewController: UIViewController {
     @IBOutlet weak var tutorialScrollView: UIScrollView!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+//        self.playButton.addSubview(view)
         // Do any additional setup after loading the view.
     }
 
@@ -32,10 +36,9 @@ class TutorialViewController: UIViewController {
     }
     */
     
+    
     override func viewWillAppear(animated: Bool) {
-        let defaults = NSUserDefaults()
-        
-        if defaults.boolForKey("aValue"){
+    
             
             super.viewWillAppear(true)
             
@@ -53,20 +56,21 @@ class TutorialViewController: UIViewController {
             
             let page5: UIView! = NSBundle.mainBundle().loadNibNamed("page5",
                 owner: self,options: nil)[0] as! UIView
-            
-            let pages: [UIView!] = [page1,page2,page3,page4,page5]
+        
+            let page6: UIView! = NSBundle.mainBundle().loadNibNamed("page6",
+            owner: self,options: nil)[0] as! UIView
+        
+            let pages: [UIView!] = [page1,page2,page3,page4,page5,page6]
             
             for page in pages {
                 page.frame = CGRectOffset(page.frame,tutorialScrollView.contentSize.width, 0)
                 tutorialScrollView.addSubview(page)
                 
                 tutorialScrollView.contentSize = CGSizeMake(tutorialScrollView.contentSize.width +
-                    self.view.frame.width,page.frame.height)
+                    self.view.frame.width,0.7*(self.view.frame.height))
             }
-            
-            defaults.setBool(false,forKey:"aValue")
-        }
 
     }
+    
 
 }

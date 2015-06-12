@@ -133,6 +133,7 @@
 		3F43A0361B2885BC00BDB929 /* page2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F43A0351B2885BC00BDB929 /* page2.xib */; };
 		3F43A0381B28860500BDB929 /* page3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F43A0371B28860500BDB929 /* page3.xib */; };
 		3F90ABD11B270F730003D947 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F90ABD01B270F730003D947 /* Images.xcassets */; };
+		3FE5EDC81B2B44930043E392 /* page6.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5EDC71B2B44930043E392 /* page6.xib */; };
 		3FE6FD371B2A1F9E00B4C1B8 /* page4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE6FD361B2A1F9E00B4C1B8 /* page4.xib */; };
 		3FE6FD391B2A1FB400B4C1B8 /* page5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE6FD381B2A1FB400B4C1B8 /* page5.xib */; };
 		5FE5C0FE1B1752D500CE3B84 /* Monstro3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE5C0FD1B1752D500CE3B84 /* Monstro3.png */; };
@@ -280,6 +281,7 @@
 		3F43A0351B2885BC00BDB929 /* page2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = page2.xib; sourceTree = "<group>"; };
 		3F43A0371B28860500BDB929 /* page3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = page3.xib; sourceTree = "<group>"; };
 		3F90ABD01B270F730003D947 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3FE5EDC71B2B44930043E392 /* page6.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = page6.xib; sourceTree = "<group>"; };
 		3FE6FD361B2A1F9E00B4C1B8 /* page4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = page4.xib; sourceTree = "<group>"; };
 		3FE6FD381B2A1FB400B4C1B8 /* page5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = page5.xib; sourceTree = "<group>"; };
 		5FE5C0FD1B1752D500CE3B84 /* Monstro3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Monstro3.png; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 				3F43A0371B28860500BDB929 /* page3.xib */,
 				3FE6FD361B2A1F9E00B4C1B8 /* page4.xib */,
 				3FE6FD381B2A1FB400B4C1B8 /* page5.xib */,
+				3FE5EDC71B2B44930043E392 /* page6.xib */,
 				286D42201B03B03400CDAA8E /* Characters-Images */,
 				286E5DA31AF2A65000733054 /* Character_Battle_Profile_Teste(0).png */,
 				28C2BD1E1B14AFDA009E4DA1 /* gameOverSample.jpg */,
@@ -650,6 +653,7 @@
 				2808346A1AF317940062FFD6 /* HP_Enemy_85.png in Resources */,
 				28091DA41B162B1C003AEAE3 /* Icone-BowArrow-Morto.png in Resources */,
 				2808345E1AF317940062FFD6 /* HP_Enemy_25.png in Resources */,
+				3FE5EDC81B2B44930043E392 /* page6.xib in Resources */,
 				280BCCD01AE047770062D550 /* Level_4.json in Resources */,
 				280834601AF317940062FFD6 /* HP_Enemy_35.png in Resources */,
 				286E5D401AEEB5AD00733054 /* Icone-ParedeDeTijolos.png in Resources */,

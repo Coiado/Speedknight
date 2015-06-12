@@ -11,15 +11,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial2" translatesAutoresizingMaskIntoConstraints="NO" id="GT0-s7-kEX">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                    <rect key="frame" x="0.0" y="20" width="600" height="500"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="GT0-s7-kEX" secondAttribute="bottom" constant="100" id="BHn-oO-GAH"/>
+                <constraint firstAttribute="bottom" secondItem="GT0-s7-kEX" secondAttribute="bottom" constant="80" id="BHn-oO-GAH"/>
                 <constraint firstItem="GT0-s7-kEX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="D79-px-9wc"/>
                 <constraint firstAttribute="trailing" secondItem="GT0-s7-kEX" secondAttribute="trailing" id="bTf-Aw-d9n"/>
-                <constraint firstItem="GT0-s7-kEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hqh-Jg-Q8h"/>
+                <constraint firstItem="GT0-s7-kEX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="hqh-Jg-Q8h"/>
             </constraints>
         </view>
     </objects>

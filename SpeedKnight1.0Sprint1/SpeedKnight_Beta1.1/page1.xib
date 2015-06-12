@@ -11,19 +11,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial1" translatesAutoresizingMaskIntoConstraints="NO" id="04U-we-Yfk">
-                    <rect key="frame" x="30" y="50" width="540" height="450"/>
+                    <rect key="frame" x="30" y="30" width="540" height="490"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="04U-we-Yfk" secondAttribute="bottom" constant="100" id="cFr-Pi-RtV"/>
+                <constraint firstAttribute="bottom" secondItem="04U-we-Yfk" secondAttribute="bottom" constant="80" id="cFr-Pi-RtV"/>
                 <constraint firstItem="04U-we-Yfk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="enH-lt-hzP"/>
                 <constraint firstAttribute="trailing" secondItem="04U-we-Yfk" secondAttribute="trailing" constant="30" id="gb2-dT-GN3"/>
-                <constraint firstItem="04U-we-Yfk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="oLK-0K-Pw9"/>
+                <constraint firstItem="04U-we-Yfk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="oLK-0K-Pw9"/>
             </constraints>
         </view>
     </objects>
     <resources>
-        <image name="tutorial1" width="536" height="465"/>
+        <image name="tutorial1" width="529" height="465"/>
     </resources>
 </document>
