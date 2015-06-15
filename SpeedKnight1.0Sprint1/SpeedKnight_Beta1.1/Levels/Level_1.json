@@ -10,8 +10,8 @@
                [0, 0, 0, 0, 0, 0, 0, 0, 0 ] ],
     
     "enemyHP" : 1500,
-    "enemyAttack" : 67,
-    "enemyDefense" : 20,
+    "enemyAttack" : 90,
+    "enemyDefense" : 28,
     "enemyAI" : 1000,
     "enemyImage" : "Monstro2",
     "background" : "Background",

@@ -9,8 +9,8 @@
                [1, 1, 1, 1, 1, 1, 1, 1, 1 ],
                [0, 0, 0, 0, 0, 0, 0, 0, 0 ] ],
     
-    "enemyHP" : 1000,
-    "enemyAttack" : 100,
+    "enemyHP" : 1200,
+    "enemyAttack" : 80,
     "enemyDefense" : 30,
     "enemyAI" : 1000,
     "enemyImage" : "Monstro1",

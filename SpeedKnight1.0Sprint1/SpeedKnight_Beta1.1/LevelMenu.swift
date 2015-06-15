@@ -6,12 +6,24 @@
 //  Copyright (c) 2015 Ogari Pata Pacheco. All rights reserved.
 //
 
+import AVFoundation
 import UIKit
 import Foundation
 
 class LevelMenu : UIViewController {
     
     let data:GameData = GameData.sharedInstance
+    var levelBackgroundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Take a Chance", ofType: "mp3")!)
+    var levelBackgroundSong = AVAudioPlayer()
+    
+    override func viewDidAppear(animated: Bool) {
+        levelBackgroundSong = AVAudioPlayer(contentsOfURL:levelBackgroundURL, error: nil)
+        levelBackgroundSong.play()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        levelBackgroundSong.pause()
+    }
     
     @IBAction func LevelOne(sender: AnyObject) {
         
