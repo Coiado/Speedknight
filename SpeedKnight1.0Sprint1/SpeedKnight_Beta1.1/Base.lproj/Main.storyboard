@@ -23,9 +23,9 @@
                                 <rect key="frame" x="0.0" y="88" width="600" height="512"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltL-ap-hH3">
-                                <rect key="frame" x="6" y="444" width="180" height="95.5"/>
+                                <rect key="frame" x="6" y="467.5" width="180" height="97.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ltL-ap-hH3" secondAttribute="height" multiplier="130:69" id="z5n-CH-TNC"/>
+                                    <constraint firstAttribute="height" secondItem="ltL-ap-hH3" secondAttribute="width" multiplier="69:130" constant="2" id="z5n-CH-TNC"/>
                                 </constraints>
                                 <state key="normal" title="Back" image="ButtonBack">
                                     <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,7 +36,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHW-5X-YIm">
-                                <rect key="frame" x="414" y="444" width="180" height="95.5"/>
+                                <rect key="frame" x="414" y="469.5" width="180" height="95.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iHW-5X-YIm" secondAttribute="height" multiplier="130:69" id="6aK-Gc-1VL"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyF-qh-ujc">
-                                <rect key="frame" x="232" y="434" width="135.5" height="115.5"/>
+                                <rect key="frame" x="232" y="458.5" width="135.5" height="115.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FyF-qh-ujc" secondAttribute="height" multiplier="1:1" constant="20" id="ruC-tI-byW"/>
                                 </constraints>
@@ -61,8 +61,11 @@
                                     <segue destination="vfH-Am-3im" kind="show" id="h5r-ZM-FJo"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TituloTutorial" translatesAutoresizingMaskIntoConstraints="NO" id="SRT-8Z-FNv">
-                                <rect key="frame" x="168" y="0.0" width="240" height="88"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TituloTutorial" translatesAutoresizingMaskIntoConstraints="NO" id="SRT-8Z-FNv">
+                                <rect key="frame" x="142" y="20" width="316" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SRT-8Z-FNv" secondAttribute="height" multiplier="79:15" id="Cc1-BK-rA5"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,8 +76,8 @@
                             <constraint firstItem="qKo-1i-D3t" firstAttribute="leading" secondItem="XtW-I9-Mu8" secondAttribute="leading" id="5Vl-Da-6oA"/>
                             <constraint firstItem="FyF-qh-ujc" firstAttribute="height" secondItem="iHW-5X-YIm" secondAttribute="height" constant="20" id="AKS-nY-VjS"/>
                             <constraint firstItem="ltL-ap-hH3" firstAttribute="leading" secondItem="XtW-I9-Mu8" secondAttribute="leadingMargin" constant="-10" id="BJY-gp-1ba"/>
-                            <constraint firstItem="lWX-Sf-B0l" firstAttribute="top" secondItem="ltL-ap-hH3" secondAttribute="bottom" constant="60" id="Eei-iY-bds"/>
-                            <constraint firstItem="lWX-Sf-B0l" firstAttribute="top" secondItem="iHW-5X-YIm" secondAttribute="bottom" constant="60" id="JFw-P8-mDj"/>
+                            <constraint firstItem="lWX-Sf-B0l" firstAttribute="top" secondItem="ltL-ap-hH3" secondAttribute="bottom" constant="35" id="Eei-iY-bds"/>
+                            <constraint firstItem="lWX-Sf-B0l" firstAttribute="top" secondItem="iHW-5X-YIm" secondAttribute="bottom" constant="35" id="JFw-P8-mDj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iHW-5X-YIm" secondAttribute="trailing" constant="-10" id="JYW-NE-SfR"/>
                             <constraint firstItem="qKo-1i-D3t" firstAttribute="top" secondItem="SRT-8Z-FNv" secondAttribute="bottom" id="PsB-BJ-sup"/>
                             <constraint firstItem="iHW-5X-YIm" firstAttribute="width" secondItem="ltL-ap-hH3" secondAttribute="width" id="SJG-sj-SYy"/>
@@ -116,8 +119,8 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Medieval Text Box 2" translatesAutoresizingMaskIntoConstraints="NO" id="Gux-HN-8T2">
                                         <rect key="frame" x="10" y="413.5" width="259" height="76"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pgk-yR-FRS">
-                                        <rect key="frame" x="234" y="519.5" width="131" height="63"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pgk-yR-FRS">
+                                        <rect key="frame" x="227.5" y="494.5" width="144" height="52"/>
                                         <state key="normal" title="Go to level" image="BotãoGoToLevel">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -277,7 +280,7 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TituloChooseYourTeam" translatesAutoresizingMaskIntoConstraints="NO" id="MMV-12-T2D">
-                                        <rect key="frame" x="140" y="0.0" width="320" height="64.5"/>
+                                        <rect key="frame" x="140" y="0.5" width="320" height="64.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luK-41-pAf">
                                         <rect key="frame" x="140" y="64.5" width="80" height="52"/>
@@ -330,7 +333,7 @@
                                     <constraint firstItem="luK-41-pAf" firstAttribute="top" secondItem="MMV-12-T2D" secondAttribute="bottom" id="cTk-7A-ZFS"/>
                                     <constraint firstItem="Iff-do-siL" firstAttribute="height" secondItem="hM0-gA-ASq" secondAttribute="height" id="cag-Sl-JeR"/>
                                     <constraint firstItem="luK-41-pAf" firstAttribute="width" secondItem="UWn-qp-UlU" secondAttribute="width" multiplier="0.5" constant="10" id="cvd-0s-PhP"/>
-                                    <constraint firstItem="Pgk-yR-FRS" firstAttribute="top" secondItem="Gux-HN-8T2" secondAttribute="bottom" constant="20" id="dPa-MJ-VxT"/>
+                                    <constraint firstItem="Pgk-yR-FRS" firstAttribute="top" secondItem="Gux-HN-8T2" secondAttribute="bottom" constant="5" id="dPa-MJ-VxT"/>
                                     <constraint firstItem="oBl-Np-gUd" firstAttribute="height" secondItem="qiQ-qN-1Al" secondAttribute="height" multiplier="0.14" id="dzE-cs-URT"/>
                                     <constraint firstItem="92d-XE-C7S" firstAttribute="leading" secondItem="pNQ-8k-iyT" secondAttribute="trailing" constant="15" id="e6g-Na-4vG"/>
                                     <constraint firstItem="aFm-hq-8aZ" firstAttribute="centerX" secondItem="hM0-gA-ASq" secondAttribute="centerX" id="fAH-aA-vtc"/>
@@ -583,6 +586,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="I6c-VZ-baP"/>
-        <segue reference="NVG-9R-4EK"/>
+        <segue reference="h5r-ZM-FJo"/>
     </inferredMetricsTieBreakers>
 </document>
