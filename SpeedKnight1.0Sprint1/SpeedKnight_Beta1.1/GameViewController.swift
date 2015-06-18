@@ -18,6 +18,9 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var enemyHpBar: UIImageView!
     
+    var multiplierDefense: Float! = 1.0
+    var multiplier: Float! = 1.0
+    var specialDamage:Int! = 0
     var counter : Int! = 0
     var resultsBox : UIImageView!
     var buttonNext : UIButton!
@@ -170,6 +173,8 @@ class GameViewController: UIViewController {
     // Method that decides whether or not the player will begin the level!
     
     func startGame() {
+        multiplier = 1.0
+        multiplierDefense = 1.0
         var prepareLabel = UILabel()
         prepareLabel.text = "PREPARE FOR FIGHT"
         prepareLabel.font = UIFont(name: "Papyrus", size: 24)
@@ -326,11 +331,108 @@ class GameViewController: UIViewController {
     
     }
     
+    func specialHealHP(value: Float){
+        
+        for i in 0..<4
+        {
+            if(partyMembers[i].HP != 0){
+            partyMembers[i].HP = partyMembers[i].HP + value
+                if(partyMembers[i].HP > 100.0)
+                {
+                    partyMembers[i].HP = 100.0
+                }
+            }
+        }
+    }
+    
+    func specialDamage(value: Int){
+        specialDamage = specialDamage + value
+    }
+    
+    func specialMultiplier(value: Float){
+        multiplier = multiplier + value
+    }
+    
+    func specialDefense(value: Float){
+        multiplierDefense = value + multiplierDefense
+    }
+    
+    func specialDeath(){
+        let number = self.scene.teamDeaths.count
+        specialDamage = specialDamage + 70*number
+    }
+    
+    func specialIgnore() {
+        for i in 0..<4
+        {
+            enemyDefense[i] = 0
+        }
+    }
+    
+    func aplySpecial(){
+        for aux in 0..<(self.scene.level.specialAttacks.count)
+        {
+            switch self.scene.level.specialAttacks[aux]!{
+            case 0:
+                
+                specialDefense(0.1)
+                println("Multiplicou defesa\n")
+                
+            case 1:
+                
+                specialDeath()
+                println("Dano pelos aliados\n")
+            
+            case 2:
+                
+                specialDamage(80)
+                println("Dano\n")
+                
+            case 3:
+                
+                specialIgnore()
+                println("Ignorou defesa\n")
+                
+            case 4:
+                
+                specialMultiplier(0.1)
+                println("Multiplicou ATK\n")
+                
+            case 5:
+                
+                specialHealHP(10)
+                println("Curou\n")
+                
+            default:
+                
+                println("Error Especial\n")
+            
+            }
+        }
+        
+    }
+    
+    func multiplyAttack()->Int{
+        
+        var total:Int = 0
+        
+        for i in 0..<4
+        {
+            var numerador = Float(self.scene.level.teamPerformance[0]) * multiplier
+            total = total + Int(numerador)
+        }
+        return total
+    }
+    
+    
     func presentResults(actions: Array<Int>!){
         
         self.scene.level.findCharacters()
+        
+        let ataqueTotal = multiplyAttack()+specialDamage
+        
         //if counter == 4 { // <- Watch out for the shield
-        let ataqueTotal = self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3]
+        
             labelHP.text = ("Party HP:")
             labelDefense.hidden = false
             labelAtack.hidden = false
@@ -338,6 +440,8 @@ class GameViewController: UIViewController {
 
             enemyDamageDealt = ai.attackAI(data.attackAI)
             enemyDefense = ai.defenseAI(data.defenseAI, roundActions: self.scene.level.teamPerformance)
+            aplySpecial()
+            self.scene.level.specialAttacks.removeAll(keepCapacity: false)
             battleSystem(enemyDamageDealt, def: enemyDefense)
             println("Party Defense: \(self.scene.level.roundDefensiveInstance)")
             println("Enemy Defense: \(self.enemyDefense[0]) \(self.enemyDefense[1]) \(self.enemyDefense[2]) \(self.enemyDefense[3])")
@@ -357,6 +461,7 @@ class GameViewController: UIViewController {
         
         
             self.scene.level.teamPerformance = [0 , 0 , 0 ,0]
+            self.specialDamage = 0
             //resultsBox.removeFromSuperview()
             //buttonNext.removeFromSuperview()
         
@@ -376,6 +481,7 @@ class GameViewController: UIViewController {
             labelPartyMember3.hidden = false
         
             var totalPartyHP : Float = 0.0
+        
             for i in 0..<3{
                 self.ai.party[i].HP = partyMembers[i].HP
                 totalPartyHP = totalPartyHP + partyMembers[i].HP
