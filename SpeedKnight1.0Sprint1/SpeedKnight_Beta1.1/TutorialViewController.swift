@@ -9,15 +9,22 @@
 import UIKit
 
 class TutorialViewController: UIViewController {
-    @IBOutlet weak var tutorialScrollView: UIScrollView!
     
     
-
+   
+   
+    @IBOutlet weak var tutorialImage: UIImageView!
+    var nextCont: Int!
+    var images :[String!] = []
+    @IBOutlet weak var playButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-//        self.playButton.addSubview(view)
+        playButton.hidden=true
+        self.nextCont = 0
+        self.images = ["tutorial1","tutorial2","tutorial3","tutorial4","tutorial5","tutorial6","tutorial7","tutorial8","tutorial9"]
+        self.tutorialImage.image = UIImage(named: images[nextCont])
+//        self.tutorialImage.image = UIImage(named: "tutorial2")
         // Do any additional setup after loading the view.
     }
 
@@ -37,38 +44,31 @@ class TutorialViewController: UIViewController {
     */
     
     
+    
+    @IBAction func backButton(sender: AnyObject) {
+        if self.nextCont > 0{
+            self.nextCont = self.nextCont-1
+            self.tutorialImage.image = UIImage(named: images[self.nextCont])
+        }
+    }
+    
+    
+    @IBAction func nextButton(sender: AnyObject) {
+        if self.nextCont < self.images.count-1{
+            self.nextCont = self.nextCont+1
+            self.tutorialImage.image = UIImage(named: images[self.nextCont])
+        }
+        if nextCont == self.images.count-1{
+            self.playButton.hidden=false
+        }
+    }
     override func viewWillAppear(animated: Bool) {
     
             
             super.viewWillAppear(true)
-            
-            let page1: UIView! = NSBundle.mainBundle().loadNibNamed("page1",
-                owner: self,options: nil)[0] as! UIView
-            
-            let page2: UIView! = NSBundle.mainBundle().loadNibNamed("page2",
-                owner: self,options: nil)[0] as! UIView
-            
-            let page3: UIView! = NSBundle.mainBundle().loadNibNamed("page3",
-                owner: self,options: nil)[0] as! UIView
-            
-            let page4: UIView! = NSBundle.mainBundle().loadNibNamed("page4",
-                owner: self,options: nil)[0] as! UIView
-            
-            let page5: UIView! = NSBundle.mainBundle().loadNibNamed("page5",
-                owner: self,options: nil)[0] as! UIView
         
-            let page6: UIView! = NSBundle.mainBundle().loadNibNamed("page6",
-            owner: self,options: nil)[0] as! UIView
         
-            let pages: [UIView!] = [page1,page2,page3,page4,page5,page6]
-            
-            for page in pages {
-                page.frame = CGRectOffset(page.frame,tutorialScrollView.contentSize.width, 0)
-                tutorialScrollView.addSubview(page)
-                
-                tutorialScrollView.contentSize = CGSizeMake(tutorialScrollView.contentSize.width +
-                    self.view.frame.width,0.7*(self.view.frame.height))
-            }
+
 
     }
     

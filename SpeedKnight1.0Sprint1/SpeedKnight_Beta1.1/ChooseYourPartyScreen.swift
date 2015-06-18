@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Ogari Pata Pacheco. All rights reserved.
 //
 
+import AVFoundation
 import UIKit
 import Foundation
 
@@ -18,13 +19,21 @@ class ChooseYourPartyScreen : UIViewController {
     var checkSingleSword : Bool! = false
     var checkBowArrow : Bool! = false
     let data: GameData = GameData.sharedInstance
+    var chooseTeamBackgroundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Take a Chance", ofType: "mp3")!)
+    var chooseTeamBackgroundSong = AVAudioPlayer()
     
     // Just so the array is initialized
     override func viewDidAppear(animated: Bool) {
+        chooseTeamBackgroundSong = AVAudioPlayer(contentsOfURL: chooseTeamBackgroundURL, error: nil)
+        chooseTeamBackgroundSong.play()
         for counter in 0..<4{
             data.team.append(HP: 0.0, Att: 0, Def: 0, Picture: "", RawValue: 0)
         }
         counter = 0
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.chooseTeamBackgroundSong.pause()
     }
     
     @IBAction func removeCharacter(sender: AnyObject) {

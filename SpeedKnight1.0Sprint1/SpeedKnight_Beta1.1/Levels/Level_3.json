@@ -9,9 +9,9 @@
                [1, 1, 1, 1, 1, 1, 1, 1, 1 ],
                [0, 0, 0, 0, 0, 0, 0, 0, 0 ] ],
     
-    "enemyHP" : 2000,
-    "enemyAttack" : 67,
-    "enemyDefense" : 25,
+    "enemyHP" : 2200,
+    "enemyAttack" : 90,
+    "enemyDefense" : 35,
     "enemyAI" : 1000,
     "enemyImage" : "Monstro3",
     "background" : "BackgroundTest1",
