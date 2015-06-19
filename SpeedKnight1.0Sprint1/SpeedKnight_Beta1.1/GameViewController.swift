@@ -18,6 +18,9 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var enemyHpBar: UIImageView!
     
+    var multiplierDefense: Float! = 1.0
+    var multiplier: Float! = 1.0
+    var specialDamage:Int! = 0
     var counter : Int! = 0
     var resultsBox : UIImageView!
     var buttonNext : UIButton!
@@ -76,38 +79,46 @@ class GameViewController: UIViewController {
         labelHP.frame = adjustRectSize(CGRectMake(13, -80, 400, 400))
         labelHP.hidden = true
         self.view.addSubview(labelHP)
+        
         labelPartyHP0.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP0.textColor = UIColor.whiteColor()
         labelPartyHP0.frame = adjustRectSize(CGRectMake(53, -45, 400, 400))
         labelPartyHP0.hidden = true
         self.view.addSubview(labelPartyHP0)
+        
         labelPartyMember0 = UIImageView((frame:adjustRectSize(CGRectMake(13, 138, 30, 30))))
         labelPartyMember0.image = UIImage(named:data.team[0].Picture )
         labelPartyMember0.hidden = true
         self.view.addSubview(labelPartyMember0)
+        
         labelPartyHP1.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP1.textColor = UIColor.whiteColor()
         labelPartyHP1.frame = adjustRectSize(CGRectMake(53, -15, 400, 400))
         labelPartyHP1.hidden = true
         self.view.addSubview(labelPartyHP1)
+        
         labelPartyMember1 = UIImageView((frame:adjustRectSize(CGRectMake(13, 168, 30, 30))))
         labelPartyMember1.image = UIImage(named:data.team[1].Picture )
         labelPartyMember1.hidden = true
         self.view.addSubview(labelPartyMember1)
+        
         labelPartyHP2.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP2.textColor = UIColor.whiteColor()
         labelPartyHP2.frame = adjustRectSize(CGRectMake(53, 15, 400, 400))
         labelPartyHP2.hidden = true
         self.view.addSubview(labelPartyHP2)
+        
         labelPartyMember2 = UIImageView((frame:adjustRectSize(CGRectMake(13, 198, 30, 30))))
         labelPartyMember2.image = UIImage(named:data.team[2].Picture )
         labelPartyMember2.hidden = true
         self.view.addSubview(labelPartyMember2)
+        
         labelPartyHP3.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP3.textColor = UIColor.whiteColor()
         labelPartyHP3.frame = adjustRectSize(CGRectMake(53, 45, 400, 400))
         labelPartyHP3.hidden = true
         self.view.addSubview(labelPartyHP3)
+        
         labelPartyMember3 = UIImageView((frame:adjustRectSize(CGRectMake(13, 228, 30, 30))))
         labelPartyMember3.image = UIImage(named:data.team[3].Picture )
         labelPartyMember3.hidden = true
@@ -170,12 +181,15 @@ class GameViewController: UIViewController {
     // Method that decides whether or not the player will begin the level!
     
     func startGame() {
+        multiplier = 1.0
+        multiplierDefense = 1.0
         var prepareLabel = UILabel()
         prepareLabel.text = "PREPARE FOR FIGHT"
         prepareLabel.font = UIFont(name: "Papyrus", size: 24)
         prepareLabel.frame = adjustRectSize(CGRectMake(75, 100, 400, 400))
         prepareLabel.textColor = UIColor.whiteColor()
         self.view.addSubview(prepareLabel)
+        
         let block = SKAction.runBlock()
             {
                 prepareLabel.text = "           FIGHT!" // <- Preguica
@@ -245,14 +259,16 @@ class GameViewController: UIViewController {
         
         // Add the attack of each character
         partyAttack = partyAttack + self.scene.level.teamPerformance[i]
-        // Add the defense points against each one's attack
+        // Add the defense points against each one's attac
         opponentDefense = opponentDefense + def[i]
         // Each character takes the damage of the round
         partyMembers[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
         GameData.sharedInstance.team[i].HP = partyMembers[i].HP
+        self.ai.party[i].HP = partyMembers[i].HP
             if partyMembers[i].HP < 0{
                 partyMembers[i].HP = 0.0
                 GameData.sharedInstance.team[i].HP = 0.0
+                self.ai.party[i].HP = 0.0
             }
             if partyMembers[i].HP == 0.0  {
             self.scene.teamDeaths.append(partyMembers[i].RawValue)
@@ -326,11 +342,163 @@ class GameViewController: UIViewController {
     
     }
     
+    func specialHealHP(value: Float){
+        
+        for i in 0..<4
+        {
+            if(partyMembers[i].HP != 0){
+            partyMembers[i].HP = partyMembers[i].HP + value
+                if(partyMembers[i].HP > 100.0)
+                {
+                    partyMembers[i].HP = 100.0
+                }
+            }
+        }
+//        labelPartyHP0.text = ("\(partyMembers[0].HP)")
+//        labelPartyHP1.text = ("\(partyMembers[1].HP)")
+//        labelPartyHP2.text = ("\(partyMembers[2].HP)")
+//        labelPartyHP3.text = ("\(partyMembers[3].HP)")
+//        labelPartyHP0.textColor = UIColor.greenColor()
+//        labelPartyHP1.textColor = UIColor.greenColor()
+//        labelPartyHP2.textColor = UIColor.greenColor()
+//        labelPartyHP3.textColor = UIColor.greenColor()
+//        let action = SKAction.waitForDuration(3)
+//        self.scene.runAction(action)
+
+    }
+    
+    func specialDamage(value: Int){
+        specialDamage = specialDamage + value
+    }
+    
+    func specialMultiplier(value: Float){
+        multiplier = multiplier + value
+    }
+    
+    func specialDefense(value: Float){
+        multiplierDefense = value + multiplierDefense
+    }
+    
+    func specialDeath(){
+        let number = self.scene.teamDeaths.count + 1
+        specialDamage = specialDamage + 70 * number
+    }
+    
+    func specialIgnore() {
+        for i in 0..<4
+        {
+            enemyDefense[i] = 0
+        }
+    }
+    
+    func aplySpecial(){
+        for aux in 0..<(self.scene.level.specialAttacks.count)
+        {
+            switch self.scene.level.specialAttacks[aux]!{
+            case 0:
+                
+                specialDefense(0.1)
+                println("Multiplicou defesa\n")
+                
+            case 1:
+                
+                specialDeath()
+                println("Dano pelos aliados\n")
+            
+            case 2:
+                
+                specialDamage(80)
+                println("Dano\n")
+                
+            case 3:
+                
+                specialIgnore()
+                println("Ignorou defesa\n")
+                
+            case 4:
+                
+                specialMultiplier(0.1)
+                println("Multiplicou ATK\n")
+                
+            case 5:
+                
+                specialHealHP(10)
+                println("Curou\n")
+                
+            default:
+                
+                println("Error Especial\n")
+            
+            }
+        }
+        
+    }
+    
+    func multiplyAttack()->Int{
+        
+        var total:Int = 0
+        
+        for i in 0..<4
+        {
+            var numerador = Float(self.scene.level.teamPerformance[i]) * multiplier
+            total = total + Int(numerador)
+        }
+        println("\(total)\n")
+        return total
+    }
+    
+    func displayAttack()
+    {
+        var i = 0
+        let goTo = SKAction.moveTo((CGPoint(x: 100.0, y: 100.0)), duration: 1.5)
+        var teste = SKLabelNode()
+        let waitAction = SKAction.waitForDuration(1)
+        let changeColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.7)
+        let backColor = SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.7)
+        let sprite = self.scene.monster
+        
+        let remove = SKAction.runBlock()
+            {
+                SKAction.waitForDuration(1.5)
+                teste.removeFromParent()
+            }
+        teste.fontName = "Pappirus-Bold"
+        teste.fontSize = 30
+        teste.fontColor = UIColor.redColor()
+        //teste.text = "\(self.multiplyAttack())"
+        //self.scene.addChild(teste)
+        
+        let create = SKAction.runBlock()
+            {
+                let ataque = Float(self.scene.level.teamPerformance[i])*self.multiplier
+                teste.text = "\(Int(ataque))"
+                self.scene.addChild(teste)
+                println("CRIOU")
+            }
+        
+        let scale = SKAction.scaleBy(2, duration: 1.5)
+        
+        var group = Array<SKAction>()
+        group.append(goTo)
+        group.append(scale)
+        
+        let groupAction = SKAction.group(group)
+        
+        teste.runAction(SKAction.sequence([create,groupAction]))
+        
+        sprite.runAction(SKAction.sequence([changeColor,backColor]))
+        
+    }
+    
+    
     func presentResults(actions: Array<Int>!){
         
         self.scene.level.findCharacters()
+        
+        let ataqueTotal = multiplyAttack()+specialDamage
+        
         //if counter == 4 { // <- Watch out for the shield
-        let ataqueTotal = self.scene.level.teamPerformance[0]+self.scene.level.teamPerformance[1]+self.scene.level.teamPerformance[2]+self.scene.level.teamPerformance[3]
+        
             labelHP.text = ("Party HP:")
             labelDefense.hidden = false
             labelAtack.hidden = false
@@ -338,25 +506,48 @@ class GameViewController: UIViewController {
 
             enemyDamageDealt = ai.attackAI(data.attackAI)
             enemyDefense = ai.defenseAI(data.defenseAI, roundActions: self.scene.level.teamPerformance)
+        
+            aplySpecial()
+            self.scene.level.specialAttacks.removeAll(keepCapacity: false)
+        
             battleSystem(enemyDamageDealt, def: enemyDefense)
+        
             println("Party Defense: \(self.scene.level.roundDefensiveInstance)")
+            println("Ataque total: \(ataqueTotal)\n")
             println("Enemy Defense: \(self.enemyDefense[0]) \(self.enemyDefense[1]) \(self.enemyDefense[2]) \(self.enemyDefense[3])")
         
         
-        if( ataqueTotal > 0){
-            var sprite = self.scene.monster
-            //sprite.hidden = true
+        if( ataqueTotal > 0)
+        {
+            let goTo = SKAction.moveTo((CGPoint(x: 0, y: 100.0)), duration: 1.5)
+            var teste = SKLabelNode()
             let waitAction = SKAction.waitForDuration(1)
             let changeColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.7)
             let backColor = SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.7)
+            let sprite = self.scene.monster
             
+            let remove = SKAction.runBlock()
+                {
+                    teste.removeFromParent()
+                }
+            teste.text = "\(ataqueTotal)"
+            teste.fontName = "Pappirus-Bold"
+            teste.fontSize = 30
+            teste.fontColor = UIColor.redColor()
+
+            self.scene.addChild(teste)
+            teste.runAction(SKAction.sequence([goTo,remove]))
+            
+            //sprite.hidden = true
             sprite.runAction(SKAction.sequence([changeColor,backColor]))
+            //displayAttack()
         }
         
             enemyHpDisplay()
         
         
             self.scene.level.teamPerformance = [0 , 0 , 0 ,0]
+            self.specialDamage = 0
             //resultsBox.removeFromSuperview()
             //buttonNext.removeFromSuperview()
         
@@ -370,12 +561,17 @@ class GameViewController: UIViewController {
             labelPartyHP1.hidden = false
             labelPartyHP2.hidden = false
             labelPartyHP3.hidden = false
+//            labelPartyHP0.textColor = UIColor.whiteColor()
+//            labelPartyHP1.textColor = UIColor.whiteColor()
+//            labelPartyHP2.textColor = UIColor.whiteColor()
+//            labelPartyHP3.textColor = UIColor.whiteColor()
             labelPartyMember0.hidden = false
             labelPartyMember1.hidden = false
             labelPartyMember2.hidden = false
             labelPartyMember3.hidden = false
         
             var totalPartyHP : Float = 0.0
+        
             for i in 0..<3{
                 self.ai.party[i].HP = partyMembers[i].HP
                 totalPartyHP = totalPartyHP + partyMembers[i].HP
@@ -390,13 +586,15 @@ class GameViewController: UIViewController {
             
         else if currentEnemyHP == 0 && totalPartyHP > 0.0{
         // Mother of God......
-        self.view.userInteractionEnabled = true
-        self.showEndGame("LevelComplete")
+            // To restart the HP of the characters
+            self.view.userInteractionEnabled = true
+            self.showEndGame("LevelComplete")
         }
         
-        else if totalPartyHP < 0.0{
-        self.view.userInteractionEnabled = true
-        self.showEndGame("GameOver")
+        else if totalPartyHP <= 0.0{
+            
+            self.view.userInteractionEnabled = true
+            self.showEndGame("GameOver")
         }
     }
     
@@ -577,6 +775,7 @@ class GameViewController: UIViewController {
     func initialValues(){
         var i = 0
         for i in 0..<4 {
+            self.ai.party[i].HP = 100.0
             self.partyMembers[i].HP = 100.0
             self.partyMembers[i].Att = 0
             self.partyMembers[i].Def = 0

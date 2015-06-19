@@ -9,11 +9,13 @@
 import Foundation
 
 let NumColumns = 9
-let NumRows = 9
+let NumRows = 6
 
 class Level {
     
     var teamPerformance : Array<Int>! = Array<Int>()
+    var specialAttacks: Array<Int?>! = Array<Int?>()
+    
     
     private var moves:Array2D<Move>
     private var possibleSwaps = Set<Swap>()
@@ -208,11 +210,36 @@ class Level {
         return set
     }
 
+    private func detectSpecialMoves()
+    {
+        for column in 1..<NumColumns
+        {
+            for row in 1..<NumRows - 1
+            {
+                let type = moves[column,row]?.moveType
+                let rightType = moves[column,row+1]?.moveType
+                let leftType = moves[column, row - 1]?.moveType
+                let upType = moves[column - 1,row]?.moveType
+                let downType = moves[column + 1,row]?.moveType
+                
+                if rightType == type && leftType == type && upType == type && downType == type
+                {
+                    self.specialAttacks.append(type?.rawValue)
+                    println(type?.rawValue)
+                }
+            }
+        }
+    }
+    
     func removeMatches() -> Array<Chain> {
         var horizontalChains = detectHorizontalMatches()
         var verticalChains = detectVerticalMatches()
         var updatePoints : Array<Int>! = Array<Int>()
-       
+        
+        
+        detectSpecialMoves()
+        
+        
         // For iteration
         var i : Int!
         
@@ -427,6 +454,7 @@ class Level {
         var maxNum: Int!=0
         var maxC: Int!=0
         var i: Int!=0
+        teamDeaths  = [0,0,0,0]
         for i in 0..<4{
             if GameData.sharedInstance.team[i].HP==0 && !contains(teamDeaths,GameData.sharedInstance.team[i].RawValue){
                 teamDeaths.append(GameData.sharedInstance.team[i].RawValue)

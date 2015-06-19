@@ -32,7 +32,7 @@ class Enemy_AI{
         case "easyAtt1":
             do{
             i=Int(arc4random_uniform(4))
-            if party[i].HP > 0 && enemyAtt > party[i].Def{
+            if party[i].HP > 0 {
                 damage = Float(enemyAtt - party[i].Def)
                 break
             }
@@ -43,7 +43,7 @@ class Enemy_AI{
         case "easyAtt2":
             minDef = 1000
             posMinDef=0
-            for i in 0..<3{
+            for i in 0..<4{
                 if party[i].HP != 0{
                     if minDef > party[i].Def{
                         minDef=party[i].Def
@@ -98,7 +98,7 @@ class Enemy_AI{
 
     // The defensive AI mechanism
     func defenseAI(difficulty: String!, roundActions: Array<Int>!) -> Array<Int>!  {
-      
+        
         var j: Int! = 0
         var teamAtt: Int! = 0
         var i: Int! = 0
