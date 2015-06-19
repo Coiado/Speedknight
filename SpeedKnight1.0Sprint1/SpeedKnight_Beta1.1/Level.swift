@@ -9,7 +9,7 @@
 import Foundation
 
 let NumColumns = 9
-let NumRows = 9
+let NumRows = 6
 
 class Level {
     
@@ -454,6 +454,7 @@ class Level {
         var maxNum: Int!=0
         var maxC: Int!=0
         var i: Int!=0
+        teamDeaths  = [0,0,0,0]
         for i in 0..<4{
             if GameData.sharedInstance.team[i].HP==0 && !contains(teamDeaths,GameData.sharedInstance.team[i].RawValue){
                 teamDeaths.append(GameData.sharedInstance.team[i].RawValue)

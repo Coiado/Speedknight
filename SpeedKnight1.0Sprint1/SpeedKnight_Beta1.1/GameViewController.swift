@@ -259,14 +259,16 @@ class GameViewController: UIViewController {
         
         // Add the attack of each character
         partyAttack = partyAttack + self.scene.level.teamPerformance[i]
-        // Add the defense points against each one's attack
+        // Add the defense points against each one's attac
         opponentDefense = opponentDefense + def[i]
         // Each character takes the damage of the round
         partyMembers[i].HP = returnMin(partyMembers[i].HP, num2: ((partyMembers[i].HP - at[i]) + 2*Float(self.scene.level.roundDefensiveInstance)))
         GameData.sharedInstance.team[i].HP = partyMembers[i].HP
+        self.ai.party[i].HP = partyMembers[i].HP
             if partyMembers[i].HP < 0{
                 partyMembers[i].HP = 0.0
                 GameData.sharedInstance.team[i].HP = 0.0
+                self.ai.party[i].HP = 0.0
             }
             if partyMembers[i].HP == 0.0  {
             self.scene.teamDeaths.append(partyMembers[i].RawValue)
@@ -584,13 +586,15 @@ class GameViewController: UIViewController {
             
         else if currentEnemyHP == 0 && totalPartyHP > 0.0{
         // Mother of God......
-        self.view.userInteractionEnabled = true
-        self.showEndGame("LevelComplete")
+            // To restart the HP of the characters
+            self.view.userInteractionEnabled = true
+            self.showEndGame("LevelComplete")
         }
         
-        else if totalPartyHP < 0.0{
-        self.view.userInteractionEnabled = true
-        self.showEndGame("GameOver")
+        else if totalPartyHP <= 0.0{
+            
+            self.view.userInteractionEnabled = true
+            self.showEndGame("GameOver")
         }
     }
     
@@ -771,6 +775,7 @@ class GameViewController: UIViewController {
     func initialValues(){
         var i = 0
         for i in 0..<4 {
+            self.ai.party[i].HP = 100.0
             self.partyMembers[i].HP = 100.0
             self.partyMembers[i].Att = 0
             self.partyMembers[i].Def = 0
