@@ -517,28 +517,28 @@ class GameViewController: UIViewController {
         
         if( ataqueTotal > 0)
         {
-//            let goTo = SKAction.moveTo((CGPoint(x: 100.0, y: 100.0)), duration: 1.5)
-//            var teste = SKLabelNode()
-//            let waitAction = SKAction.waitForDuration(1)
-//            let changeColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.7)
-//            let backColor = SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.7)
-//            let sprite = self.scene.monster
-//            
-//            let remove = SKAction.runBlock()
-//                {
-//                    teste.removeFromParent()
-//                }
-//            teste.text = "\(ataqueTotal)"
-//            teste.fontName = "Pappirus-Bold"
-//            teste.fontSize = 30
-//            teste.fontColor = UIColor.redColor()
-//
-//            self.scene.addChild(teste)
-//            teste.runAction(SKAction.sequence([goTo,remove]))
-//            
-//            //sprite.hidden = true
-//            sprite.runAction(SKAction.sequence([changeColor,backColor]))
-            displayAttack()
+            let goTo = SKAction.moveTo((CGPoint(x: 0, y: 100.0)), duration: 1.5)
+            var teste = SKLabelNode()
+            let waitAction = SKAction.waitForDuration(1)
+            let changeColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.7)
+            let backColor = SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.7)
+            let sprite = self.scene.monster
+            
+            let remove = SKAction.runBlock()
+                {
+                    teste.removeFromParent()
+                }
+            teste.text = "\(ataqueTotal)"
+            teste.fontName = "Pappirus-Bold"
+            teste.fontSize = 30
+            teste.fontColor = UIColor.redColor()
+
+            self.scene.addChild(teste)
+            teste.runAction(SKAction.sequence([goTo,remove]))
+            
+            //sprite.hidden = true
+            sprite.runAction(SKAction.sequence([changeColor,backColor]))
+            //displayAttack()
         }
         
             enemyHpDisplay()
