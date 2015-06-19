@@ -83,5 +83,5 @@ class LevelMenu : UIViewController {
         data.defenseAI = "easyDef"
         performSegueWithIdentifier("GameViewControllerSegue", sender: self)
     }
- 
+    
 }

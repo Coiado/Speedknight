@@ -79,38 +79,46 @@ class GameViewController: UIViewController {
         labelHP.frame = adjustRectSize(CGRectMake(13, -80, 400, 400))
         labelHP.hidden = true
         self.view.addSubview(labelHP)
+        
         labelPartyHP0.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP0.textColor = UIColor.whiteColor()
         labelPartyHP0.frame = adjustRectSize(CGRectMake(53, -45, 400, 400))
         labelPartyHP0.hidden = true
         self.view.addSubview(labelPartyHP0)
+        
         labelPartyMember0 = UIImageView((frame:adjustRectSize(CGRectMake(13, 138, 30, 30))))
         labelPartyMember0.image = UIImage(named:data.team[0].Picture )
         labelPartyMember0.hidden = true
         self.view.addSubview(labelPartyMember0)
+        
         labelPartyHP1.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP1.textColor = UIColor.whiteColor()
         labelPartyHP1.frame = adjustRectSize(CGRectMake(53, -15, 400, 400))
         labelPartyHP1.hidden = true
         self.view.addSubview(labelPartyHP1)
+        
         labelPartyMember1 = UIImageView((frame:adjustRectSize(CGRectMake(13, 168, 30, 30))))
         labelPartyMember1.image = UIImage(named:data.team[1].Picture )
         labelPartyMember1.hidden = true
         self.view.addSubview(labelPartyMember1)
+        
         labelPartyHP2.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP2.textColor = UIColor.whiteColor()
         labelPartyHP2.frame = adjustRectSize(CGRectMake(53, 15, 400, 400))
         labelPartyHP2.hidden = true
         self.view.addSubview(labelPartyHP2)
+        
         labelPartyMember2 = UIImageView((frame:adjustRectSize(CGRectMake(13, 198, 30, 30))))
         labelPartyMember2.image = UIImage(named:data.team[2].Picture )
         labelPartyMember2.hidden = true
         self.view.addSubview(labelPartyMember2)
+        
         labelPartyHP3.font = UIFont(name: ("Papyrus"), size: 20)
         labelPartyHP3.textColor = UIColor.whiteColor()
         labelPartyHP3.frame = adjustRectSize(CGRectMake(53, 45, 400, 400))
         labelPartyHP3.hidden = true
         self.view.addSubview(labelPartyHP3)
+        
         labelPartyMember3 = UIImageView((frame:adjustRectSize(CGRectMake(13, 228, 30, 30))))
         labelPartyMember3.image = UIImage(named:data.team[3].Picture )
         labelPartyMember3.hidden = true
@@ -181,6 +189,7 @@ class GameViewController: UIViewController {
         prepareLabel.frame = adjustRectSize(CGRectMake(75, 100, 400, 400))
         prepareLabel.textColor = UIColor.whiteColor()
         self.view.addSubview(prepareLabel)
+        
         let block = SKAction.runBlock()
             {
                 prepareLabel.text = "           FIGHT!" // <- Preguica
@@ -343,6 +352,17 @@ class GameViewController: UIViewController {
                 }
             }
         }
+//        labelPartyHP0.text = ("\(partyMembers[0].HP)")
+//        labelPartyHP1.text = ("\(partyMembers[1].HP)")
+//        labelPartyHP2.text = ("\(partyMembers[2].HP)")
+//        labelPartyHP3.text = ("\(partyMembers[3].HP)")
+//        labelPartyHP0.textColor = UIColor.greenColor()
+//        labelPartyHP1.textColor = UIColor.greenColor()
+//        labelPartyHP2.textColor = UIColor.greenColor()
+//        labelPartyHP3.textColor = UIColor.greenColor()
+//        let action = SKAction.waitForDuration(3)
+//        self.scene.runAction(action)
+
     }
     
     func specialDamage(value: Int){
@@ -358,8 +378,8 @@ class GameViewController: UIViewController {
     }
     
     func specialDeath(){
-        let number = self.scene.teamDeaths.count
-        specialDamage = specialDamage + 70*number
+        let number = self.scene.teamDeaths.count + 1
+        specialDamage = specialDamage + 70 * number
     }
     
     func specialIgnore() {
@@ -418,10 +438,54 @@ class GameViewController: UIViewController {
         
         for i in 0..<4
         {
-            var numerador = Float(self.scene.level.teamPerformance[0]) * multiplier
+            var numerador = Float(self.scene.level.teamPerformance[i]) * multiplier
             total = total + Int(numerador)
         }
+        println("\(total)\n")
         return total
+    }
+    
+    func displayAttack()
+    {
+        var i = 0
+        let goTo = SKAction.moveTo((CGPoint(x: 100.0, y: 100.0)), duration: 1.5)
+        var teste = SKLabelNode()
+        let waitAction = SKAction.waitForDuration(1)
+        let changeColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.7)
+        let backColor = SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.7)
+        let sprite = self.scene.monster
+        
+        let remove = SKAction.runBlock()
+            {
+                SKAction.waitForDuration(1.5)
+                teste.removeFromParent()
+            }
+        teste.fontName = "Pappirus-Bold"
+        teste.fontSize = 30
+        teste.fontColor = UIColor.redColor()
+        //teste.text = "\(self.multiplyAttack())"
+        //self.scene.addChild(teste)
+        
+        let create = SKAction.runBlock()
+            {
+                let ataque = Float(self.scene.level.teamPerformance[i])*self.multiplier
+                teste.text = "\(Int(ataque))"
+                self.scene.addChild(teste)
+                println("CRIOU")
+            }
+        
+        let scale = SKAction.scaleBy(2, duration: 1.5)
+        
+        var group = Array<SKAction>()
+        group.append(goTo)
+        group.append(scale)
+        
+        let groupAction = SKAction.group(group)
+        
+        teste.runAction(SKAction.sequence([create,groupAction]))
+        
+        sprite.runAction(SKAction.sequence([changeColor,backColor]))
+        
     }
     
     
@@ -440,21 +504,41 @@ class GameViewController: UIViewController {
 
             enemyDamageDealt = ai.attackAI(data.attackAI)
             enemyDefense = ai.defenseAI(data.defenseAI, roundActions: self.scene.level.teamPerformance)
+        
             aplySpecial()
             self.scene.level.specialAttacks.removeAll(keepCapacity: false)
+        
             battleSystem(enemyDamageDealt, def: enemyDefense)
+        
             println("Party Defense: \(self.scene.level.roundDefensiveInstance)")
+            println("Ataque total: \(ataqueTotal)\n")
             println("Enemy Defense: \(self.enemyDefense[0]) \(self.enemyDefense[1]) \(self.enemyDefense[2]) \(self.enemyDefense[3])")
         
         
-        if( ataqueTotal > 0){
-            var sprite = self.scene.monster
-            //sprite.hidden = true
-            let waitAction = SKAction.waitForDuration(1)
-            let changeColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.7)
-            let backColor = SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.7)
-            
-            sprite.runAction(SKAction.sequence([changeColor,backColor]))
+        if( ataqueTotal > 0)
+        {
+//            let goTo = SKAction.moveTo((CGPoint(x: 100.0, y: 100.0)), duration: 1.5)
+//            var teste = SKLabelNode()
+//            let waitAction = SKAction.waitForDuration(1)
+//            let changeColor = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1.0, duration: 0.7)
+//            let backColor = SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.7)
+//            let sprite = self.scene.monster
+//            
+//            let remove = SKAction.runBlock()
+//                {
+//                    teste.removeFromParent()
+//                }
+//            teste.text = "\(ataqueTotal)"
+//            teste.fontName = "Pappirus-Bold"
+//            teste.fontSize = 30
+//            teste.fontColor = UIColor.redColor()
+//
+//            self.scene.addChild(teste)
+//            teste.runAction(SKAction.sequence([goTo,remove]))
+//            
+//            //sprite.hidden = true
+//            sprite.runAction(SKAction.sequence([changeColor,backColor]))
+            displayAttack()
         }
         
             enemyHpDisplay()
@@ -475,6 +559,10 @@ class GameViewController: UIViewController {
             labelPartyHP1.hidden = false
             labelPartyHP2.hidden = false
             labelPartyHP3.hidden = false
+//            labelPartyHP0.textColor = UIColor.whiteColor()
+//            labelPartyHP1.textColor = UIColor.whiteColor()
+//            labelPartyHP2.textColor = UIColor.whiteColor()
+//            labelPartyHP3.textColor = UIColor.whiteColor()
             labelPartyMember0.hidden = false
             labelPartyMember1.hidden = false
             labelPartyMember2.hidden = false

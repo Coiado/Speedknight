@@ -17,7 +17,20 @@ class GameScene: SKScene {
     var swipeHandler: ((Swap) -> ())? // This (closure/function) takes a Swap object as its parameter and returns nothing. The question mark indicates that it can be nil... (right?).
     var teamDeaths : Array<Int>! = []
     let monster = SKSpriteNode (imageNamed: GameData.sharedInstance.enemyImage)
-
+    
+    
+    public var level: Level!
+    
+    let TileWidthOriginal:CGFloat = 32.0
+    let TileHeightOriginal:CGFloat = 36.0
+    
+    let TileWidth: CGFloat = adjustX(32.0)
+    let TileHeight: CGFloat = adjustY(36.0)
+    
+    let gameLayer = SKNode()
+    let movesLayer = SKNode()
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder) is not used in this app")
     }
@@ -100,11 +113,16 @@ class GameScene: SKScene {
         for touch: AnyObject in touches{
             
             
-            let location = (touch as! UITouch).locationInNode(movesLayer)
-        // Then, it finds out if the touch is inside a square on the level grid by calling the method below
-        let (success, column, row) = convertPoint(location)
-        if success {
-            // Next, the method sees if the move you're touching is actually alive.
+//            var location = (touch as! UITouch).locationInNode(self)
+            var location = (touch as! UITouch).locationInNode(movesLayer)   //original
+
+             // Then, it finds out if the touch is inside a square on the level grid by calling the method below
+            let (success, column, row) = convertPoint(location)
+//            if movesLayer.containsPoint(location){
+            
+        if success { //original
+            println("Entrou")
+            // Next, the method sees if the move you're touching is actua1lly alive.
             if !contains(teamDeaths!, level.moveAtColumn(column, row: row)!.moveType.rawValue){ // VERIFY! Constantly shows that it found "nil"
                 // Next, the method verifies that the touch is on a move rather than on an empty square.
                 if let move = level.moveAtColumn(column, row: row) { // Now the same 'nil unwrapping error' is happenning here....
@@ -115,7 +133,9 @@ class GameScene: SKScene {
                 }
             }
         }
-        
+        else{
+            println("FUDEU MUITO \n")
+            }
         }
     }
     
@@ -156,6 +176,8 @@ class GameScene: SKScene {
                 return (true, Int(point.x / TileWidth), Int(point.y / TileHeight))
         } else {
             return (false, 0, 0)  // invalid location
+            //return (false, Int(point.x / TileWidth), Int(point.y / TileHeight))
+
         }
     }
     
@@ -334,17 +356,6 @@ class GameScene: SKScene {
             }
         }
         runAction(SKAction.waitForDuration(longestDuration), completion: completion)
-    }
-    
-    public var level: Level!
-    
-    let TileWidthOriginal:CGFloat = 32.0
-    let TileHeightOriginal:CGFloat = 36.0
-    
-    let TileWidth: CGFloat = adjustX(32.0)
-    let TileHeight: CGFloat = adjustY(36.0)
-    
-    let gameLayer = SKNode()
-    let movesLayer = SKNode()
+        }
 
 }
