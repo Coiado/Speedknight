@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     var scene: GameScene!
     let ai : Enemy_AI! = Enemy_AI()
     let data : GameData = GameData.sharedInstance
+    var animations : Animations! = Animations()
     
     @IBOutlet weak var enemyHpBar: UIImageView!
     
@@ -184,7 +185,7 @@ class GameViewController: UIViewController {
         multiplier = 1.0
         multiplierDefense = 1.0
         var prepareLabel = UILabel()
-        prepareLabel.text = "PREPARE FOR FIGHT"
+        prepareLabel.text = "PREPARE TO FIGHT"
         prepareLabel.font = UIFont(name: "Papyrus", size: 24)
         prepareLabel.frame = adjustRectSize(CGRectMake(75, 100, 400, 400))
         prepareLabel.textColor = UIColor.whiteColor()
@@ -354,34 +355,318 @@ class GameViewController: UIViewController {
                 }
             }
         }
-//        labelPartyHP0.text = ("\(partyMembers[0].HP)")
-//        labelPartyHP1.text = ("\(partyMembers[1].HP)")
-//        labelPartyHP2.text = ("\(partyMembers[2].HP)")
-//        labelPartyHP3.text = ("\(partyMembers[3].HP)")
-//        labelPartyHP0.textColor = UIColor.greenColor()
-//        labelPartyHP1.textColor = UIColor.greenColor()
-//        labelPartyHP2.textColor = UIColor.greenColor()
-//        labelPartyHP3.textColor = UIColor.greenColor()
-//        let action = SKAction.waitForDuration(3)
-//        self.scene.runAction(action)
+
+        let nskey : String! = NSBundle.mainBundle().pathForResource("HealingParticles", ofType: "sks")
+        let heal1 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let heal2 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let heal3 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let heal4 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        
+        let addEffects : SKAction! = SKAction.runBlock()
+            {
+                
+                heal1.position = adjustPoint(CGPointMake(-153, 90))
+                heal2.position = adjustPoint(CGPointMake(-153, 120))
+                heal3.position = adjustPoint(CGPointMake(-153, 150))
+                heal4.position = adjustPoint(CGPointMake(-153, 180))
+                
+                self.scene.addChild(heal1)
+                self.scene.addChild(heal2)
+                self.scene.addChild(heal3)
+                self.scene.addChild(heal4)
+                
+                self.labelPartyHP0.textColor = UIColor.greenColor()
+                self.labelPartyHP1.textColor = UIColor.greenColor()
+                self.labelPartyHP2.textColor = UIColor.greenColor()
+                self.labelPartyHP3.textColor = UIColor.greenColor()
+                
+        }
+        
+        let wait : SKAction! = SKAction.waitForDuration(2.5)
+        
+        let removeEffects : SKAction! = SKAction.runBlock()
+            {
+                heal1.removeFromParent()
+                heal2.removeFromParent()
+                heal3.removeFromParent()
+                heal4.removeFromParent()
+                
+                self.labelPartyHP0.textColor = UIColor.whiteColor()
+                self.labelPartyHP1.textColor = UIColor.whiteColor()
+                self.labelPartyHP2.textColor = UIColor.whiteColor()
+                self.labelPartyHP3.textColor = UIColor.whiteColor()
+        }
+        
+        self.scene.runAction(SKAction.sequence([addEffects,wait,removeEffects]))
 
     }
     
-    func specialDamage(value: Int){
-        specialDamage = specialDamage + value
+    // Ai meu saco!
+    func specialDeath(){
+        let number = self.scene.teamDeaths.count + 1
+        specialDamage = specialDamage + 70 * number
+        
+        let nskey : String! = NSBundle.mainBundle().pathForResource("SingleSwordMove", ofType: "sks")
+        let specialTrail = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let swordImage : SKSpriteNode! = SKSpriteNode(imageNamed: "SpecialSingleSword")
+        
+        swordImage.size = CGSize(width: 85,height: 85) // Adicionar correção de tamanho para demais devices
+        
+        let movingRL = SKAction.moveTo(adjustPoint(CGPointMake(-75, -5)), duration: 1.8)
+        let movingLR = SKAction.moveTo(adjustPoint(CGPointMake(75, -5)), duration: 1.8)
+        let rotation = SKAction.rotateToAngle(2160.0, duration: 2.0)
+        movingRL.timingMode = .EaseOut
+        movingLR
+        
+        let blueExplosion = SKAction.runBlock()
+            {
+                specialTrail.particlePositionRange = CGVector(dx: 150.0, dy: 150.0) // -> need to be made changeable according to device
+                specialTrail.yAcceleration = 0.0
+        }
+        
+        let slashRightLeft : SKAction! = SKAction.runBlock()
+            {
+                specialTrail.position = adjustPoint(CGPointMake(50, 200))
+                specialTrail.name = "OrangePower"
+                self.scene.addChild(specialTrail)
+                self.scene.childNodeWithName("OrangePower")?.runAction(SKAction.sequence([SKAction.moveTo(adjustPoint(CGPoint(x: -50,y: 7)), duration: 2), SKAction.fadeAlphaTo(0.0, duration: 0.3)]))
+                
+                swordImage.position = adjustPoint(CGPointMake(50, 200))
+                self.scene.addChild(swordImage)
+                swordImage.runAction(
+                    SKAction.sequence([
+                        SKAction.group([
+                            SKAction.fadeInWithDuration(0.05),
+                            movingRL]), SKAction.fadeAlphaTo(0.0, duration: 0.3)
+                        ]))
+                
+        }
+        
+        let slashLeftRight : SKAction! = SKAction.runBlock() // You have to change the alpha channels back to 1.0 (also try using easeOut); put the picture as -90 degrees
+            {
+                specialTrail.alpha = 1.0
+                specialTrail.position = adjustPoint(CGPointMake(-50, 200))
+                specialTrail.name = "OrangePower"
+//                self.scene.addChild(specialTrail)
+                self.scene.childNodeWithName("OrangePower")?.runAction(SKAction.sequence([SKAction.moveTo(adjustPoint(CGPoint(x: 50,y: 7)), duration: 2), SKAction.fadeOutWithDuration(0.6)]))
+               
+                swordImage.alpha = 1.0
+                swordImage.position = adjustPoint(CGPointMake(-50, 200))
+//                self.scene.addChild(swordImage)
+                swordImage.runAction(
+                    SKAction.sequence([
+                        SKAction.group([
+                            SKAction.fadeInWithDuration(0.05),
+                            movingLR]), SKAction.fadeOutWithDuration(0.6)
+                        ]))
+                
+        }
+//
+//        let slashMiddle : SKAction! = SKAction.runBlock()
+//            {
+//                specialTrail.position = adjustPoint(CGPointMake(0, 220))
+//                specialTrail.name = "OrangePower"
+//                self.scene.addChild(specialTrail)
+//                self.scene.childNodeWithName("OrangePower")?.runAction(SKAction.moveTo(adjustPoint(CGPoint(x: 0,y: 10)), duration: 2.1))
+//                self.scene.childNodeWithName("OrangePower")?.runAction(SKAction.sequence([SKAction.waitForDuration(2.2)]))
+//                
+//                axeImage.position = adjustPoint(CGPointMake(0, 220))
+//                self.scene.addChild(axeImage)
+//                axeImage.runAction(
+//                    SKAction.sequence([
+//                        SKAction.group([
+//                            SKAction.fadeInWithDuration(0.05),
+//                            movingAction, rotation])
+//                        ]))
+//                
+//        }
+//        
+//        let animationRunning : SKAction! = SKAction.runBlock()
+//            {
+//                axeImage.runAction(SKAction.sequence([rotation, SKAction.waitForDuration(0.2), SKAction.fadeOutWithDuration(0.2)]))
+//                specialTrail.runAction(SKAction.sequence([SKAction.waitForDuration(1.8), blueExplosion, SKAction.waitForDuration(0.2), SKAction.fadeOutWithDuration(0.2)]))
+//                
+//        }
+        
+        self.scene.runAction(SKAction.sequence([slashRightLeft]))
+        
     }
     
     func specialMultiplier(value: Float){
         multiplier = multiplier + value
+        let nskey : String! = NSBundle.mainBundle().pathForResource("AttackBoostParticles", ofType: "sks")
+        let attackBoost1 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let attackBoost2 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let attackBoost3 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let attackBoost4 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        
+        let attackSign1 : SKSpriteNode! = SKSpriteNode(imageNamed: "AttackBoost")
+        let attackSign2 : SKSpriteNode! = SKSpriteNode(imageNamed: "AttackBoost")
+        let attackSign3 : SKSpriteNode! = SKSpriteNode(imageNamed: "AttackBoost")
+        let attackSign4 : SKSpriteNode! = SKSpriteNode(imageNamed: "AttackBoost")
+        attackSign1.size = CGSize(width: 38,height: 38)
+        attackSign2.size = CGSize(width: 38,height: 38)
+        attackSign3.size = CGSize(width: 38,height: 38)
+        attackSign4.size = CGSize(width: 38,height: 38)
+
+
+
+
+
+        let addEffects : SKAction! = SKAction.runBlock()
+            {
+                
+                attackBoost1.position = adjustPoint(CGPointMake(-153, 90))
+                attackBoost2.position = adjustPoint(CGPointMake(-153, 120))
+                attackBoost3.position = adjustPoint(CGPointMake(-153, 150))
+                attackBoost4.position = adjustPoint(CGPointMake(-153, 180))
+
+                self.scene.addChild(attackBoost1)
+                self.scene.addChild(attackBoost2)
+                self.scene.addChild(attackBoost3)
+                self.scene.addChild(attackBoost4)
+                
+                attackSign1.position = adjustPoint(CGPointMake(-73, 90))
+                attackSign2.position = adjustPoint(CGPointMake(-73, 120))
+                attackSign3.position = adjustPoint(CGPointMake(-73, 150))
+                attackSign4.position = adjustPoint(CGPointMake(-73, 180))
+
+                self.scene.addChild(attackSign1)
+                self.scene.addChild(attackSign2)
+                self.scene.addChild(attackSign3)
+                self.scene.addChild(attackSign4)
+                
+                
+        
+            }
+        
+        let wait : SKAction! = SKAction.waitForDuration(2.5)
+        
+        let removeEffects : SKAction! = SKAction.runBlock()
+            {
+                attackBoost1.removeFromParent()
+                attackBoost2.removeFromParent()
+                attackBoost3.removeFromParent()
+                attackBoost4.removeFromParent()
+                
+                attackSign1.removeFromParent()
+                attackSign2.removeFromParent()
+                attackSign3.removeFromParent()
+                attackSign4.removeFromParent()
+            }
+    
+        self.scene.runAction(SKAction.sequence([addEffects,wait,removeEffects]))
+        
     }
     
     func specialDefense(value: Float){
         multiplierDefense = value + multiplierDefense
+        let nskey : String! = NSBundle.mainBundle().pathForResource("DefenseBoostParticles", ofType: "sks")
+        let defenseBoost1 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let defenseBoost2 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let defenseBoost3 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let defenseBoost4 = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        
+        let defenseSign1 : SKSpriteNode! = SKSpriteNode(imageNamed: "DefenseBoost")
+        let defenseSign2 : SKSpriteNode! = SKSpriteNode(imageNamed: "DefenseBoost")
+        let defenseSign3 : SKSpriteNode! = SKSpriteNode(imageNamed: "DefenseBoost")
+        let defenseSign4 : SKSpriteNode! = SKSpriteNode(imageNamed: "DefenseBoost")
+        defenseSign1.size = CGSize(width: 38,height: 38)
+        defenseSign2.size = CGSize(width: 38,height: 38)
+        defenseSign3.size = CGSize(width: 38,height: 38)
+        defenseSign4.size = CGSize(width: 38,height: 38)
+        
+        let addEffects : SKAction! = SKAction.runBlock()
+            {
+                
+                defenseBoost1.position = adjustPoint(CGPointMake(-153, 90))
+                defenseBoost2.position = adjustPoint(CGPointMake(-153, 120))
+                defenseBoost3.position = adjustPoint(CGPointMake(-153, 150))
+                defenseBoost4.position = adjustPoint(CGPointMake(-153, 180))
+                
+                self.scene.addChild(defenseBoost1)
+                self.scene.addChild(defenseBoost2)
+                self.scene.addChild(defenseBoost3)
+                self.scene.addChild(defenseBoost4)
+                
+                defenseSign1.position = adjustPoint(CGPointMake(-73, 90))
+                defenseSign2.position = adjustPoint(CGPointMake(-73, 120))
+                defenseSign3.position = adjustPoint(CGPointMake(-73, 150))
+                defenseSign4.position = adjustPoint(CGPointMake(-73, 180))
+                
+                self.scene.addChild(defenseSign1)
+                self.scene.addChild(defenseSign2)
+                self.scene.addChild(defenseSign3)
+                self.scene.addChild(defenseSign4)
+                
+        }
+        
+        let wait : SKAction! = SKAction.waitForDuration(2.5)
+        
+        let removeEffects : SKAction! = SKAction.runBlock()
+            {
+                defenseBoost1.removeFromParent()
+                defenseBoost2.removeFromParent()
+                defenseBoost3.removeFromParent()
+                defenseBoost4.removeFromParent()
+                
+                defenseSign1.removeFromParent()
+                defenseSign2.removeFromParent()
+                defenseSign3.removeFromParent()
+                defenseSign4.removeFromParent()
+
+        }
+        
+        self.scene.runAction(SKAction.sequence([addEffects,wait,removeEffects]))
     }
     
-    func specialDeath(){
-        let number = self.scene.teamDeaths.count + 1
-        specialDamage = specialDamage + 70 * number
+    func specialDamage(value: Int!){
+        
+        specialDamage = specialDamage + value
+        let nskey : String! = NSBundle.mainBundle().pathForResource("AxeMove", ofType: "sks")
+        let specialTrail = NSKeyedUnarchiver.unarchiveObjectWithFile(nskey) as! SKEmitterNode
+        let axeImage : SKSpriteNode! = SKSpriteNode(imageNamed: "SpecialAxe")
+        
+        axeImage.size = CGSize(width: 80,height: 80) // Adicionar correção de tamanho para demais devices
+        
+        let movingAction = SKAction.moveTo(adjustPoint(CGPointMake(0, 0)), duration: 2.0)
+        let rotation = SKAction.rotateToAngle(2160.0, duration: 2.0)
+        movingAction.timingMode = .EaseOut
+        
+        let blueExplosion = SKAction.runBlock()
+            {
+            specialTrail.particlePositionRange = CGVector(dx: 150.0, dy: 150.0) // -> need to be made changeable according to device
+            specialTrail.yAcceleration = 0.0
+            }
+        
+        let animationBeginning : SKAction! = SKAction.runBlock()
+            {
+                specialTrail.position = adjustPoint(CGPointMake(0, 220))
+                specialTrail.name = "BluePower"
+                self.scene.addChild(specialTrail)
+                self.scene.childNodeWithName("BluePower")?.runAction(SKAction.moveTo(adjustPoint(CGPoint(x: 0,y: 10)), duration: 2.1))
+                self.scene.childNodeWithName("BluePower")?.runAction(SKAction.sequence([SKAction.waitForDuration(2.2)]))
+                
+                axeImage.position = adjustPoint(CGPointMake(0, 220))
+                self.scene.addChild(axeImage)
+                axeImage.runAction(
+                    SKAction.sequence([
+                        SKAction.group([
+                            SKAction.fadeInWithDuration(0.05),
+                            movingAction, rotation])
+                        ]))
+
+            }
+        
+        let animationRunning : SKAction! = SKAction.runBlock()
+            {
+                axeImage.runAction(SKAction.sequence([rotation, SKAction.waitForDuration(0.2), SKAction.fadeOutWithDuration(0.2)]))
+                specialTrail.runAction(SKAction.sequence([SKAction.waitForDuration(1.8), blueExplosion, SKAction.waitForDuration(0.2), SKAction.fadeOutWithDuration(0.4)]))
+
+            }
+        
+            self.scene.runAction(SKAction.sequence([animationBeginning, animationRunning]))
+
     }
     
     func specialIgnore() {
@@ -389,40 +674,65 @@ class GameViewController: UIViewController {
         {
             enemyDefense[i] = 0
         }
+        
+        let defenseDeny : SKSpriteNode! = SKSpriteNode(imageNamed: "NoEnemyDefense")
+        defenseDeny.size = CGSize(width: 120,height: 120)
+        
+        let animation : SKAction! = SKAction.runBlock()
+            {
+               defenseDeny.position = CGPoint(x: 0,y: 0)
+                self.scene.addChild(defenseDeny)
+                defenseDeny.runAction(SKAction.sequence([SKAction.fadeAlphaTo(0.0, duration: 1.0), SKAction.fadeAlphaTo(1.0, duration: 1.0), SKAction.fadeOutWithDuration(1.0) ]))
+            }
+        
+        self.scene.runAction(animation)
     }
     
-    func aplySpecial(){
+    func applySpecial(){
+        
+        var  allActions : Array<SKAction>! = []
+        var actionsInOrder : Array<SKAction>! = []
+        
         for aux in 0..<(self.scene.level.specialAttacks.count)
         {
             switch self.scene.level.specialAttacks[aux]!{
             case 0:
                 
-                specialDefense(0.1)
+                
+                allActions.append(SKAction.runBlock(){self.specialDefense(0.1)})
+//                specialDefense(0.1)
                 println("Multiplicou defesa\n")
+                
+                
                 
             case 1:
                 
-                specialDeath()
-                println("Dano pelos aliados\n")
+                allActions.append(SKAction.runBlock(){self.specialDamage(80)})
+//                specialDamage(80)
+                println("Dano\n")
             
             case 2:
                 
-                specialDamage(80)
-                println("Dano\n")
+                allActions.append(SKAction.runBlock(){self.specialDeath()})
+//                specialDeath()
+                println("Dano pelos aliados\n")
                 
             case 3:
                 
-                specialIgnore()
+                allActions.append(SKAction.runBlock(){self.specialIgnore()})
+//                specialIgnore()
                 println("Ignorou defesa\n")
                 
             case 4:
                 
-                specialMultiplier(0.1)
+                allActions.append(SKAction.runBlock(){self.specialMultiplier(0.1)})
+//                specialMultiplier(0.1)
                 println("Multiplicou ATK\n")
                 
             case 5:
                 
-                specialHealHP(10)
+                allActions.append(SKAction.runBlock(){self.specialHealHP(20)})
+//                specialHealHP(20)
                 println("Curou\n")
                 
             default:
@@ -430,6 +740,14 @@ class GameViewController: UIViewController {
                 println("Error Especial\n")
             
             }
+            
+            for aux in 0..<(allActions.count)
+            {
+            actionsInOrder.append(SKAction.sequence([allActions[aux], SKAction.waitForDuration(0.5)]))
+            }
+            
+            self.scene.runAction(SKAction.sequence(actionsInOrder))
+            
         }
         
     }
@@ -507,7 +825,7 @@ class GameViewController: UIViewController {
             enemyDamageDealt = ai.attackAI(data.attackAI)
             enemyDefense = ai.defenseAI(data.defenseAI, roundActions: self.scene.level.teamPerformance)
         
-            aplySpecial()
+            applySpecial()
             self.scene.level.specialAttacks.removeAll(keepCapacity: false)
         
             battleSystem(enemyDamageDealt, def: enemyDefense)
@@ -598,12 +916,12 @@ class GameViewController: UIViewController {
         }
     }
     
-    func nextResult(sender:UIButton!){
-        counter?++
-        resultsBox.removeFromSuperview()
-        buttonNext.removeFromSuperview()
-        presentResults(self.scene.level.teamPerformance)
-    }
+//    func nextResult(sender:UIButton!){
+//        counter?++
+//        resultsBox.removeFromSuperview()
+//        buttonNext.removeFromSuperview()
+//        presentResults(self.scene.level.teamPerformance)
+//    }
 
     func enemyHpDisplay() {
 

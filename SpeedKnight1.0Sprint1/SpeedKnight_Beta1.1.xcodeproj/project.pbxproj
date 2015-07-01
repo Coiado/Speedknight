@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0843014C1B3CA99700D1B5F3 /* AxeMove.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0843014B1B3CA99700D1B5F3 /* AxeMove.sks */; };
+		0843014E1B3DF4F600D1B5F3 /* SpecialAxe.png in Resources */ = {isa = PBXBuildFile; fileRef = 0843014D1B3DF4F600D1B5F3 /* SpecialAxe.png */; };
+		085873CA1B42FB3700FDD7BE /* SingleSwordMove.sks in Resources */ = {isa = PBXBuildFile; fileRef = 085873C91B42FB3700FDD7BE /* SingleSwordMove.sks */; };
+		085873CC1B42FE3100FDD7BE /* SpecialSingleSword.png in Resources */ = {isa = PBXBuildFile; fileRef = 085873CB1B42FE3100FDD7BE /* SpecialSingleSword.png */; };
+		085873CE1B43692400FDD7BE /* AttackBoost.png in Resources */ = {isa = PBXBuildFile; fileRef = 085873CD1B43692400FDD7BE /* AttackBoost.png */; };
+		085873D01B43692B00FDD7BE /* DefenseBoost.png in Resources */ = {isa = PBXBuildFile; fileRef = 085873CF1B43692B00FDD7BE /* DefenseBoost.png */; };
+		085873D21B43693200FDD7BE /* NoEnemyDefense.png in Resources */ = {isa = PBXBuildFile; fileRef = 085873D11B43693200FDD7BE /* NoEnemyDefense.png */; };
+		087571AB1B3AE6B7009168A8 /* AttackBoostParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 087571AA1B3AE6B7009168A8 /* AttackBoostParticles.sks */; };
+		087571AD1B3AF9FF009168A8 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087571AC1B3AF9FF009168A8 /* Animations.swift */; };
+		087571B91B3C473F009168A8 /* DefenseBoostParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 087571B81B3C473F009168A8 /* DefenseBoostParticles.sks */; };
+		08C7636F1B3AE3F200E70A67 /* HealingParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 08C7636D1B3AE3F200E70A67 /* HealingParticles.sks */; };
+		08C763701B3AE3F200E70A67 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 08C7636E1B3AE3F200E70A67 /* spark.png */; };
 		280834591AF317940062FFD6 /* HP_Enemy_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 280834451AF317940062FFD6 /* HP_Enemy_0.png */; };
 		2808345A1AF317940062FFD6 /* HP_Enemy_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 280834461AF317940062FFD6 /* HP_Enemy_5.png */; };
 		2808345B1AF317940062FFD6 /* HP_Enemy_10.png in Resources */ = {isa = PBXBuildFile; fileRef = 280834471AF317940062FFD6 /* HP_Enemy_10.png */; };
@@ -150,6 +162,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0843014B1B3CA99700D1B5F3 /* AxeMove.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AxeMove.sks; sourceTree = "<group>"; };
+		0843014D1B3DF4F600D1B5F3 /* SpecialAxe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpecialAxe.png; sourceTree = "<group>"; };
+		085873C91B42FB3700FDD7BE /* SingleSwordMove.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SingleSwordMove.sks; sourceTree = "<group>"; };
+		085873CB1B42FE3100FDD7BE /* SpecialSingleSword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpecialSingleSword.png; sourceTree = "<group>"; };
+		085873CD1B43692400FDD7BE /* AttackBoost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AttackBoost.png; sourceTree = "<group>"; };
+		085873CF1B43692B00FDD7BE /* DefenseBoost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefenseBoost.png; sourceTree = "<group>"; };
+		085873D11B43693200FDD7BE /* NoEnemyDefense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoEnemyDefense.png; sourceTree = "<group>"; };
+		087571AA1B3AE6B7009168A8 /* AttackBoostParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AttackBoostParticles.sks; sourceTree = "<group>"; };
+		087571AC1B3AF9FF009168A8 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		087571B81B3C473F009168A8 /* DefenseBoostParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DefenseBoostParticles.sks; sourceTree = "<group>"; };
+		08C7636D1B3AE3F200E70A67 /* HealingParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HealingParticles.sks; sourceTree = "<group>"; };
+		08C7636E1B3AE3F200E70A67 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		280834451AF317940062FFD6 /* HP_Enemy_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP_Enemy_0.png; sourceTree = "<group>"; };
 		280834461AF317940062FFD6 /* HP_Enemy_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP_Enemy_5.png; sourceTree = "<group>"; };
 		280834471AF317940062FFD6 /* HP_Enemy_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HP_Enemy_10.png; sourceTree = "<group>"; };
@@ -320,6 +344,7 @@
 		286D42201B03B03400CDAA8E /* Characters-Images */ = {
 			isa = PBXGroup;
 			children = (
+				08C7636E1B3AE3F200E70A67 /* spark.png */,
 				28A5EE0A1B03FF1D002B214D /* AxeProfilePic.png */,
 				28A5EE0B1B03FF1D002B214D /* BowArrowProfilePic.png */,
 				28A5EE0C1B03FF1D002B214D /* DefensiveInstanceImage.png */,
@@ -460,6 +485,7 @@
 				286E5DAD1AF2D59600733054 /* SpeedKnightFunctions.swift */,
 				28E753BA1ADF37FF00956E16 /* AppDelegate.swift */,
 				28E753BE1ADF37FF00956E16 /* GameScene.swift */,
+				087571AC1B3AF9FF009168A8 /* Animations.swift */,
 				28E753C01ADF37FF00956E16 /* GameViewController.swift */,
 				289EEEB11B03909E00ECE4B7 /* ChooseYourPartyScreen.swift */,
 				28A5EE161B0521D9002B214D /* LevelMenu.swift */,
@@ -474,6 +500,11 @@
 				285F898A1B061D4C0097574F /* GameData.swift */,
 				3F10B3751B0BB57C00C1BC55 /* SelectView.swift */,
 				3F43A0311B28734400BDB929 /* TutorialViewController.swift */,
+				087571AA1B3AE6B7009168A8 /* AttackBoostParticles.sks */,
+				087571B81B3C473F009168A8 /* DefenseBoostParticles.sks */,
+				08C7636D1B3AE3F200E70A67 /* HealingParticles.sks */,
+				0843014B1B3CA99700D1B5F3 /* AxeMove.sks */,
+				085873C91B42FB3700FDD7BE /* SingleSwordMove.sks */,
 				28E753C21ADF37FF00956E16 /* Main.storyboard */,
 				28E753C71ADF37FF00956E16 /* LaunchScreen.xib */,
 				3F90ABD01B270F730003D947 /* Images.xcassets */,
@@ -498,6 +529,11 @@
 				286D42201B03B03400CDAA8E /* Characters-Images */,
 				286E5DA31AF2A65000733054 /* Character_Battle_Profile_Teste(0).png */,
 				28C2BD1E1B14AFDA009E4DA1 /* gameOverSample.jpg */,
+				0843014D1B3DF4F600D1B5F3 /* SpecialAxe.png */,
+				085873CB1B42FE3100FDD7BE /* SpecialSingleSword.png */,
+				085873CD1B43692400FDD7BE /* AttackBoost.png */,
+				085873CF1B43692B00FDD7BE /* DefenseBoost.png */,
+				085873D11B43693200FDD7BE /* NoEnemyDefense.png */,
 				28EF0DED1B2A01860070997A /* Take a Chance.mp3 */,
 				28EF0DEF1B2A01940070997A /* Volatile Reaction.mp3 */,
 				284BE36C1B28CBFA00DE4C0E /* 1180351-medieval.jpg */,
@@ -629,9 +665,12 @@
 				286E5DAA1AF2A65000733054 /* Character_Battle_Profile_Teste(2).png in Resources */,
 				2808346B1AF317940062FFD6 /* HP_Enemy_90.png in Resources */,
 				28EF0DF01B2A01940070997A /* Volatile Reaction.mp3 in Resources */,
+				08C7636F1B3AE3F200E70A67 /* HealingParticles.sks in Resources */,
+				085873CE1B43692400FDD7BE /* AttackBoost.png in Resources */,
 				286D42311B03DD9600CDAA8E /* Icone-Staff-Selecionado.png in Resources */,
 				28C2BD1F1B14AFDA009E4DA1 /* gameOverSample.jpg in Resources */,
 				284BE36F1B28CC0100DE4C0E /* Azul.png in Resources */,
+				0843014E1B3DF4F600D1B5F3 /* SpecialAxe.png in Resources */,
 				284BE37D1B29D69000DE4C0E /* ShuffleButton.png in Resources */,
 				28EF0DEC1B29F37D0070997A /* Monstro2.png in Resources */,
 				286E5DAB1AF2A65000733054 /* Character_Battle_Profile_Teste(3).png in Resources */,
@@ -647,11 +686,13 @@
 				28091DAD1B162B45003AEAE3 /* Icone-Axe-Morto@2x.png in Resources */,
 				2808345D1AF317940062FFD6 /* HP_Enemy_20.png in Resources */,
 				286E5D5A1AEEB69300733054 /* Icone-SingleSword-Selecionado@2x.png in Resources */,
+				08C763701B3AE3F200E70A67 /* spark.png in Resources */,
 				286D42371B03DDB000CDAA8E /* Icone-BowArrow-Selecionado@2x.png in Resources */,
 				286E5D6A1AEFEE0C00733054 /* TesteGame_Textbox_1.png in Resources */,
 				2808346A1AF317940062FFD6 /* HP_Enemy_85.png in Resources */,
 				28091DA41B162B1C003AEAE3 /* Icone-BowArrow-Morto.png in Resources */,
 				2808345E1AF317940062FFD6 /* HP_Enemy_25.png in Resources */,
+				0843014C1B3CA99700D1B5F3 /* AxeMove.sks in Resources */,
 				3FE5EDC81B2B44930043E392 /* page6.xib in Resources */,
 				280BCCD01AE047770062D550 /* Level_4.json in Resources */,
 				280834601AF317940062FFD6 /* HP_Enemy_35.png in Resources */,
@@ -679,18 +720,22 @@
 				28091DA81B162B28003AEAE3 /* Icone-Staff-Morto.png in Resources */,
 				28A5EE141B03FF1D002B214D /* MageStaffProfilePic.png in Resources */,
 				286E5D441AEEB5AD00733054 /* Icone-SingleSword(DualWield)-Selecionado.png in Resources */,
+				085873CA1B42FB3700FDD7BE /* SingleSwordMove.sks in Resources */,
 				28A5EE151B03FF1D002B214D /* TwoSwordsProfilePic.png in Resources */,
 				286E5D611AEEB81500733054 /* Icone-DualSword@2x.png in Resources */,
 				5FE5C0FE1B1752D500CE3B84 /* Monstro3.png in Resources */,
 				280834611AF317940062FFD6 /* HP_Enemy_40.png in Resources */,
 				286E5D9C1AF00C2700733054 /* HP_Enemy_100.png in Resources */,
 				286D423E1B03DE1100CDAA8E /* Character_4.json in Resources */,
+				085873D21B43693200FDD7BE /* NoEnemyDefense.png in Resources */,
 				286D422A1B03B08100CDAA8E /* DefensiveStanceImage.png in Resources */,
 				3FE6FD371B2A1F9E00B4C1B8 /* page4.xib in Resources */,
 				28091DAF1B162B45003AEAE3 /* Icone-SingleSword(DualWield)-Morto@2x.png in Resources */,
 				280BCCCC1AE047770062D550 /* Level_0.json in Resources */,
+				085873D01B43692B00FDD7BE /* DefenseBoost.png in Resources */,
 				286D422F1B03DD9600CDAA8E /* Icone-BowArrow-Selecionado.png in Resources */,
 				286E5D421AEEB5AD00733054 /* Icone-Shield.png in Resources */,
+				087571AB1B3AE6B7009168A8 /* AttackBoostParticles.sks in Resources */,
 				286D423A1B03DDB000CDAA8E /* Icone-Staff@2x.png in Resources */,
 				3F10B3781B0BB69700C1BC55 /* Minus_icon.png in Resources */,
 				286E5D451AEEB5AD00733054 /* Icone-SingleSword(DualWield).png in Resources */,
@@ -708,6 +753,7 @@
 				286D421B1B039BD900CDAA8E /* Character_1.json in Resources */,
 				280BCCCD1AE047770062D550 /* Level_1.json in Resources */,
 				286D42301B03DD9600CDAA8E /* Icone-BowArrow.png in Resources */,
+				085873CC1B42FE3100FDD7BE /* SpecialSingleSword.png in Resources */,
 				286E5D581AEEB69300733054 /* Icone-Shield-Selecionado@2x.png in Resources */,
 				2808346C1AF317940062FFD6 /* HP_Enemy_95.png in Resources */,
 				2808345C1AF317940062FFD6 /* HP_Enemy_15.png in Resources */,
@@ -724,6 +770,7 @@
 				286E5D551AEEB69300733054 /* Icone-DualSword-Selecionado@2x.png in Resources */,
 				286E5D3C1AEEB5AD00733054 /* Icone-Axe-Selecionado.png in Resources */,
 				28E753DF1ADF3DDE00956E16 /* Sprites.atlas in Resources */,
+				087571B91B3C473F009168A8 /* DefenseBoostParticles.sks in Resources */,
 				286E5D5F1AEEB80D00733054 /* Icone-SingleSword@2x.png in Resources */,
 				28A5EE121B03FF1D002B214D /* DefensiveInstanceImage.png in Resources */,
 				286E5D5C1AEEB69300733054 /* Icone-SingleSword(DualWield)@2x.png in Resources */,
@@ -766,6 +813,7 @@
 				28E753C11ADF37FF00956E16 /* GameViewController.swift in Sources */,
 				28E753BB1ADF37FF00956E16 /* AppDelegate.swift in Sources */,
 				3F43A0321B28734400BDB929 /* TutorialViewController.swift in Sources */,
+				087571AD1B3AF9FF009168A8 /* Animations.swift in Sources */,
 				286E5DB01AF2F8B800733054 /* Enemy_AI.swift in Sources */,
 				28E753E31ADF3FE700956E16 /* Array2D.swift in Sources */,
 				280BCCD21AE13D8B0062D550 /* Swap.swift in Sources */,

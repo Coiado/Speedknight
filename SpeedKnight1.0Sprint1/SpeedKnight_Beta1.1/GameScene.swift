@@ -16,10 +16,13 @@ class GameScene: SKScene {
     var swipeFromRow: Int?
     var swipeHandler: ((Swap) -> ())? // This (closure/function) takes a Swap object as its parameter and returns nothing. The question mark indicates that it can be nil... (right?).
     var teamDeaths : Array<Int>! = []
+   // var animationsNode : SKNode! = SKNode()
     let monster = SKSpriteNode (imageNamed: GameData.sharedInstance.enemyImage)
     
     
     public var level: Level!
+    var animations : Animations! = Animations()
+
     
     let TileWidthOriginal:CGFloat = 32.0
     let TileHeightOriginal:CGFloat = 36.0
@@ -44,6 +47,8 @@ class GameScene: SKScene {
         addChild(background)
 
         addChild(monster)
+        
+       // addChild(animationsNode)
         
         addChild(gameLayer)
         
